@@ -16,11 +16,6 @@ class AdminAcaraController extends Controller
         $this->middleware('admin');
     }
 
-    public function FunctionName(Type $var = null)
-    {
-        # code...
-    }
-
     /**
      * Display a listing of the resource.
      *
