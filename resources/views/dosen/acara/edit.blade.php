@@ -71,7 +71,7 @@ use Illuminate\Support\Carbon;
                                     {{ $message }}
                                 </p>
                             @enderror
-                            <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $acara->nama) }}">
+                            <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $acara->deskripsi) }}">
                             <trix-editor input="deskripsi"></trix-editor>
                         </div>
                         <div class="form-group">
