@@ -104,6 +104,22 @@ class NilaiController extends Controller
         return back()->with('success', 'Nilai / Sertifikat telah diubah!');
     }
 
+    public function updateTanpaSertifikat(Request $request, Nilai $nilai)
+    {
+        $validateData = $request->validate([
+            'nilai' => 'max:100'
+        ]);
+
+        if ($request->file('sertifikat')) {
+            $slug = SlugService::createSlug(Berita::class, 'slug', $nilai->peserta->acara->nama);
+            $extension = $request->file('sertifikat')->getClientOriginalExtension();
+            $validateData['sertifikat'] = $request->file('sertifikat')->storeAs('sertifikat', $nilai->peserta->mahasiswa->nim . '_' . $slug . $extension);
+        }
+        Nilai::where('id', $nilai->id)
+            ->update($validateData);
+        return back()->with('success', 'Nilai / Sertifikat telah diubah!');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

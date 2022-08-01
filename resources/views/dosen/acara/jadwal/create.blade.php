@@ -74,10 +74,15 @@ use Illuminate\Support\Carbon;
                                 <option value="each">Dengan Instruktur Kelas Masing-masing</option>
                                 @foreach ($list_instruktur as $instruktur)
                                     @if ($instruktur->dosen_id == old('instruktur_id'))
+                                        <option value="{{ $instruktur->dosen_id }}" selected>{{ $instruktur->kode_dosen ." | ". $instruktur->user->nama }}</option>
+                                    @else
+                                        <option value="{{ $instruktur->dosen_id }}">{{ $instruktur->kode_dosen ." | ". $instruktur->user->nama }}</option>
+                                    @endif
+                                    {{-- @if ($instruktur->dosen_id == old('instruktur_id'))
                                         <option value="{{ $instruktur->id }}" selected>{{ $instruktur->kode_dosen ." | ". $instruktur->user->nama }}</option>
                                     @else
                                         <option value="{{ $instruktur->id }}">{{ $instruktur->kode_dosen ." | ". $instruktur->user->nama }}</option>
-                                    @endif
+                                    @endif --}}
                                 @endforeach
                             </select>
                             @error('instruktur_id')

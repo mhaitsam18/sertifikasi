@@ -195,6 +195,7 @@ Route::resource('/dosen/acara', DosenAcaraController::class)->middleware(['dosen
 Route::resource('/dosen/materi', MateriAcaraController::class)->middleware(['dosen']);
 Route::resource('/koordinator/sertifikat', SertifikatController::class)->middleware(['dosen']);
 Route::resource('/instruktur/nilai', NilaiController::class)->middleware(['dosen']);
+Route::put('/instruktur/updateTanpaSertifikat/{nilai}', [NilaiController::class, 'updateTanpaSertifikat'])->middleware(['dosen']);
 
 Route::get('/instruktur/histori', [InstrukturController::class, 'histori'])->middleware(['dosen']);
 

@@ -75,7 +75,7 @@ use Illuminate\Support\Carbon;
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                                 </form>
                                             @else
-                                                <form class="form-inline" action="/instruktur/nilai/{{ $peserta->nilai->id }}" method="post" enctype="multipart/form-data">
+                                                <form class="form-inline" action="/instruktur/updateTanpaSertifikat/{{ $peserta->nilai->id }}" method="post" enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
                                                     <input type="hidden" name="peserta_id" value="{{ $peserta->id }}">

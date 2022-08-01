@@ -59,7 +59,7 @@ class DosenAcaraController extends Controller
             'lokasi' => 'required',
             'biaya' => 'required',
             'kuota' => 'required',
-            'thumbnail' => 'image|file|max:1024'
+            'thumbnail' => 'image|file'
         ]);
 
         if ($request->file('thumbnail')) {
@@ -127,7 +127,7 @@ class DosenAcaraController extends Controller
             'lokasi' => 'required',
             'biaya' => 'required',
             'kuota' => 'required',
-            'thumbnail' => 'image|file|max:1024'
+            'thumbnail' => 'image|file'
         ]);
 
         if ($request->file('thumbnail')) {
@@ -142,7 +142,7 @@ class DosenAcaraController extends Controller
         $validateData['pelaksanaan_tutup'] = $request->tanggal_pelaksanaan_tutup . ' ' . $request->waktu_pelaksanaan_tutup;
         $validateData['koordinator_id'] = session()->get('dosen_id');
         $validateData['biaya'] = str_replace(['Rp.', '.', ' '], '', $request->biaya);
-        $validateData['status_acara_id'] = 1;
+        // $validateData['status_acara_id'] = 1;
         Acara::where('id', $acara->id)
             ->update($validateData);
         return redirect('/dosen/acara')->with('success', 'Data Acara berhasil diperbarui!!');
