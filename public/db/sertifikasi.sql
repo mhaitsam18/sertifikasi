@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2022 at 03:44 PM
+-- Generation Time: Aug 11, 2022 at 06:30 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -54,10 +54,11 @@ CREATE TABLE `acara` (
 --
 
 INSERT INTO `acara` (`id`, `nama`, `deskripsi`, `kategori_acara_id`, `pendaftaran_buka`, `pendaftaran_tutup`, `pelaksanaan_buka`, `pelaksanaan_tutup`, `lokasi`, `biaya`, `kuota`, `status_acara_id`, `koordinator_id`, `prodi_id`, `thumbnail`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Pembukaan Seminar Sertifikasi', '<div>Pembukaan Seminar</div>', 1, '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', 'Bandung', 150000.00, 1000, 6, 1, NULL, 'thumbnail-acara/seminar.jpg', 1, '2022-03-20 05:33:01', '2022-04-20 14:21:22', NULL),
-(2, 'Ngoding Bareng', '<div>Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 6, 1, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-03-29 03:26:07', '2022-04-24 19:29:32', NULL),
-(3, 'Pelatihan Microsoft Azure', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', 'Bandung', 250000.00, 120, 7, 3, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
-(4, 'Tes EPrT', 'Tes EPrT Telkom University Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.', 1, '2022-03-01 09:00:00', '2022-04-30 23:59:00', '2022-04-04 07:00:00', '0000-00-00 00:00:00', 'Telkom University', 250000.00, 500, 2, 2, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-04-03 10:18:29', '2022-04-17 05:00:47', NULL);
+(1, 'Pembukaan Seminar Sertifikasi', '<div>Pembukaan Seminar</div>', 1, '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', 'Bandung', 150000.00, 1000, 6, 1, NULL, 'thumbnail-acara/seminar.jpg', 1, '2022-03-20 05:33:01', '2022-05-21 07:26:53', NULL),
+(2, 'Ngoding Bareng', '<div>Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 7, 1, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-03-29 03:26:07', '2022-05-21 07:26:51', NULL),
+(3, 'Pelatihan Microsoft Azure', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', 'Bandung', 250000.00, 120, 6, 3, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
+(4, 'Tes EPrT', '<div>Tes EPrT Telkom University Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-01 09:00:00', '2022-04-30 23:59:00', '2022-04-04 07:00:00', '2022-04-09 17:13:35', 'Telkom University', 250000.00, 500, 2, 2, NULL, 'thumbnail-acara/9fVBEs4FYlXHnvOJkQxVzjHdiWp0jom3rvNNZwLa.png', 1, '2022-04-03 10:18:29', '2022-08-01 14:02:10', NULL),
+(5, 'Kuliah Umum Analisis Perancangna Sistem Informasi', '<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>', 1, '2022-07-20 12:00:00', '2022-07-30 12:00:00', '2022-08-01 14:00:00', '2022-08-01 14:00:00', 'https://meet.google.com/htt-rguu-dmi', 0.00, 1000, 1, 1, NULL, 'thumbnail-acara/ur6EWXNP5U054ZOfxoLF04e0NUiaBn9Ee0YxJ20H.jpg', 0, '2022-07-20 04:59:54', '2022-07-20 04:59:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,7 @@ CREATE TABLE `berita` (
   `isi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `penulis_id` bigint(20) UNSIGNED DEFAULT NULL,
   `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `views` int(11) NOT NULL DEFAULT 0,
+  `views` int(11) DEFAULT 0,
   `publish_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -112,14 +113,15 @@ CREATE TABLE `berita` (
 
 INSERT INTO `berita` (`id`, `judul`, `slug`, `excerpt`, `isi`, `penulis_id`, `thumbnail`, `views`, `publish_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Website Sertifikasi dibuka', 'website-sertifikasi-dibuka', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quibusdam? Nihil impedit laboriosam adipisci dolore doloremque iusto quisquam in nostrum necessitatibus et? Itaque culpa voluptate ali...', '<div><strong>Lorem ipsum</strong> <em>dolor sit amet consectetur adipisicing elit. Dolorum, quibusdam? </em>Nihil impedit laboriosam adipisci dolore doloremque iusto quisquam in nostrum necessitatibus et? Itaque culpa voluptate alias cumque labore quidem nobis cum! Qui ipsum unde, voluptas ipsam nulla adipisci inventore fugiat temporibus, cum quaerat animi eos impedit enim laborum minus quod explicabo iusto reprehenderit necessitatibus ratione atque blanditiis quo. Quos consectetur assumenda voluptate natus enim dolorum culpa fugit illo. Quam tenetur odio nam ut vel dolor rerum fugiat, iure quae libero architecto labore corporis. Nisi vitae placeat voluptate optio, repellendus necessitatibus neque laborum repellat dolorem? Rem minima deleniti consectetur fugiat! In?</div>', 1, 'thumbnail-berita/w8apoK8utzp58Nzn9L8vYqghey4UDLVuNtLjcYfx.jpg', 0, NULL, '2022-02-28 23:35:34', '2022-04-17 04:57:20', NULL),
-(2, 'Ini adalah Berita kedua', 'ini-adalah-berita-kedua', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div><strong>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inventore quos odio quia </strong>pariatur dolore veniam, corrupti quasi, minima soluta. Voluptatum rem consequuntur reiciendis aliquam, totam neque, exercitationem commodi architecto nobis optio iste repudiandae! Architecto, esse voluptates.</div>', 1, 'thumbnail-berita/sPIzoiUk6iQ132W33I2e2vIuuNl2DVd8vr6JdfP7.jpg', 0, NULL, '2022-03-01 08:11:40', '2022-03-01 08:13:24', NULL),
+(2, 'Ini adalah Berita kedua', 'ini-adalah-berita-kedua', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div><strong>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inventore quos odio quia </strong>pariatur dolore veniam, corrupti quasi, minima soluta. Voluptatum rem consequuntur reiciendis aliquam, totam neque, exercitationem commodi architecto nobis optio iste repudiandae! Architecto, esse voluptates.</div>', 1, 'thumbnail-berita/sPIzoiUk6iQ132W33I2e2vIuuNl2DVd8vr6JdfP7.jpg', 0, '2022-05-21 14:27:14', '2022-03-01 08:11:40', '2022-05-21 07:27:14', NULL),
 (3, 'Ini adalah Berita ketiga', 'ini-adalah-berita-ketiga', 'Coba saja kalo jadi Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>Coba saja kalo jadi Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/8fvWbuVGEDq64EodEcppVBGSdRTlcDGYaDxccW3G.jpg', 0, '2022-03-01 15:16:09', '2022-03-01 08:16:10', '2022-03-01 08:16:10', NULL),
-(4, 'Percobaan ke empat', 'percobaan-ke-empat', 'coba aja deh Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>coba aja deh Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/g5gduEAlcc54HiGn3F5ScgmHYzsksgMzIo4AOggF.jpg', 0, '2022-03-01 15:54:05', '2022-03-01 08:54:05', '2022-03-01 08:54:05', NULL),
-(5, 'Percobaan ke lima pasti berhasil', 'percobaan-ke-lima-pasti-berhasil', 'Pasti Berhasil Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>Pasti Berhasil Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'public/thumbnail-berita/ayFEroh0bpXqVcv3GXEXrL1gMzAkXPz3fOuV9um5.jpg', 1, '2022-03-01 16:19:23', '2022-03-01 09:19:23', '2022-04-20 13:54:19', NULL),
+(4, 'Percobaan ke empat', 'percobaan-ke-empat', 'coba aja deh Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>coba aja deh Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/g5gduEAlcc54HiGn3F5ScgmHYzsksgMzIo4AOggF.jpg', 0, '2022-03-01 15:54:05', '2022-03-01 08:54:05', '2022-05-21 07:27:35', '2022-05-21 07:27:35'),
+(5, 'Percobaan ke lima pasti berhasil', 'percobaan-ke-lima-pasti-berhasil', 'Pasti Berhasil Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam...', '<div>Pasti Berhasil Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/UW5ggNYMwR0Xcdoprwq7C4RbsnTAemaSv36VE4Hm.jpg', 1, '2022-05-21 14:29:08', '2022-03-01 09:19:23', '2022-05-21 07:29:08', NULL),
 (6, 'Percobaan ke enam, barangkali gagal', 'percobaan-ke-enam-barangkali-gagal', 'Coba coba aja&nbsp; Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>Coba coba aja&nbsp; Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/xYX9fYTlZAK5Gt9ucizrMrSZKZJ8klVh1fOw2QYg.jpg', 9, '2022-03-01 16:25:08', '2022-03-01 09:25:08', '2022-04-20 14:39:33', NULL),
 (7, 'Coba terakhir', 'coba-terakhir', 'boleh jadi boleh dicoba Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>boleh jadi boleh dicoba Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/V0BPlC1LlhD6cqs5SdY9OWfy1fdFHVSDHOKWNx5n.jpg', 5, '2022-03-11 04:34:44', '2022-03-10 21:34:44', '2022-04-20 13:54:25', NULL),
 (8, 'Rusia menginvasi 1/4 Ukraina', 'rusia-menginvasi-1-4-ukraina', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorem harum adipisci magnam illum nam voluptatem nihil fuga, veniam error a expedita eius dolorum possimus explicabo hic. Praesentium, inc...', '<div><strong>Lorem ipsum dolor sit amet</strong> <em>consectetur adipisicing elit.</em> Et dolorem harum adipisci magnam illum nam voluptatem nihil fuga, veniam error a expedita eius dolorum possimus explicabo hic. Praesentium, incidunt nostrum.</div>', 2, 'thumbnail-berita/3QZ1g6kORQA6FbgF6HNkLUw95Y6zejEMzYjY14sl.jpg', 2, '2022-04-20 21:05:47', '2022-04-20 14:05:05', '2022-04-20 14:38:47', NULL),
-(9, 'Maling Teriak Maling! Dirjen Bisiki Mendag Mafia Migor Malah Jadi Tersangka', 'maling-teriak-maling-dirjen-bisiki-mendag-mafia-migor-malah-jadi-tersangka', 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.', '<div>Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</div>', 1, 'thumbnail-berita/EgBky4A92Mbzlg9E3dDqTQ0jneZVlUSCDwIf8ftN.jpg', 83, '2022-04-20 21:36:55', '2022-04-20 14:36:55', '2022-04-25 09:38:19', NULL);
+(9, 'Maling Teriak Maling! Dirjen Bisiki Mendag Mafia Migor Malah Jadi Tersangka', 'maling-teriak-maling-dirjen-bisiki-mendag-mafia-migor-malah-jadi-tersangka', 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.', '<div>Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</div>', 1, 'thumbnail-berita/EgBky4A92Mbzlg9E3dDqTQ0jneZVlUSCDwIf8ftN.jpg', 89, '2022-04-20 21:36:55', '2022-04-20 14:36:55', '2022-06-20 15:17:43', NULL),
+(10, 'Berita Baru', 'berita-baru', 'Berita Baru', '<div>Berita Baru</div>', 1, 'thumbnail-berita/al75Zj4aUd6c97mqhBfWm6orO0MNAZKaL5Nm11Lm.jpg', 0, NULL, '2022-05-17 17:52:57', '2022-05-17 17:52:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -145,7 +147,9 @@ CREATE TABLE `berita_acara` (
 --
 
 INSERT INTO `berita_acara` (`id`, `jadwal_acara_id`, `total_peserta`, `total_kehadiran`, `total_izin`, `total_alpa`, `catatan`, `is_approved`, `created_at`, `updated_at`) VALUES
-(1, 11, 2, 1, 1, 0, 'Yenny Izin', 0, '2022-05-02 13:15:03', '2022-05-02 13:15:03');
+(1, 11, 2, 1, 1, 0, 'Yenny Izin', 0, '2022-05-02 13:15:03', '2022-05-02 13:15:03'),
+(2, 15, 1, 1, 0, 0, 'baik baik aja', 0, '2022-08-01 13:23:28', '2022-08-01 13:23:28'),
+(3, 32, 1, 1, 0, 0, 'oke', 0, '2022-08-01 13:52:22', '2022-08-01 13:52:22');
 
 -- --------------------------------------------------------
 
@@ -309,7 +313,9 @@ INSERT INTO `instruktur_acara` (`id`, `dosen_id`, `acara_id`, `created_at`, `upd
 (3, 1, 3, '2022-05-02 09:19:35', '2022-05-02 09:19:35'),
 (4, 2, 3, '2022-05-02 09:19:37', '2022-05-02 09:19:37'),
 (5, 3, 3, '2022-05-02 09:19:40', '2022-05-02 09:19:40'),
-(6, 4, 3, '2022-05-02 09:19:42', '2022-05-02 09:19:42');
+(6, 4, 3, '2022-05-02 09:19:42', '2022-05-02 09:19:42'),
+(7, 1, 2, '2022-05-18 07:58:31', '2022-05-18 07:58:31'),
+(8, 2, 1, '2022-05-21 07:56:04', '2022-05-21 07:56:04');
 
 -- --------------------------------------------------------
 
@@ -319,7 +325,7 @@ INSERT INTO `instruktur_acara` (`id`, `dosen_id`, `acara_id`, `created_at`, `upd
 
 CREATE TABLE `jadwal_acara` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `kelas_acara_id` bigint(20) UNSIGNED NOT NULL,
+  `kelas_acara_id` bigint(20) UNSIGNED DEFAULT NULL,
   `instruktur_id` bigint(20) UNSIGNED NOT NULL,
   `ruangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '#',
@@ -346,7 +352,7 @@ INSERT INTO `jadwal_acara` (`id`, `kelas_acara_id`, `instruktur_id`, `ruangan`, 
 (5, 4, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Algoritma Lanjut', '2022-04-20', '21:00:00', '22:00:00', 2, 'To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental', 0, '2022-04-20 14:08:59', '2022-04-20 14:09:08'),
 (6, 4, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Algoritma dasar', '2022-04-25', '15:30:00', '18:00:00', 1, 'To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental', 0, '2022-04-25 05:34:47', '2022-04-25 05:34:47'),
 (7, 5, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Algoritma dasar', '2022-04-25', '15:30:00', '18:00:00', 1, 'To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental', 0, '2022-04-25 05:34:47', '2022-04-25 05:34:47'),
-(8, 6, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Algoritma dasar', '2022-04-25', '15:30:00', '18:00:00', 1, 'To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental', 0, '2022-04-25 05:34:47', '2022-04-25 05:34:47'),
+(8, 6, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Algoritma dasar', '2022-04-25', '15:30:00', '18:00:00', 2, 'To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental', 0, '2022-04-25 05:34:47', '2022-05-22 15:28:05'),
 (9, 8, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure', '2022-05-20', '09:30:00', '10:30:00', 1, 'Oke', 0, '2022-05-02 09:22:20', '2022-05-02 09:22:20'),
 (10, 9, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure', '2022-05-20', '09:30:00', '10:30:00', 1, 'Oke', 0, '2022-05-02 09:22:20', '2022-05-02 09:22:20'),
 (11, 10, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure', '2022-05-20', '09:30:00', '10:30:00', 2, 'Oke', 0, '2022-05-02 09:22:20', '2022-05-10 15:11:15'),
@@ -354,7 +360,19 @@ INSERT INTO `jadwal_acara` (`id`, `kelas_acara_id`, `instruktur_id`, `ruangan`, 
 (13, 8, 1, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-05-23', '18:30:00', '21:00:00', 1, 'Oke', 0, '2022-05-02 09:33:00', '2022-05-02 09:33:00'),
 (14, 9, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-05-23', '18:30:00', '21:00:00', 1, 'Oke', 0, '2022-05-02 09:33:00', '2022-05-02 09:33:00'),
 (15, 10, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-05-23', '18:30:00', '21:00:00', 1, 'Oke', 0, '2022-05-02 09:33:00', '2022-05-02 09:33:00'),
-(16, 11, 4, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-05-23', '18:30:00', '21:00:00', 1, 'Oke', 0, '2022-05-02 09:33:00', '2022-05-02 09:33:00');
+(16, 11, 4, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-05-23', '18:30:00', '21:00:00', 1, 'Oke', 0, '2022-05-02 09:33:00', '2022-05-02 09:33:00'),
+(21, 8, 1, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:05', '2022-08-01 13:37:05'),
+(22, 9, 2, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:05', '2022-08-01 13:37:05'),
+(23, 10, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:05', '2022-08-01 13:37:05'),
+(24, 11, 4, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:05', '2022-08-01 13:37:05'),
+(25, 8, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:26', '2022-08-01 13:37:26'),
+(26, 9, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:26', '2022-08-01 13:37:26'),
+(27, 10, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:26', '2022-08-01 13:37:26'),
+(28, 11, 3, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'azure itu lebih bagus dari googlecollab', '2022-08-02', '20:31:00', '21:31:00', 1, 'Okeee', 0, '2022-08-01 13:37:26', '2022-08-01 13:37:26'),
+(30, 8, 6, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-08-16', '01:45:00', '02:45:00', 1, 'okey', 0, '2022-08-01 13:46:15', '2022-08-01 13:46:15'),
+(31, 9, 6, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-08-16', '01:45:00', '02:45:00', 1, 'okey', 0, '2022-08-01 13:46:15', '2022-08-01 13:46:15'),
+(32, 10, 6, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-08-16', '01:45:00', '02:45:00', 1, 'okey', 0, '2022-08-01 13:46:15', '2022-08-01 13:46:15'),
+(33, 11, 6, 'Google Meet', 'https://meet.google.com/fmz-mahp-aqk', 'Pengenalan Azure Lanjutan', '2022-08-16', '01:45:00', '02:45:00', 1, 'okey', 0, '2022-08-01 13:46:15', '2022-08-01 13:46:15');
 
 -- --------------------------------------------------------
 
@@ -462,7 +480,7 @@ INSERT INTO `kelas_acara` (`id`, `acara_id`, `instruktur_id`, `nama`, `kuota`, `
 (2, 1, 1, 'B', 25, '2022-03-31 13:51:11', '2022-03-31 13:51:11'),
 (3, 1, 1, 'C', 25, '2022-03-31 13:51:29', '2022-03-31 13:53:37'),
 (4, 2, 2, 'NB-01', 25, '2022-04-02 03:26:21', '2022-04-02 03:26:21'),
-(5, 2, 2, 'NB-02', 25, '2022-04-25 03:18:52', '2022-04-25 03:18:52'),
+(5, 2, 1, 'NB-02', 25, '2022-04-25 03:18:52', '2022-05-18 08:00:18'),
 (6, 2, 2, 'NB-03', 25, '2022-04-25 03:18:52', '2022-04-25 03:18:52'),
 (7, 1, 1, 'D', 25, '2022-04-25 03:57:07', '2022-04-25 04:25:17'),
 (8, 3, 1, 'Azure 1', 25, '2022-05-02 09:20:11', '2022-05-02 09:20:11'),
@@ -492,7 +510,7 @@ CREATE TABLE `komentar_berita` (
 
 INSERT INTO `komentar_berita` (`id`, `berita_id`, `user_id`, `komentar`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 9, 3, 'Saya mau julid', '2022-04-25 09:28:39', '2022-04-25 09:57:01', '2022-04-25 09:57:01'),
-(2, 9, 3, 'boleh saya julid?', '2022-04-25 09:28:51', '2022-04-25 09:28:51', NULL);
+(2, 9, 3, 'boleh saya julid?', '2022-04-25 09:28:51', '2022-05-21 07:31:04', '2022-05-21 07:31:04');
 
 -- --------------------------------------------------------
 
@@ -514,7 +532,7 @@ CREATE TABLE `like_berita` (
 --
 
 INSERT INTO `like_berita` (`id`, `berita_id`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 9, 3, '2022-04-25 09:36:01', '2022-04-25 09:36:01', NULL);
+(7, 9, 3, '2022-05-21 07:46:21', '2022-05-21 07:46:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -640,7 +658,9 @@ CREATE TABLE `nilai` (
 --
 
 INSERT INTO `nilai` (`id`, `peserta_id`, `nilai`, `sertifikat`, `is_take`, `created_at`, `updated_at`) VALUES
-(1, 2, 90.00, 'sertifikat/kOntuTSLbvw72bY2qACiXkCO3SLXMgT6koulwdgr.jpg', 0, '2022-05-16 09:30:39', '2022-05-16 13:09:17');
+(1, 2, 90.00, 'sertifikat/kOntuTSLbvw72bY2qACiXkCO3SLXMgT6koulwdgr.jpg', 1, '2022-05-16 09:30:39', '2022-05-21 07:32:34'),
+(2, 1, 94.00, 'sertifikat/6701194088_ngoding-bareng.jpg', 0, '2022-05-18 08:01:41', '2022-08-01 14:09:56'),
+(3, 3, 78.00, NULL, 0, '2022-05-21 07:57:35', '2022-05-21 07:57:35');
 
 -- --------------------------------------------------------
 
@@ -749,7 +769,7 @@ CREATE TABLE `peserta` (
 --
 
 INSERT INTO `peserta` (`id`, `mahasiswa_id`, `acara_id`, `tagihan`, `sisa_tagihan`, `status_peserta_id`, `kelas_acara_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 2, 150000.00, 0.00, 3, 4, '2022-04-20 02:57:01', '2022-04-22 09:04:35', NULL),
+(1, 1, 2, 150000.00, 0.00, 6, 4, '2022-04-20 02:57:01', '2022-05-21 07:52:01', NULL),
 (2, 2, 3, 250000.00, 0.00, 6, 10, '2022-05-02 09:02:58', '2022-05-16 12:49:55', NULL),
 (3, 1, 3, 250000.00, 0.00, 3, 10, '2022-05-02 09:12:15', '2022-05-02 09:57:27', NULL);
 
@@ -775,7 +795,9 @@ CREATE TABLE `presensi` (
 
 INSERT INTO `presensi` (`id`, `peserta_id`, `berita_acara_id`, `is_present`, `keterangan`, `created_at`, `updated_at`) VALUES
 (1, 2, 1, 0, 'Sakit', '2022-05-02 13:15:03', '2022-05-02 13:15:03'),
-(2, 3, 1, 1, '', '2022-05-02 13:15:03', '2022-05-02 13:15:03');
+(2, 3, 1, 1, '', '2022-05-02 13:15:03', '2022-05-02 13:15:03'),
+(3, 3, 2, 0, '', '2022-08-01 13:23:28', '2022-08-01 13:23:28'),
+(4, 3, 3, 1, '', '2022-08-01 13:52:22', '2022-08-01 13:52:22');
 
 -- --------------------------------------------------------
 
@@ -828,7 +850,8 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`id`, `acara_id`, `peserta_id`, `rating`, `komentar`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 3, 'kek ada yang kurang', '2022-04-24 18:40:04', '2022-04-26 13:39:42');
+(1, 2, 1, 3, 'kek ada yang kurang', '2022-04-24 18:40:04', '2022-04-26 13:39:42'),
+(2, 3, 3, 5, 'Mantep banget', '2022-05-21 07:42:28', '2022-05-21 07:42:28');
 
 -- --------------------------------------------------------
 
@@ -1060,7 +1083,7 @@ INSERT INTO `users` (`id`, `nama`, `email`, `jenis_kelamin`, `tempat_lahir`, `ta
 (3, 'M. Rayhan Hafidz Siregar', 'rayhan@gmail.com', 'Laki-laki', 'Kota', '2022-02-23', '089506531139', 'Bandung', 'Islam', 'Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$Httn7WiV14NDETercevzNedPTIOuxkD4qHRfOt5ehTxiFf4TBqlTu', 2, 1, NULL, '2022-02-23 06:50:49', '2022-03-29 17:03:27', NULL),
 (4, 'Wawa Wikusna', 'wawa@gmail.com', 'Laki-laki', 'Kota', '2022-02-23', '081320604160', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$Ay2mCfiK7fq4wi95MidLN.eTATGAqAV0Ubg.cIQdVaGUvZq1sxsi.', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
 (5, 'Nuriffah Syahirah', 'ipeh@gmail.com', 'Perempuan', 'Kota', '2022-02-23', '082274822295', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$uZXCCWKJjvPrNf4oUCgfGuZ2uvagvGWbrcpqZRk/u5YQ/HVqIlZOO', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(6, 'Andini Septia', 'andiniseptia60@gmail.com', 'Perempuan', 'Jakarta', '2001-10-27', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
+(6, 'Calon', 'dutabiawak@gmail.com', 'Perempuan', 'Jakarta', '2001-08-29', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
 (7, 'Christine Yenny', 'christine@gmail.com', 'Perempuan', 'Kalimantan', '2022-03-02', '082117503120', 'Kalimantan', 'Islam', 'Hebat', 'foto-profil/t0rJoRXfYM2K9QbiuVT3dC668lwnjvwPw81NAGqx.jpg', NULL, '$2y$10$FHhE00gzwdNcH.mlWdtzNerTx0.XcLY.EqMIjQNENT8LY8c5f2Kny', 2, 1, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
 (8, 'Dudung', 'dudung@gmail.com', 'Laki-laki', 'Bandung', '2022-04-15', '82117503125', 'Bandung', 'Islam', 'Oke', 'foto-profil/X5bWssRfoWQIEXHfa1pQiTyhfEw1PMcYMcly0jwM.jpg', NULL, '$2y$10$3hBRJeOQBaepKOSgVK5J3.OJbKD9ZPmi2u/1zJ/A//o3s0DrV9uHq', 2, 1, NULL, '2022-04-15 00:52:51', '2022-04-15 00:52:51', NULL),
 (9, 'Muhammad Barja Sanjaya', 'barja@gmail.com', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL);
@@ -1360,7 +1383,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `acara`
 --
 ALTER TABLE `acara`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `agama`
@@ -1372,13 +1395,13 @@ ALTER TABLE `agama`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `berita_acara`
 --
 ALTER TABLE `berita_acara`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -1414,13 +1437,13 @@ ALTER TABLE `fasilitas`
 -- AUTO_INCREMENT for table `instruktur_acara`
 --
 ALTER TABLE `instruktur_acara`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jadwal_acara`
 --
 ALTER TABLE `jadwal_acara`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `kategori_acara`
@@ -1456,7 +1479,7 @@ ALTER TABLE `komentar_berita`
 -- AUTO_INCREMENT for table `like_berita`
 --
 ALTER TABLE `like_berita`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -1480,7 +1503,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `notifikasi`
@@ -1510,7 +1533,7 @@ ALTER TABLE `peserta`
 -- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -1522,7 +1545,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rekening`
@@ -1639,7 +1662,6 @@ ALTER TABLE `instruktur_acara`
 -- Constraints for table `jadwal_acara`
 --
 ALTER TABLE `jadwal_acara`
-  ADD CONSTRAINT `jadwal_acara_instruktur_id_foreign` FOREIGN KEY (`instruktur_id`) REFERENCES `dosen` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_acara_kelas_acara_id_foreign` FOREIGN KEY (`kelas_acara_id`) REFERENCES `kelas_acara` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_acara_status_jadwal_id_foreign` FOREIGN KEY (`status_jadwal_id`) REFERENCES `status_jadwal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
