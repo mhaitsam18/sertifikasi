@@ -12,9 +12,14 @@ class KategoriNotifikasi extends Model
     use SoftDeletes;
     protected $table = 'kategori_notifikasi';
     protected $guarded = ['id'];
+    protected $with = ['role'];
 
     public function notifikasi()
     {
         return $this->hasMany(Notifikasi::class);
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

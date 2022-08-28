@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2022 at 03:09 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Aug 28, 2022 at 10:42 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,8 +55,8 @@ CREATE TABLE `acara` (
 
 INSERT INTO `acara` (`id`, `nama`, `deskripsi`, `kategori_acara_id`, `pendaftaran_buka`, `pendaftaran_tutup`, `pelaksanaan_buka`, `pelaksanaan_tutup`, `lokasi`, `biaya`, `kuota`, `status_acara_id`, `koordinator_id`, `prodi_id`, `thumbnail`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Pembukaan Seminar Sertifikasi', '<div>Pembukaan Seminar</div>', 1, '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', 'Bandung', 150000.00, 1000, 6, 1, NULL, 'thumbnail-acara/seminar.jpg', 1, '2022-03-20 05:33:01', '2022-05-21 07:26:53', NULL),
-(2, 'Ngoding Bareng', '<div>Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 7, 1, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-03-29 03:26:07', '2022-05-21 07:26:51', NULL),
-(3, 'Pelatihan Microsoft Azure', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', 'Bandung', 250000.00, 120, 6, 3, NULL, 'thumbnail-acara/sertifikasi.jpeg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
+(2, 'Ngoding Bareng', '<div>Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 7, 1, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-03-29 03:26:07', '2022-05-21 07:26:51', NULL),
+(3, 'Pelatihan Microsoft Azure', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', 'Bandung', 250000.00, 120, 6, 3, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
 (4, 'Tes EPrT', '<div>Tes EPrT Telkom University Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-01 09:00:00', '2022-04-30 23:59:00', '2022-04-04 07:00:00', '2022-04-09 17:13:35', 'Telkom University', 250000.00, 500, 2, 2, NULL, 'thumbnail-acara/9fVBEs4FYlXHnvOJkQxVzjHdiWp0jom3rvNNZwLa.png', 1, '2022-04-03 10:18:29', '2022-08-01 14:02:10', NULL),
 (5, 'Kuliah Umum Analisis Perancangna Sistem Informasi', '<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>', 1, '2022-07-20 12:00:00', '2022-07-30 12:00:00', '2022-08-01 14:00:00', '2022-08-01 14:00:00', 'https://meet.google.com/htt-rguu-dmi', 0.00, 1000, 1, 1, NULL, 'thumbnail-acara/ur6EWXNP5U054ZOfxoLF04e0NUiaBn9Ee0YxJ20H.jpg', 0, '2022-07-20 04:59:54', '2022-07-20 04:59:54', NULL);
 
@@ -120,8 +120,8 @@ INSERT INTO `berita` (`id`, `judul`, `slug`, `excerpt`, `isi`, `penulis_id`, `th
 (6, 'Percobaan ke enam, barangkali gagal', 'percobaan-ke-enam-barangkali-gagal', 'Coba coba aja&nbsp; Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>Coba coba aja&nbsp; Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/xYX9fYTlZAK5Gt9ucizrMrSZKZJ8klVh1fOw2QYg.jpg', 9, '2022-03-01 16:25:08', '2022-03-01 09:25:08', '2022-04-20 14:39:33', NULL),
 (7, 'Coba terakhir', 'coba-terakhir', 'boleh jadi boleh dicoba Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...', '<div>boleh jadi boleh dicoba Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, autem? Qui odit quae distinctio a fugiat repellat repellendus assumenda quas, velit officia placeat. Dicta, incidunt! Ullam temporibus inv...</div>', 1, 'thumbnail-berita/V0BPlC1LlhD6cqs5SdY9OWfy1fdFHVSDHOKWNx5n.jpg', 5, '2022-03-11 04:34:44', '2022-03-10 21:34:44', '2022-04-20 13:54:25', NULL),
 (8, 'Rusia menginvasi 1/4 Ukraina', 'rusia-menginvasi-1-4-ukraina', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorem harum adipisci magnam illum nam voluptatem nihil fuga, veniam error a expedita eius dolorum possimus explicabo hic. Praesentium, inc...', '<div><strong>Lorem ipsum dolor sit amet</strong> <em>consectetur adipisicing elit.</em> Et dolorem harum adipisci magnam illum nam voluptatem nihil fuga, veniam error a expedita eius dolorum possimus explicabo hic. Praesentium, incidunt nostrum.</div>', 2, 'thumbnail-berita/3QZ1g6kORQA6FbgF6HNkLUw95Y6zejEMzYjY14sl.jpg', 2, '2022-04-20 21:05:47', '2022-04-20 14:05:05', '2022-04-20 14:38:47', NULL),
-(9, 'Maling Teriak Maling! Dirjen Bisiki Mendag Mafia Migor Malah Jadi Tersangka', 'maling-teriak-maling-dirjen-bisiki-mendag-mafia-migor-malah-jadi-tersangka', 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.', '<div>Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</div>', 1, 'thumbnail-berita/EgBky4A92Mbzlg9E3dDqTQ0jneZVlUSCDwIf8ftN.jpg', 89, '2022-04-20 21:36:55', '2022-04-20 14:36:55', '2022-06-20 15:17:43', NULL),
-(10, 'Berita Baru', 'berita-baru', 'Berita Baru', '<div>Berita Baru</div>', 1, 'thumbnail-berita/al75Zj4aUd6c97mqhBfWm6orO0MNAZKaL5Nm11Lm.jpg', 0, NULL, '2022-05-17 17:52:57', '2022-05-17 17:52:57', NULL);
+(9, 'Maling Teriak Maling! Dirjen Bisiki Mendag Mafia Migor Malah Jadi Tersangka', 'maling-teriak-maling-dirjen-bisiki-mendag-mafia-migor-malah-jadi-tersangka', 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.', '<div>Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</div>', 1, 'thumbnail-berita/EgBky4A92Mbzlg9E3dDqTQ0jneZVlUSCDwIf8ftN.jpg', 91, '2022-04-20 21:36:55', '2022-04-20 14:36:55', '2022-08-28 06:25:41', NULL),
+(10, 'Mendaki Gunung', 'berita-baru', 'Berita Baru', '<div>Berita Baru</div>', 1, 'thumbnail-berita/al75Zj4aUd6c97mqhBfWm6orO0MNAZKaL5Nm11Lm.jpg', 4, NULL, '2022-05-17 17:52:57', '2022-08-28 07:04:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -405,6 +405,7 @@ INSERT INTO `kategori_acara` (`id`, `kategori`, `created_at`, `updated_at`, `del
 CREATE TABLE `kategori_notifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -414,14 +415,14 @@ CREATE TABLE `kategori_notifikasi` (
 -- Dumping data for table `kategori_notifikasi`
 --
 
-INSERT INTO `kategori_notifikasi` (`id`, `kategori`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Notifikasi', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(2, 'Pendaftaran Baru', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(3, 'Konfirmasi Pembayaran', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(4, 'Status Approval', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(5, 'Sertifikat Selesai', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(6, 'Berita Baru', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(7, 'Chat', '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL);
+INSERT INTO `kategori_notifikasi` (`id`, `kategori`, `role_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Notifikasi', NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(2, 'Pendaftaran Baru', 1, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(3, 'Konfirmasi Pembayaran', 1, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(4, 'Status Approval', 2, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(5, 'Sertifikat Selesai', 2, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(6, 'Berita Baru', 2, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(7, 'Chat', 3, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -548,6 +549,8 @@ CREATE TABLE `mahasiswa` (
   `kelas_id` bigint(20) UNSIGNED DEFAULT NULL,
   `nim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `scan_ktm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ksm` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transkip_nilai` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -557,10 +560,10 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `kelas_id`, `nim`, `scan_ktm`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, NULL, NULL, 1, '6701194088', 'ktm-mahasiswa/ktm.jpg', '2022-02-23 06:50:50', '2022-03-11 11:38:35', NULL),
-(2, 7, NULL, NULL, 4, '6701184040', 'ktm-mahasiswa/sNeDOQ1uOufW6l0ntlW5Ipahz65yXXDmWgJd8vLI.jpg', '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
-(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL);
+INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `kelas_id`, `nim`, `scan_ktm`, `ksm`, `transkip_nilai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 3, NULL, NULL, 1, '6701194088', 'ktm-mahasiswa/ktm-nadila.jpeg', NULL, NULL, '2022-02-23 06:50:50', '2022-03-11 11:38:35', NULL),
+(2, 7, NULL, NULL, 4, '6701184040', 'ktm-mahasiswa/sNeDOQ1uOufW6l0ntlW5Ipahz65yXXDmWgJd8vLI.jpg', NULL, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
+(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', NULL, NULL, '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -681,6 +684,13 @@ CREATE TABLE `notifikasi` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id`, `user_id`, `kategori_notifikasi_id`, `sub_id`, `subjek`, `pesan`, `is_read`, `creator_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 3, 6, 10, 'Berita Baru', 'Doni Mendaki Gunung', 1, 1, '2022-08-28 04:26:51', '2022-08-28 08:05:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -1061,7 +1071,7 @@ CREATE TABLE `users` (
   `nomor_telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` enum('Islam','Kristen Protestan','Kristen Katolik','Budha','Hindu','Konghucu','Yahudi') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tentang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tentang` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1078,15 +1088,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `nomor_telepon`, `alamat`, `agama`, `tentang`, `foto`, `email_verified_at`, `password`, `role_id`, `is_active`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Muhammad Haitsam', 'haitsam03@gmail.com', 'Laki-laki', 'Madinah', '1998-02-18', '082117503125', 'Bandung', 'Islam', '<div>Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.</div>', 'foto-profil/default.jpeg', NULL, '$2y$10$x86ICGWz.LKtEkrnNHX77el3CAJUnV8UsKFc/drKCNK0uQEdH5RJe', 1, 1, NULL, '2022-02-23 06:50:49', '2022-04-21 09:58:13', NULL),
-(2, 'Nadila Rahmatika', 'nadila@gmail.com', 'Perempuan', 'Kota', '2022-02-23', '081334015015', 'Bandung', 'Islam', 'Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$o7qBNrjkCYay29mQjUsib.J9LnLq2/wHOyaD4Qgym6ekciSK6aOVW', 1, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(3, 'M. Rayhan Hafidz Siregar', 'rayhan@gmail.com', 'Laki-laki', 'Kota', '2022-02-23', '089506531139', 'Bandung', 'Islam', 'Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$Httn7WiV14NDETercevzNedPTIOuxkD4qHRfOt5ehTxiFf4TBqlTu', 2, 1, NULL, '2022-02-23 06:50:49', '2022-03-29 17:03:27', NULL),
-(4, 'Wawa Wikusna', 'wawa@gmail.com', 'Laki-laki', 'Kota', '2022-02-23', '081320604160', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$Ay2mCfiK7fq4wi95MidLN.eTATGAqAV0Ubg.cIQdVaGUvZq1sxsi.', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(5, 'Nuriffah Syahirah', 'ipeh@gmail.com', 'Perempuan', 'Kota', '2022-02-23', '082274822295', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$uZXCCWKJjvPrNf4oUCgfGuZ2uvagvGWbrcpqZRk/u5YQ/HVqIlZOO', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
-(6, 'Calon', 'dutabiawak@gmail.com', 'Perempuan', 'Jakarta', '2001-08-29', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
-(7, 'Christine Yenny', 'christine@gmail.com', 'Perempuan', 'Kalimantan', '2022-03-02', '082117503120', 'Kalimantan', 'Islam', 'Hebat', 'foto-profil/t0rJoRXfYM2K9QbiuVT3dC668lwnjvwPw81NAGqx.jpg', NULL, '$2y$10$FHhE00gzwdNcH.mlWdtzNerTx0.XcLY.EqMIjQNENT8LY8c5f2Kny', 2, 1, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
-(8, 'Dudung', 'dudung@gmail.com', 'Laki-laki', 'Bandung', '2022-04-15', '82117503125', 'Bandung', 'Islam', 'Oke', 'foto-profil/X5bWssRfoWQIEXHfa1pQiTyhfEw1PMcYMcly0jwM.jpg', NULL, '$2y$10$3hBRJeOQBaepKOSgVK5J3.OJbKD9ZPmi2u/1zJ/A//o3s0DrV9uHq', 2, 1, NULL, '2022-04-15 00:52:51', '2022-04-15 00:52:51', NULL),
-(9, 'Muhammad Barja Sanjaya', 'barja@gmail.com', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL);
+(1, 'Aplikasi Sertifikasi', 'sertifikasi@telkomuniversity.ac.id', 'Laki-laki', 'Telkom University', '1998-02-18', '082117503125', 'Bandung', 'Islam', '<div>Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.</div>', 'foto-profil/default.jpeg', NULL, '$2y$10$x86ICGWz.LKtEkrnNHX77el3CAJUnV8UsKFc/drKCNK0uQEdH5RJe', 1, 1, NULL, '2022-02-23 06:50:49', '2022-04-21 09:58:13', NULL),
+(2, 'M. Rayhan Hafidz Siregar', 'rayhan@tass.telkomuniversiy.ac.id', 'Laki-laki', 'Medan', '2000-02-23', '081334015015', 'Medan', 'Islam', 'Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$o7qBNrjkCYay29mQjUsib.J9LnLq2/wHOyaD4Qgym6ekciSK6aOVW', 1, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(3, 'Nadila Rahmatika', 'nadila@student.telkomuniversity.ac.id', 'Perempuan', 'Ngawi', '2000-11-02', '089506531139', 'Bandung', 'Islam', 'Halooo, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/nadila-rahmatika.jpeg', NULL, '$2y$10$Httn7WiV14NDETercevzNedPTIOuxkD4qHRfOt5ehTxiFf4TBqlTu', 2, 1, NULL, '2022-02-23 06:50:49', '2022-03-29 17:03:27', NULL),
+(4, 'Wawa Wikusna', 'si.vokasi@tass.telkomuniversiy.ac.id', 'Laki-laki', 'Bandung', '1967-02-19', '081320604160', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/wawa-wikusna.jpeg', NULL, '$2y$10$Ay2mCfiK7fq4wi95MidLN.eTATGAqAV0Ubg.cIQdVaGUvZq1sxsi.', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(5, 'Nuriffah Syahirah', 'ipeh@tass.telkomuniversity.ac.id', 'Perempuan', 'Kota', '2022-02-23', '082274822295', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/nuriffah-syahirah.jpeg', NULL, '$2y$10$uZXCCWKJjvPrNf4oUCgfGuZ2uvagvGWbrcpqZRk/u5YQ/HVqIlZOO', 3, 1, NULL, '2022-02-23 06:50:49', '2022-02-23 06:50:49', NULL),
+(6, 'Calon', 'dutabiawak@tass.telkomuniversity.ac.id', 'Perempuan', 'Jakarta', '2001-08-29', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
+(7, 'Christine Yenny', 'christine@student.telkomuniversity.ac.id', 'Perempuan', 'Kalimantan', '2022-03-02', '082117503120', 'Kalimantan', 'Islam', 'Hebat', 'foto-profil/t0rJoRXfYM2K9QbiuVT3dC668lwnjvwPw81NAGqx.jpg', NULL, '$2y$10$FHhE00gzwdNcH.mlWdtzNerTx0.XcLY.EqMIjQNENT8LY8c5f2Kny', 2, 1, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
+(8, 'Dudung', 'dudung@student.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '2022-04-15', '82117503125', 'Bandung', 'Islam', 'Oke', 'foto-profil/X5bWssRfoWQIEXHfa1pQiTyhfEw1PMcYMcly0jwM.jpg', NULL, '$2y$10$3hBRJeOQBaepKOSgVK5J3.OJbKD9ZPmi2u/1zJ/A//o3s0DrV9uHq', 2, 1, NULL, '2022-04-15 00:52:51', '2022-04-15 00:52:51', NULL),
+(9, 'Muhammad Barja Sanjaya', 'mbarja@tass.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1509,7 +1519,7 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`

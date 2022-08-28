@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('kategori_notifikasi', function (Blueprint $table) {
             $table->id();
             $table->string('kategori');
+            $table->foreignId('role_id')->nullable()
+                ->constrained('role')
+                ->onUpdate('cascade')
+                ->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

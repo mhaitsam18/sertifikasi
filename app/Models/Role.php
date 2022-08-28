@@ -17,4 +17,8 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function kategoriNotifikasi()
+    {
+        return $this->hasMany(KategoriNotifikasi::class);
+    }
 }

@@ -67,10 +67,10 @@
                             <h2 class="mb-0">Rp.{{ number_format(0,2,',','.') }}</h2>
                         @endif
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-revenue-chart" class="apex-charts"></div>
                         <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i> 10.21%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -92,10 +92,10 @@
                             <h2 class="mb-0">0</h2>
                         @endif
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-product-sold-chart" class="apex-charts"></div>
                         <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -113,10 +113,10 @@
                             <h2 class="mb-0">0</h2>
                         @endif
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-new-customer-chart" class="apex-charts"></div>
                         <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i> 25.16%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -134,10 +134,10 @@
                             <h2 class="mb-0">0</h2>
                         @endif
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-new-visitors-chart" class="apex-charts"></div>
                         <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

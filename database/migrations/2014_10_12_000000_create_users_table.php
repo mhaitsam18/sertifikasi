@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('nomor_telepon');
             $table->string('alamat');
             $table->enum('agama', ['Islam', 'Kristen Protestan', 'Kristen Katolik', 'Budha', 'Hindu', 'Konghucu', 'Yahudi']);
-            $table->string('tentang');
+            $table->string('tentang')->nullable();
             $table->string('foto');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

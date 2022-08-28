@@ -52,9 +52,10 @@ use Illuminate\Support\Carbon;
                                             <div class="card-body">
                                                 <h5 class="mt-0">{{ $jadwal->materi }}</h5>
                                                 <p class="text-muted">{{ $jadwal->keterangan }}</p>
-                                                
                                                 <ul class="text-muted">
-                                                    <li class="py-1">Instruktur / Pengajar : {{ $jadwal->instruktur->user->nama }}</li>
+                                                    @if (isset($jadwal->instruktur->user->nama))
+                                                        <li class="py-1">Instruktur / Pengajar : {{ $jadwal->instruktur->user->nama }}</li>
+                                                    @endif
                                                     <li class="py-1">Ruangan : {{ $jadwal->ruangan }}</li>
                                                     <li class="py-1">Link : {{ $jadwal->link }}</li>
                                                     <li class="py-1">Materi : {{ $jadwal->materi }}</li>

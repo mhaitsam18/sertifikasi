@@ -28,6 +28,7 @@ use App\Http\Controllers\MateriAcaraController;
 use App\Http\Controllers\SertifikatController;
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\MahasiswaNotifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,11 @@ Route::get('/dashboard/sertifikat/{acara}', [AdminSertifikatController::class, '
 //MAHASISWA
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/mahasiswa', [MahasiswaHomeController::class, 'index'])->name('mahasiswa')->middleware('mahasiswa');
+Route::get('/mahasiswa/notifikasi', [MahasiswaNotifikasiController::class, 'index'])->name('mahasiswa.notifikasi')->middleware('mahasiswa');
+Route::get('/mahasiswa/notifikasi/read', [MahasiswaNotifikasiController::class, 'read'])->name('mahasiswa.notifikasi.read')->middleware('mahasiswa');
+Route::post('/mahasiswa/notifikasi/clear', [MahasiswaNotifikasiController::class, 'clear'])->name('mahasiswa.notifikasi.clear')->middleware('mahasiswa');
+Route::get('/mahasiswa/notifikasi/{notifikasi}', [MahasiswaNotifikasiController::class, 'show'])->name('mahasiswa.notifikasi.show')->middleware('mahasiswa');
+
 Route::get('/mahasiswa/profil', [MahasiswaHomeController::class, 'profil'])->name('profil-mahasiswa')->middleware('mahasiswa');
 Route::get('/mahasiswa/edit', [MahasiswaHomeController::class, 'editProfil'])->name('profil-mahasiswa-edit')->middleware('mahasiswa');
 

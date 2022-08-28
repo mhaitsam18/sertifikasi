@@ -38,6 +38,8 @@ return new class extends Migration
                 ->nullOnDelete();
             $table->string('nim')->unique();
             $table->string('scan_ktm');
+            $table->string('ksm');
+            $table->string('transkip_nilai');
             // $table->string('scan_ktp');
             // $table->string('status');
             $table->timestamps();

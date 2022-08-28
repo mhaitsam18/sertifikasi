@@ -202,22 +202,28 @@ class DatabaseSeeder extends Seeder
             'kategori' => 'Notifikasi'
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Pendaftaran Baru'
+            'kategori' => 'Pendaftaran Baru',
+            'role_id' => 1
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Konfirmasi Pembayaran'
+            'kategori' => 'Konfirmasi Pembayaran',
+            'role_id' => 1
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Status Approval'
+            'kategori' => 'Status Approval',
+            'role_id' => 2
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Sertifikat Selesai'
+            'kategori' => 'Sertifikat Selesai',
+            'role_id' => 2
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Berita Baru'
+            'kategori' => 'Berita Baru',
+            'role_id' => 2
         ]);
         KategoriNotifikasi::create([
-            'kategori' => 'Chat'
+            'kategori' => 'Chat',
+            'role_id' => 3
         ]);
 
         KategoriAcara::create([
