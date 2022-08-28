@@ -125,7 +125,7 @@
 	</div>
 	<!-- end page -->
 
-	
+	@yield('modal')
 	@include('layouts.script')
 	@yield('script')
 

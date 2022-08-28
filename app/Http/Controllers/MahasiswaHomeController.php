@@ -94,7 +94,9 @@ class MahasiswaHomeController extends Controller
         $rules = [
             // 'nim' => 'required|max:255',
             'kelas_id' => 'required',
-            'scan_ktm' => 'image|file|max:1024',
+            'scan_ktm' => 'image|file|max:10000',
+            'ksm' => 'mimes:pdf|max:10000',
+            'transkip_nilai' => 'mimes:pdf|max:10000',
         ];
         if ($request->nim != $mahasiswa->nim) {
             $rules['nim'] = 'required|unique:mahasiswa';
@@ -106,6 +108,18 @@ class MahasiswaHomeController extends Controller
                 Storage::delete($request->oldKtm);
             }
             $validateData['scan_ktm'] = $request->file('scan_ktm')->store('ktm-mahasiswa');
+        }
+        if ($request->file('ksm')) {
+            if ($request->oldKsm && $request->oldKsm != 'ksm.jpg') {
+                Storage::delete($request->oldKsm);
+            }
+            $validateData['ksm'] = $request->file('ksm')->store('ksm-mahasiswa');
+        }
+        if ($request->file('transkip_nilai')) {
+            if ($request->oldTranskip_nilai && $request->oldTranskip_nilai != 'transkip-nilai.jpg') {
+                Storage::delete($request->oldTranskip_nilai);
+            }
+            $validateData['transkip_nilai'] = $request->file('transkip_nilai')->store('transkip-nilai-mahasiswa');
         }
         Mahasiswa::where('id', $mahasiswa->id)
             ->update($validateData);

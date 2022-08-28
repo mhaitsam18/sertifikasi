@@ -37,9 +37,9 @@ return new class extends Migration
                 // ->onDelete('cascade');
                 ->nullOnDelete();
             $table->string('nim')->unique();
-            $table->string('scan_ktm');
-            $table->string('ksm');
-            $table->string('transkip_nilai');
+            $table->string('scan_ktm')->nullable();
+            $table->string('ksm')->nullable();
+            $table->string('transkip_nilai')->nullable();
             // $table->string('scan_ktp');
             // $table->string('status');
             $table->timestamps();

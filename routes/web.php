@@ -103,6 +103,7 @@ Route::post('/dashboard/acara/ubahStatus', [AdminAcaraController::class, 'ubahSt
 Route::get('/dashboard/acara/detail/{acara}', [AdminAcaraController::class, 'show']);
 
 Route::get('/dashboard/peserta', [AdminPesertaController::class, 'index'])->middleware(['auth', 'admin']);
+Route::post('/dashboard/peserta/berkas-show', [AdminPesertaController::class, 'berkasShow']);
 Route::post('/dashboard/peserta/ubahStatus', [AdminPesertaController::class, 'ubahStatus']);
 Route::post('/dashboard/peserta/getPembayaranById', [AdminPesertaController::class, 'getPembayaranById'])->middleware(['auth', 'admin']);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use App\Models\Pembayaran;
 use App\Models\Peserta;
 use App\Models\StatusPeserta;
@@ -77,5 +78,11 @@ class AdminPesertaController extends Controller
                 ]);
         }
         return back()->with('success', 'Pembayaran berhasil divalidasi!');
+    }
+    public function berkasShow(Request $request)
+    {
+        return view('admin.peserta.berkas-show', [
+            'mahasiswa' => Mahasiswa::find($request->id)
+        ]);
     }
 }

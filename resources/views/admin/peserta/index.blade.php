@@ -9,7 +9,7 @@
     </div>
     @endif
     <div class="table-responsive col-lg-12">
-        <table class="table table-striped table-sm">
+        <table class="table table-responsive table-striped table-sm">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -26,7 +26,7 @@
             <tbody>
                 @foreach ($list_peserta as $peserta)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $peserta->mahasiswa->nim }}</td>
                         <td>{{ $peserta->mahasiswa->user->nama }}</td>
                         <td>{{ $peserta->acara->nama }}</td>
@@ -57,6 +57,7 @@
                         <td>
                             <td>
                                 <a href="/dashboard/pembayaran?peserta_id={{ $peserta->id }}" class="btn btn-success btn-sm">List Pembayaran</a>
+                                <button type="button" class="btn btn-info btn-sm berkas-modal" data-bs-toggle="modal" data-bs-target="#berkasModal" data-id="{{ $peserta->mahasiswa_id }}">Lihat Berkas</button>
                             </td>
                         </td>
                     </tr>
@@ -64,14 +65,27 @@
             </tbody>
         </table>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-    <script src="/jquery/jquery.min.js"></script>
-    <script src="/jquery-easing/jquery.easing.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+@endsection
+@section('modal')
+    <!-- Modal -->
+    <div class="modal fade" id="berkasModal" tabindex="-1" aria-labelledby="berkasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="berkasModalLabel">Berkas Peserta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body berkas-show">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('script')
     <script type="text/javascript">
         $('.status_id').on('change', function() {
             const peserta_id = $(this).data('id');
@@ -89,6 +103,23 @@
                 },
                 success: function() {
                     document.location.href = "/dashboard/peserta";
+                }
+            });
+            
+        });
+        $('.berkas-modal').on('click', function() {
+            const id = $(this).data('id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/dashboard/peserta/berkas-show",
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $(".berkas-show").html(data);
                 }
             });
             

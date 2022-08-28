@@ -108,7 +108,7 @@
 	<!-- Right bar overlay-->
 	<div class="rightbar-overlay"></div>
 
-	
+	@yield('modal')
 	@include('mahasiswa.layouts.script')
 	@yield('script')
 

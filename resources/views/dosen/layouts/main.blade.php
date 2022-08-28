@@ -108,7 +108,7 @@
 	<!-- Right bar overlay-->
 	<div class="rightbar-overlay"></div>
 
-	
+	@yield('modal')
 	@include('dosen.layouts.script')
 	@yield('script')
 

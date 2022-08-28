@@ -200,6 +200,74 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <input type="hidden" name="oldKsm" value="{{ $mahasiswa->ksm }}">
+                        <label for="ksm" class="form-label">Kartu Studi Mahasiswa</label>
+                        @if ($mahasiswa->ksm)
+                            <div class="row">
+                                <div class="p-2 border rounded mb-2">
+                                    <div class="media">
+                                        <div class="avatar-sm font-weight-bold mr-3">
+                                            <span class="avatar-title rounded bg-soft-primary text-primary">
+                                                <i class="uil-file-plus-alt font-size-18"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="{{ asset('storage/'.$mahasiswa->ksm) }}" target="_blank" class="d-inline-block mt-2">{{ "KSM_".$mahasiswa->nim }}.pdf</a>
+                                        </div>
+                                        <div class="float-right mt-1">
+                                            <a href="{{ asset('storage/'.$mahasiswa->ksm) }}" target="_blank" class="p-2"><i class="uil-download-alt font-size-18"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                        <div class="row">
+                            <span class="p-2 text-danger">Anda Belum menginput KSM</span>
+                        </div>
+                        @endif
+                        <input class="form-control @error('ksm') is-invalid @enderror" type="file" id="ksm" name="ksm">
+                        <p class="text-left">Format file: pdf</p>
+                        @error('ksm')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" name="oldTranskip_nilai" value="{{ $mahasiswa->transkip_nilai }}">
+                        <label for="transkip_nilai" class="form-label">Transkip Nilai</label>
+                        @if ($mahasiswa->transkip_nilai)
+                            <div class="row">
+                                <div class="p-2 border rounded mb-2">
+                                    <div class="media">
+                                        <div class="avatar-sm font-weight-bold mr-3">
+                                            <span class="avatar-title rounded bg-soft-primary text-primary">
+                                                <i class="uil-file-plus-alt font-size-18"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="{{ asset('storage/'.$mahasiswa->transkip_nilai) }}" target="_blank" class="d-inline-block mt-2">{{ "TN_".$mahasiswa->nim }}.pdf</a>
+                                        </div>
+                                        <div class="float-right mt-1">
+                                            <a href="{{ asset('storage/'.$mahasiswa->transkip_nilai) }}" target="_blank" class="p-2"><i class="uil-download-alt font-size-18"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                        <div class="row">
+                            <span class="p-2 text-danger">Anda Belum menginput Transkip Nilai</span>
+                        </div>
+                        @endif
+                        <input class="form-control @error('transkip_nilai') is-invalid @enderror" type="file" id="transkip_nilai" name="transkip_nilai">
+                        <p class="text-left">Format file: pdf</p>
+                        @error('transkip_nilai')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <p><span class="text-danger">*</span>) Tidak boleh kosong</p>
                     <button class="btn btn-primary" type="submit">Simpan</button>
 
