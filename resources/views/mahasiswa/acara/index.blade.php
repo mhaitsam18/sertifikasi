@@ -31,8 +31,8 @@
         <h4 class="mb-1 mt-0">{{ $event }}</h4>
     </div>
 </div>
-<div class="row page-title align-items-center">
-    @if ($list_acara->count())
+@if ($list_acara->count())
+    <div class="row page-title align-items-center">
         <div class="row mb-2">
             @foreach ($list_acara as $acara)
             <div class="col-md-6">
@@ -71,14 +71,14 @@
             </div>
             @endforeach
         </div>
-    @else
-        <div class="row mb-2 text-center fs-4">
-            acara tidak ditemukan
+        <div class="row justify-content-end">
+            {{ $list_acara->links() }}
         </div>
-    @endif
-    <div class="row justify-content-end">
-        {{ $list_acara->links() }}
     </div>
-</div>
+@else
+    <div class="mb-2 text-center fs-24 justify-content-center">
+        <h2>Data Tidak ditemukan</h2>
+    </div>
+@endif
 <!-- end row -->
 @endsection

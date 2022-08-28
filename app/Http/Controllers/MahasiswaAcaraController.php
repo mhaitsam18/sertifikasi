@@ -28,7 +28,14 @@ class MahasiswaAcaraController extends Controller
         return view('mahasiswa.acara.index', [
             'title' => 'Sertifikasi | Halaman Acara yang sedang diikuti',
             'event' => 'Acara yang sedang diikuti',
-            'list_acara' => Acara::select('acara.*')->where(['is_valid' => 1, 'mahasiswa_id' => session()->get('mahasiswa_id')])->join('peserta', 'acara.id', '=', 'peserta.acara_id')->whereNotIn('status_acara_id', [7])->paginate(8)->withQueryString(),
+            'list_acara' => Acara::select('acara.*')
+                ->where([
+                    'is_valid' => 1,
+                    'mahasiswa_id' => session()->get('mahasiswa_id'),
+                    'sisa_tagihan' => 0
+                ])
+                ->join('peserta', 'acara.id', '=', 'peserta.acara_id')
+                ->whereNotIn('status_acara_id', [7])->paginate(8)->withQueryString(),
         ]);
     }
 

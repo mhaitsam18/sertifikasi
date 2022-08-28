@@ -71,16 +71,20 @@ use Illuminate\Support\Carbon;
                                                             <div>
                                                                 <img src="{{ asset("storage/".$pelatihan->acara->koordinator->user->foto) }}" alt="image" class="avatar-xs rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ $pelatihan->acara->koordinator->user->nama }}" />
                                                             </div>
-                                                            @if (isset($pelatihan->nilai))
+                                                            @if (isset($pelatihan->nilai) && $pelatihan->nilai->sertifikat)
                                                                 <div class="ml-1">
                                                                     <a href="/get?file=sertifikat&image={{ $pelatihan->nilai->sertifikat }}" class="btn btn-info btn-sm">Unduh Sertifikat</a>
                                                                 </div>
+                                                            @else
+                                                                <div class="ml-1">
+                                                                    <a href="#" class="btn btn-info btn-sm sertifikat-tidak-tersedia">Unduh Sertifikat</a>
+                                                                </div>
                                                             @endif
-                                                            @if (isset($pelatihan->sertifikat))
+                                                            {{-- @if (isset($pelatihan->sertifikat))
                                                                 <div class="ml-1">
                                                                     <a href="" class="btn btn-link btn-sm">Serifikat Lainnya</a>
                                                                 </div>
-                                                            @endif
+                                                            @endif --}}
                                                             <div class="mt-3 mt-sm-0">
                                                                 <ul class="list-inline font-13 text-sm-right">
                                                                     <li class="list-inline-item pr-1">
@@ -135,16 +139,21 @@ use Illuminate\Support\Carbon;
                                                             <div>
                                                                 <img src="{{ asset("storage/".$sertifikasi->acara->koordinator->user->foto) }}" alt="image" class="avatar-xs rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ $sertifikasi->acara->koordinator->user->nama }}" />
                                                             </div>
-                                                            @if (isset($sertifikasi->nilai))
+                                                            @if (isset($sertifikasi->nilai) && $sertifikasi->nilai->sertifikat)
                                                                 <div class="ml-1">
                                                                     <a href="/get?file=sertifikat&image={{ $sertifikasi->nilai->sertifikat }}" class="btn btn-info btn-sm">Unduh Sertifikat</a>
                                                                 </div>
+                                                            @else
+                                                                <div class="ml-1">
+                                                                    <a href="#" class="btn btn-info btn-sm sertifikat-tidak-tersedia">Unduh Sertifikat</a>
+                                                                </div>
+                                                            
                                                             @endif
-                                                            @if (isset($sertifikasi->sertifikat))
+                                                            {{-- @if (isset($sertifikasi->sertifikat))
                                                                 <div class="ml-1">
                                                                     <a href="" class="btn btn-link btn-sm">Serifikat Lainnya</a>
                                                                 </div>
-                                                            @endif
+                                                            @endif --}}
                                                             <div class="mt-3 mt-sm-0">
                                                                 <ul class="list-inline font-13 text-sm-right">
                                                                     <li class="list-inline-item pr-1">
@@ -178,4 +187,17 @@ use Illuminate\Support\Carbon;
         </div> <!-- end col -->
     </div>
     <!-- end row -->
+@endsection
+
+@section('script')
+    <script>
+        $('.sertifikat-tidak-tersedia').on('click', function () {
+            Swal.fire({
+                icon: 'info',
+                title: 'Sertifikat Tidak Tersedia',
+                text: 'Jika ini adalah kesalahan, silahkan hubungi Admin',
+                footer: '<a href="https://wa.me/+6289506531139?text={{ urlencode("Halo, saya ingin bertanya") }}" target="_blank"><i class="fa-brands fa-whatsapp"></i> Hubungi Admin</a>'
+            })
+        });
+    </script>
 @endsection
