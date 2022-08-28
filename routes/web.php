@@ -52,6 +52,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/registrasi', [AuthController::class, 'registrasi'])->middleware('guest');
+Route::post('/registrasi/email-blur', [AuthController::class, 'emailBlur'])->middleware('guest');
+Route::post('/registrasi/email-focus', [AuthController::class, 'emailFocus'])->middleware('guest');
 Route::post('/registrasi', [AuthController::class, 'store']);
 Route::put('/reset-password/{user}', [AuthController::class, 'resetPassword']);
 

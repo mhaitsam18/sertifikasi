@@ -19,15 +19,34 @@
                             <form action="/registrasi" method="post" enctype="multipart/form-data" class="authentication-form needs-validation">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="form-control-label">Email</label>
+                                    <label class="form-control-label">
+                                        Email <span class="text-danger">*</span>
+                                    </label>
+                                    @if (old('email'))
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="icon-dual" data-feather="mail"></i>
                                             </span>
                                         </div>
-                                        <input type="email" class="form-control" id="email" name="email" autofocus value="{{ old('email') }}">
-                                    </div>
+                                        <input type="email" class="form-control" id="email"  name="email" autofocus value="{{ old('email') }}">
+                                    </div>                                            
+                                    @else
+                                    <div class="input-group input-group-merge email-text">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-dual" data-feather="mail"></i>
+                                            </span>
+                                        </div>
+                                        <input type="email" class="form-control email-input" id="email" autofocus value="{{ old('email') }}">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                @student.telkomuniversity.ac.id
+                                            </span>
+                                        </div>
+                                        <input type="hidden" name="email" id="email-hidden" value="{{ old('email') }}">
+                                    </div>                                        
+                                    @endif
                                     @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -35,7 +54,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Nama Lengkap</label>
+                                    <label class="form-control-label">
+                                        Nama Lengkap  <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -51,7 +72,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Jenis Kelamin</label>
+                                    <label class="form-control-label">
+                                        Jenis Kelamin <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -72,7 +95,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label">Tempat Lahir</label>
+                                    <label class="form-control-label">
+                                        Tempat Lahir <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -88,7 +113,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Tanggal Lahir</label>
+                                    <label class="form-control-label">
+                                        Tanggal Lahir <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -105,7 +132,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label">Nomor Telepon</label>
+                                    <label class="form-control-label">
+                                        Nomor Telepon <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -122,7 +151,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Alamat</label>
+                                    <label class="form-control-label">
+                                        Alamat <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -139,7 +170,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label">Agama</label>
+                                    <label class="form-control-label">
+                                        Agama <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -164,7 +197,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label">Foto</label>
+                                    <label class="form-control-label">
+                                        Foto <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -173,13 +208,14 @@
                                         </div>
                                         <input type="file" class="form-control" id="foto" name="foto" value="{{ old('foto') }}" >
                                     </div>
+                                    <p class="text-left">Format file: jpg, jpeg, png</p>
                                     @error('foto')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="form-control-label">Tentang Saya</label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
@@ -194,10 +230,12 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group mt-4">
-                                    <label class="form-control-label">Kata Sandi</label>
+                                    <label class="form-control-label">
+                                        Kata Sandi <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -213,7 +251,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mt-4">
-                                    <label class="form-control-label">Konfirmasi Kata Sandi</label>
+                                    <label class="form-control-label">
+                                        Konfirmasi Kata Sandi <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -231,7 +271,9 @@
 
                                 <h4>Data Mahasiswa</h4>
                                 <div class="form-group">
-                                    <label class="form-control-label">NIM</label>
+                                    <label class="form-control-label">
+                                        NIM <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -247,7 +289,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Kelas</label>
+                                    <label class="form-control-label">
+                                        Kelas <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -269,7 +313,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label">KTM</label>
+                                    <label class="form-control-label">
+                                        KTM <span class="text-danger">*</span>
+                                    </label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -278,16 +324,17 @@
                                         </div>
                                         <input type="file" class="form-control" id="scan_ktm" name="scan_ktm" value="{{ old('scan_ktm') }}" >
                                     </div>
+                                    <p class="text-left">Format file: jpg, jpeg, png</p>
                                     @error('scan_ktm')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-
+                                
+                                <p><span class="text-danger">*</span>) Wajib diisi</p>
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-primary btn-block" type="submit"> Daftar
-                                    </button>
+                                    <button class="btn btn-primary btn-block" type="submit"> Daftar </button>
                                 </div>
                             </form>
                         </div>
@@ -317,4 +364,27 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
+@endsection
+
+@section('script')
+<script>
+    $(".email-input").on('blur', function() {
+        const email = $(this).val();
+        $.ajax({
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            url: 'registrasi/email-blur',
+            type: "post",
+            data: {
+                'email': email
+            },
+            success: function(data) {
+                $(".email-text").html(data);
+            }
+        });
+
+    });
+</script>
+    
 @endsection

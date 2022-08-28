@@ -50,6 +50,20 @@ class AuthController extends Controller
             'list_kelas' => Kelas::all()
         ]);
     }
+    public function emailBlur(Request $request)
+    {
+        return view('auth.email-blur', [
+            'email' => $request->email . "@student.telkomuniversity.ac.id"
+        ]);
+    }
+    public function emailFocus(Request $request)
+    {
+
+        return view('auth.email-focus', [
+            'email_focus' => str_replace("@student.telkomuniversity.ac.id", "", $request->email),
+            'email' => $request->email
+        ]);
+    }
 
     public function store(request $request)
     {

@@ -41,8 +41,8 @@
 
                 <!-- profile  -->
                 <div class="mt-5 pt-2 border-top">
-                    <h4 class="mb-3 font-size-15">Tentang</h4>
-                    <p class="text-muted mb-4">{{ auth()->user()->tentang}}</p>
+                    {{-- <h4 class="mb-3 font-size-15">Tentang</h4>
+                    <p class="text-muted mb-4">{{ auth()->user()->tentang}}</p> --}}
                     <div class="table-responsive">
                         <table class="table table-borderless mb-0 text-muted">
                             <tbody>

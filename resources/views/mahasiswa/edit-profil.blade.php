@@ -35,7 +35,7 @@
                     <h4>Data Profil</h4>
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="nama" class="form-label">Nama Lengkap</label>
+                        <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required autofocus value="{{ old('nama', auth()->user()->nama) }}">
                         @error('nama')
                         <div class="invalid-feedback">
@@ -44,8 +44,9 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email', auth()->user()->email) }}">
+                        <p>Format email: example@student.telkomuniversity.ac.id</p>
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -53,7 +54,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
                         <select class="form-control @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin" name="jenis_kelamin" required>
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="Laki-laki" @selected(old('jenis_kelamin', auth()->user()->jenis_kelamin) == "Laki-laki")>Laki-laki</option>
@@ -66,7 +67,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                        <label for="tempat_lahir" class="form-label">Tempat Lahir <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" name="tempat_lahir" required value="{{ old('tempat_lahir', auth()->user()->tempat_lahir) }}">
                         @error('tempat_lahir')
                         <div class="invalid-feedback">
@@ -75,7 +76,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
                         <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" name="tanggal_lahir" required value="{{ old('tanggal_lahir', auth()->user()->tanggal_lahir) }}">
                         @error('tanggal_lahir')
                         <div class="invalid-feedback">
@@ -84,7 +85,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
+                        <label for="nomor_telepon" class="form-label">Nomor Telepon <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('nomor_telepon') is-invalid @enderror" id="nomor_telepon" name="nomor_telepon" required value="{{ old('nomor_telepon', auth()->user()->nomor_telepon) }}">
                         @error('nomor_telepon')
                         <div class="invalid-feedback">
@@ -93,7 +94,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="alamat" class="form-label">Alamat</label>
+                        <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
                         <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" required>{{ old('alamat', auth()->user()->alamat) }}</textarea>
                         @error('alamat')
                         <div class="invalid-feedback">
@@ -102,7 +103,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="agama" class="form-label">Agama</label>
+                        <label for="agama" class="form-label">Agama <span class="text-danger">*</span></label>
                         <select class="form-control @error('agama') is-invalid @enderror" id="agama" name="agama" required>
                             <option value="">Pilih Agama</option>
                             <option value="Islam" @selected(old('agama', auth()->user()->agama) == "Islam")>Islam</option>
@@ -127,13 +128,14 @@
                             <img class="foto-preview img-fluid mb-3 col-sm-5">
                         @endif
                         <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto" onchange="previewFoto()">
+                        <p class="text-left">Format file: jpg, jpeg, png</p>
                         @error('foto')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-                    <div class="form-group mb-3">
+                    {{-- <div class="form-group mb-3">
                         <label for="tentang" class="form-label">Tentang Saya</label>
                         <textarea class="form-control @error('tentang') is-invalid @enderror" id="tentang" name="tentang" required>{{ old('tentang', auth()->user()->tentang) }}</textarea>
                         @error('tentang')
@@ -141,8 +143,9 @@
                             {{ $message }}
                         </div>
                         @enderror
-                    </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    </div> --}}
+                    <p><span class="text-danger">*</span>) Tidak boleh kosong</p>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
 
                 </form>
             </div>
@@ -155,7 +158,7 @@
                     <h4>Data Mahasiswa</h4>
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="nim" class="form-label">NIM</label>
+                        <label for="nim" class="form-label">NIM <span class="text-danger">*</span></label>
                         <input type="number" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim" required value="{{ old('nim', $mahasiswa->nim) }}">
                         @error('nim')
                         <div class="invalid-feedback">
@@ -164,7 +167,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="kelas_id" class="form-label">Kelas</label>
+                        <label for="kelas_id" class="form-label">Kelas <span class="text-danger">*</span></label>
                         <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas_id" name="kelas_id" required>
                             <option value="" selected disabled>Pilih Kelas</option>
                             @foreach ($list_kelas as $kelas)
@@ -183,20 +186,22 @@
                     </div>
                     <div class="mb-3">
                         <input type="hidden" name="oldKtm" value="{{ $mahasiswa->scan_ktm }}">
-                        <label for="scan_ktm" class="form-label">KTM</label>
+                        <label for="scan_ktm" class="form-label">Scan KTM</label>
                         @if ($mahasiswa->scan_ktm)
                             <img class="ktm-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset('storage/'.$mahasiswa->scan_ktm) }}">
                         @else
                             <img class="ktm-preview img-fluid mb-3 col-sm-5">
                         @endif
                         <input class="form-control @error('scan_ktm') is-invalid @enderror" type="file" id="scan_ktm" name="scan_ktm" onchange="previewKTM()">
+                        <p class="text-left">Format file: jpg, jpeg, png</p>
                         @error('scan_ktm')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-                    <button class="btn btn-primary" type="submit">Update</button>
+                    <p><span class="text-danger">*</span>) Tidak boleh kosong</p>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
 
                 </form>
             </div>
@@ -234,8 +239,8 @@
                         </div>
                         @enderror
                     </div>
-                    
-                    <button class="btn btn-primary" type="submit">Update</button>
+                    <p><span class="text-danger">*</span>) Tidak boleh kosong</p>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
 
                 </form>
             </div>

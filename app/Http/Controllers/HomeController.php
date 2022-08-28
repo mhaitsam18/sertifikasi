@@ -61,7 +61,7 @@ class HomeController extends Controller
             'nomor_telepon' => 'required',
             'alamat' => 'required',
             'agama' => 'required',
-            'tentang' => 'max:255',
+            // 'tentang' => 'max:255',
             'foto' => 'image|file|max:4096',
         ];
         if ($request->email != $user->email) {

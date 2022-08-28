@@ -132,6 +132,7 @@ class ComposerStaticInit4448f8cb997229d6aa8a526b40e033e7
         'M' => 
         array (
             'Monolog\\' => 8,
+            'MadeITBelgium\\EmailDomainValidation\\' => 36,
         ),
         'L' => 
         array (
@@ -412,6 +413,10 @@ class ComposerStaticInit4448f8cb997229d6aa8a526b40e033e7
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'MadeITBelgium\\EmailDomainValidation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -3412,6 +3417,11 @@ class ComposerStaticInit4448f8cb997229d6aa8a526b40e033e7
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'MadeITBelgium\\EmailDomainValidation\\EmailDomain' => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src/EmailDomain.php',
+        'MadeITBelgium\\EmailDomainValidation\\EmailDomainFacade' => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src/EmailDomainFacade.php',
+        'MadeITBelgium\\EmailDomainValidation\\EmailDomainServiceProvider' => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src/EmailDomainServiceProvider.php',
+        'MadeITBelgium\\EmailDomainValidation\\Validation\\Validator' => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src/validation/Validator.php',
+        'MadeITBelgium\\EmailDomainValidation\\Validation\\ValidatorExtensions' => __DIR__ . '/..' . '/madeitbelgium/laravel-email-domain-validation/src/validation/ValidatorExtensions.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
