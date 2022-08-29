@@ -11,9 +11,9 @@ use Illuminate\Support\Carbon;
                     <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     {{-- <li class="breadcrumb-item"><a href="/koordinator/acara/{{ $acara->id }}">Acara</a></li> --}}
                     @if ($kelas)
-                        <li class="breadcrumb-item"><a href="/dosen/kelasAcara?acara_id={{ $acara->id }}">Kelas</a></li>
+                        <li class="breadcrumb-item"><a href="/koordinator/acara/kelas-acara?acara_id={{ $acara->id }}">Kelas</a></li>
                     @endif
-                    <li class="breadcrumb-item"><a href="/dosen/jadwalAcara?acara_id={{ $acara->id }}{{ ($kelas) ? "&kelas_id=".$kelas->id : '' }}">Jadwal</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/jadwal-acara?acara_id={{ $acara->id }}{{ ($kelas) ? "&kelas_id=".$kelas->id : '' }}">Jadwal</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit</li>
                 </ol>
             </nav>
@@ -42,7 +42,7 @@ use Illuminate\Support\Carbon;
                     @if ($kelas)
                         <h4 class="header-title mt-0 mb-1">Kelas: {{ $kelas->nama }}</h4>
                     @endif
-                    <form action="/dosen/jadwalAcara/{{ $jadwal->id }}" method="post">
+                    <form action="/koordinator/jadwal-acara/{{ $jadwal->id }}" method="post">
                         @method('put')
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $acara->id }}">

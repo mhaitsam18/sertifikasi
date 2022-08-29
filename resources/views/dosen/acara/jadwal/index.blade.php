@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
                     <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     {{-- <li class="breadcrumb-item"><a href="/koordinator/acara/{{ $acara->id }}">Acara</a></li> --}}
                     @if ($kelas)
-                        <li class="breadcrumb-item"><a href="/dosen/kelasAcara?acara_id={{ $acara->id }}">Kelas</a></li>
+                        <li class="breadcrumb-item"><a href="/koordinator/acara/kelas-acara?acara_id={{ $acara->id }}">Kelas</a></li>
                     @endif
                     <li class="breadcrumb-item active" aria-current="page">Jadwal</li>
                 </ol>
@@ -41,7 +41,7 @@ use Illuminate\Support\Carbon;
                     @if ($kelas)
                         <h4 class="header-title mt-0 mb-1">Kelas: {{ $kelas->nama }}</h4>
                     @endif
-                    <a href="/dosen/jadwalAcara/create?acara_id={{ $acara->id }}{{ ($kelas) ? "&kelas_id=".$kelas->id : '' }}" class="btn btn-primary mb-3">Tambah Jadwal</a>
+                    <a href="/koordinator/acara/jadwal-acara/create?acara_id={{ $acara->id }}{{ ($kelas) ? "&kelas_id=".$kelas->id : '' }}" class="btn btn-primary mb-3">Tambah Jadwal</a>
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
@@ -95,13 +95,13 @@ use Illuminate\Support\Carbon;
                                     </td>
                                     <td>{{ $jadwal->keterangan }}</td>
                                     <td>
-                                        <a href="/dosen/jadwalAcara/{{ $jadwal->jadwal_id }}/edit?acara_id={{ $acara->id }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="/dosen/jadwalAcara/{{ $jadwal->jadwal_id }}" method="post" class="d-inline">
+                                        <a href="/koordinator/acara/jadwal-acara/{{ $jadwal->jadwal_id }}/edit?acara_id={{ $acara->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="/koordinator/acara/jadwal-acara/{{ $jadwal->jadwal_id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
                                         </form>
-                                        <a href="/dosen/jadwalAcara/bap/{{ $jadwal->jadwal_id }}" class="btn btn-info btn-sm">Lihat BAP</a>
+                                        <a href="/koordinator/acara/jadwal-acara/bap/{{ $jadwal->jadwal_id }}" class="btn btn-info btn-sm">Lihat BAP</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -134,7 +134,7 @@ use Illuminate\Support\Carbon;
                     status_jadwal_id: status_jadwal_id
                 },
                 success: function() {
-                    document.location.href = "/dosen/jadwalAcara?acara_id=<?= $acara->id ?>";
+                    document.location.href = "/koordinator/acara/jadwal-acara?acara_id=<?= $acara->id ?>";
                 }
             });
             

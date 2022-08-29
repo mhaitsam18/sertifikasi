@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
                     <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/kelasAcara?acara_id={{ $acara->id }}">Kelas</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara/kelas-acara?acara_id={{ $acara->id }}">Kelas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit</li>
                 </ol>
             </nav>
@@ -35,7 +35,7 @@ use Illuminate\Support\Carbon;
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Kelas: "{{ $acara->nama }}" - Ubah Data Kelas</h4>
-                    <form action="/dosen/kelasAcara/{{ $kelas->id }}" method="post">
+                    <form action="/koordinator/acara/kelas-acara/{{ $kelas->id }}" method="post">
                         @method('put')
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $kelas->acara_id }}">

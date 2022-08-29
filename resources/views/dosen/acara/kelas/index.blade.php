@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Data Kelas "{{ $acara->nama }}"</h4>
                     {{-- <div class="table-responsive col-lg-12"> --}}
-                        <a href="/dosen/kelasAcara/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Kelas</a>
+                        <a href="/koordinator/acara/kelas-acara/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Kelas</a>
                         <table id="basic-datatable" class="table dt-responsive nowrap">
                             <thead>
                                 <tr>
@@ -52,13 +52,13 @@
                                         <td>{{ $kelas->instruktur->kode_dosen }}</td>
                                         <td>{{ $kelas->kuota }}</td>
                                         <td>
-                                            <a href="/dosen/kelasAcara/{{ $kelas->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dosen/kelasAcara/{{ $kelas->id }}" method="post" class="d-inline">
+                                            <a href="/koordinator/acara/kelas-acara/{{ $kelas->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/koordinator/acara/kelas-acara/{{ $kelas->id }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
                                             </form>
-                                            <a href="/dosen/jadwalAcara?acara_id={{ $acara->id }}&kelas_id={{ $kelas->id }}" class="btn btn-info btn-sm">Kelola Jadwal</a>
+                                            <a href="/koordinator/acara/jadwal-acara?acara_id={{ $acara->id }}&kelas_id={{ $kelas->id }}" class="btn btn-info btn-sm">Kelola Jadwal</a>
                                         </td>
                                     </tr>
                                 @endforeach

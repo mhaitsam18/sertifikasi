@@ -43,10 +43,10 @@ use Illuminate\Support\Carbon;
         </div>
         <div class="col-sm-4 col-xl-6 text-sm-right">
             <div class="btn-group ml-2 d-none d-sm-inline-block">
-                <a href="/dosen/jadwalAcara?acara_id={{ $acara->id }}" class="btn btn-soft-warning btn-sm"><i class="uil uil-edit mr-1"></i>Kelola Jadwal</a>
+                <a href="/koordinator/acara/jadwal-acara?acara_id={{ $acara->id }}" class="btn btn-soft-warning btn-sm"><i class="uil uil-edit mr-1"></i>Kelola Jadwal</a>
             </div>
             <div class="btn-group ml-2 d-none d-sm-inline-block">
-                <a href="/dosen/kelasAcara?acara_id={{ $acara->id }}" class="btn btn-soft-success btn-sm"><i class="uil uil-edit mr-1"></i>Kelola Kelas</a>
+                <a href="/koordinator/acara/kelas-acara?acara_id={{ $acara->id }}" class="btn btn-soft-success btn-sm"><i class="uil uil-edit mr-1"></i>Kelola Kelas</a>
             </div>
             <div class="btn-group ml-2 d-none d-sm-inline-block">
                 <a href="/koordinator/acara/{{ $acara->id }}/edit/" class="btn btn-soft-primary btn-sm"><i class="uil uil-edit mr-1"></i>Edit</a>

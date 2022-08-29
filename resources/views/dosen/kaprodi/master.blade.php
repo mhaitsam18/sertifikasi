@@ -77,10 +77,10 @@
                                             <a href="/koordinator/acara/{{ $acara->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                                             <a href="/koordinator/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
                                             <a href="/koordinator/acara/instruktur/{{ $acara->id }}" class="btn btn-success btn-sm">Data Instruktur</a>
-                                            <a href="/dosen/kelasAcara?acara_id={{ $acara->id }}" class="btn btn-dark btn-sm">Data Kelas</a>
-                                            <a href="/dosen/materi?acara_id={{ $acara->id }}" class="btn btn-secondary btn-sm">Data Materi</a>
-                                            <a href="/dosen/jadwalAcara?acara_id={{ $acara->id }}" class="btn btn-danger btn-sm">Kelola Jadwal</a>
-                                            <a href="/dosen/fasilitas?acara_id={{ $acara->id }}" class="btn btn-soft-primary btn-sm">Kelola Fasilitas</a>
+                                            <a href="/koordinator/acara/kelas-acara?acara_id={{ $acara->id }}" class="btn btn-dark btn-sm">Data Kelas</a>
+                                            <a href="/koordinator/acara/materi?acara_id={{ $acara->id }}" class="btn btn-secondary btn-sm">Data Materi</a>
+                                            <a href="/koordinator/acara/jadwal-acara?acara_id={{ $acara->id }}" class="btn btn-danger btn-sm">Kelola Jadwal</a>
+                                            <a href="/koordinator/acara/fasilitas?acara_id={{ $acara->id }}" class="btn btn-soft-primary btn-sm">Kelola Fasilitas</a>
                                         </td>
                                     </tr>
                                 @endforeach
