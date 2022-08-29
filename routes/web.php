@@ -239,13 +239,19 @@ Route::middleware('auth')->group(function () {
                         Route::post('/tambah', 'tambahInstruktur')->name('dosen.acara.instruktur.tambah');
                     }); //UNTUK DOSEN MEMILIH INSTRUKTUR ACARA
                     Route::get('/peserta/{acara}', 'peserta')->name('dosen.acara.peserta');
+                    Route::post('/ubahKelasPeserta', 'ubahKelasPeserta')->name('dosen.acara.ubah-kelas-peserta');
+                    Route::post('/ubahStatusPeserta', 'ubahStatusPeserta')->name('dosen.acara.ubah-status-peserta');
                 });
+
                 Route::resource('/kelas-acara', KelasAcaraController::class);
+
+                Route::post('/ubahStatusJadwal', [JadwalAcaraController::class, 'ubahStatusJadwal'])->name('dosen.acara.jadwal.ubah-status-jadwal');
+
                 Route::resource('/jadwal-acara', JadwalAcaraController::class);
             });
 
             Route::get('/nilai', [KoordinatorNilaiController::class, 'index'])->name('dosen.koordinator.nilai.index');
-            Route::resource('/sertifikat', SertifikatController::class)->middleware(['dosen']); //KOORDINATOR
+            Route::resource('/sertifikat', SertifikatController::class); //KOORDINATOR
 
             Route::controller(FasilitasAcaraController::class)->group(function () {
             });
@@ -268,9 +274,6 @@ Route::middleware('auth')->group(function () {
 //URL BERMASALAH
 
 //KOORDINATOR
-Route::post('/acara/ubahStatusJadwal', [JadwalAcaraController::class, 'ubahStatusJadwal']);
-Route::post('/acara/ubahKelasPeserta', [DosenAcaraController::class, 'ubahKelasPeserta']);
-Route::post('/acara/ubahStatusPeserta', [DosenAcaraController::class, 'ubahStatusPeserta']);
 
 
 Route::get('/dosen/fasilitas', [FasilitasAcaraController::class, 'index'])->name('dosen.koordinator.acara.fasilitas.index')->middleware('dosen');
