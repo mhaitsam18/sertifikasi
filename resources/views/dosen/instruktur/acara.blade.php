@@ -43,7 +43,7 @@ use Illuminate\Support\Carbon;
                             <p class="card-text">Instruktur: {{ $kelas->instruktur->kode_dosen }} | {{ $kelas->instruktur->user->nama }}</p>
                             <a href="/instruktur/jadwal/{{ $kelas->id }}" class="card-link">Lihat Jadwal</a>
                             <a href="/instruktur/peserta/{{ $kelas->id }}" class="card-link">Daftar Peserta</a>
-                            <a href="/berita-acara?kelas_acara_id={{ $kelas->id }}" class="card-link">List BAP</a>
+                            <a href="/instruktur/berita-acara?kelas_acara_id={{ $kelas->id }}" class="card-link">List BAP</a>
                         </div>
                     </div>
                 </div>

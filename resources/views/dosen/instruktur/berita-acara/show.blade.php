@@ -14,11 +14,11 @@ use Illuminate\Support\Carbon;
                         @if ($jadwal)
                             <li class="breadcrumb-item"><a href="/instruktur/jadwal/{{ $kelas->id }}">Jadwal</a></li>
                         @else
-                            <li class="breadcrumb-item"><a href="/berita-acara/{{ $acara->id }}">Berita Acara</a></li>
+                            <li class="breadcrumb-item"><a href="/instruktur/berita-acara/{{ $acara->id }}">Berita Acara</a></li>
                         @endif
                     @else
                     @endif --}}
-                    <li class="breadcrumb-item"><a href="/berita-acara?kelas_acara_id={{ $beritaAcara->jadwalAcara->kelas_acara_id }}">Berita Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/instruktur/berita-acara?kelas_acara_id={{ $beritaAcara->jadwalAcara->kelas_acara_id }}">Berita Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Detail BAP</li>
                 </ol>
             </nav>

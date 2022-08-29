@@ -202,15 +202,20 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('dosen')->group(function () {
         Route::prefix('dosen')->group(function () {
-            Route::controller(DosenAcaraController::class)->group(function () {
-                Route::get('/', 'index')->name('dosen.acara.index');
-                Route::prefix('instruktur')->group(function () {
-                    Route::get('/{acara}', 'instruktur')->name('dosen.acara.instruktur');
-                    Route::post('/hapus', 'hapusInstruktur')->name('dosen.acara.instruktur.hapus');
-                    Route::post('/tambah', 'tambahInstruktur')->name('dosen.acara.instruktur.tambah');
-                }); //UNTUK DOSEN MEMILIH INSTRUKTUR ACARA
-                Route::get('/peserta/{acara}', 'peserta')->name('dosen.acara.peserta');
+
+            //KOORDINATOR
+            Route::prefix('acara')->group(function () {
+                Route::controller(DosenAcaraController::class)->group(function () {
+                    Route::get('/', 'index')->name('dosen.acara.index');
+                    Route::prefix('instruktur')->group(function () {
+                        Route::get('/{acara}', 'instruktur')->name('dosen.acara.instruktur');
+                        Route::post('/hapus', 'hapusInstruktur')->name('dosen.acara.instruktur.hapus');
+                        Route::post('/tambah', 'tambahInstruktur')->name('dosen.acara.instruktur.tambah');
+                    }); //UNTUK DOSEN MEMILIH INSTRUKTUR ACARA
+                    Route::get('/peserta/{acara}', 'peserta')->name('dosen.acara.peserta');
+                });
             });
+
             Route::controller(DosenDashboardController::class)->group(function () {
                 Route::get('/', 'index')->name('dosen.index');
                 Route::get('/profil', 'profil')->name('dosen.profil');
@@ -218,6 +223,7 @@ Route::middleware('auth')->group(function () {
                 Route::put('/edit/{dosen}', 'update')->name('dosen.update'); //URL SALAH
                 Route::get('/destroy/{user}', 'destroy')->name('dosen.destroy'); //URL SALAH
             });
+            Route::resource('/acara', DosenAcaraController::class);
         });
         Route::prefix('instruktur')->group(function () {
             Route::controller(InstrukturController::class)->group(function () {
@@ -231,11 +237,17 @@ Route::middleware('auth')->group(function () {
             Route::controller(NilaiController::class)->group(function () {
                 Route::put('/updateTanpaSertifikat/{nilai}', 'updateTanpaSertifikat')->name('dosen.instruktur.update-nilai-tanpa-sertifikat');
             });
+
+            Route::get('/berita-acara/create/{jadwal_acara}', [BeritaAcaraController::class, 'create'])->name('dosen.instruktur.berita-acara');
+            Route::resource('/berita-acara', BeritaAcaraController::class);
             Route::resource('/nilai', NilaiController::class);
         });
         Route::prefix('koordinator')->group(function () {
             Route::get('/nilai', [KoordinatorNilaiController::class, 'index'])->name('dosen.koordinator.nilai.index');
             Route::resource('/sertifikat', SertifikatController::class)->middleware(['dosen']); //KOORDINATOR
+
+            Route::controller(FasilitasAcaraController::class)->group(function () {
+            });
         });
         Route::prefix('kaprodi')->group(function () {
             Route::controller(KaprodiController::class)->group(function () {
@@ -254,13 +266,7 @@ Route::middleware('auth')->group(function () {
 
 //URL BERMASALAH
 
-//GUEST
-
-//AUTHCONTROLLER
-
-//DOSEN
-Route::get('/berita-acara/create/{jadwal_acara}', [BeritaAcaraController::class, 'create'])->middleware('dosen');
-Route::resource('/berita-acara', BeritaAcaraController::class)->middleware('dosen');
+//KOORDINATOR
 Route::post('/acara/ubahStatusJadwal', [JadwalAcaraController::class, 'ubahStatusJadwal']);
 Route::post('/acara/ubahKelasPeserta', [DosenAcaraController::class, 'ubahKelasPeserta']);
 Route::post('/acara/ubahStatusPeserta', [DosenAcaraController::class, 'ubahStatusPeserta']);
@@ -278,12 +284,6 @@ Route::put('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'up
 Route::delete('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'destroy'])->name('dosen.koordinator.acara.fasilitas.destroy')->middleware('dosen');
 Route::get('/dosen/fasilitas/{fasilitas}/edit', [FasilitasAcaraController::class, 'edit'])->name('dosen.koordinator.acara.fasilitas.edit')->middleware('dosen');
 
-
-//DOSEN DAN KOORDINATOR
-Route::resource('/dosen/acara', DosenAcaraController::class)->middleware(['dosen']);
-
-
-//KOORDINATOR
 Route::resource('/dosen/kelasAcara', KelasAcaraController::class)->middleware('dosen');
 Route::resource('/dosen/jadwalAcara', JadwalAcaraController::class)->middleware('dosen');
 Route::resource('/dosen/materi', MateriAcaraController::class)->middleware(['dosen']);

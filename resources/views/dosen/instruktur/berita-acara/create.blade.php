@@ -14,7 +14,7 @@ use Illuminate\Support\Carbon;
                         @if ($jadwal)
                             <li class="breadcrumb-item"><a href="/instruktur/jadwal/{{ $kelas->id }}">Jadwal</a></li>
                         @else
-                            <li class="breadcrumb-item"><a href="/berita-acara?kelas_acara_id={{ $acara->id }}">Berita Acara</a></li>
+                            <li class="breadcrumb-item"><a href="/instruktur/berita-acara?kelas_acara_id={{ $acara->id }}">Berita Acara</a></li>
                         @endif
                     @endif
                     <li class="breadcrumb-item active" aria-current="page">Input BAP</li>
@@ -41,7 +41,7 @@ use Illuminate\Support\Carbon;
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="/berita-acara" method="post">
+                    <form action="/instruktur/berita-acara" method="post">
                         @csrf
                         <h4 class="mb-3 header-title mt-0">Presensi</h4>
                         <table class="table table-hover" id="dataTable">

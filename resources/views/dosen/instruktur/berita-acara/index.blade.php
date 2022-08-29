@@ -62,7 +62,7 @@ use Illuminate\Support\Carbon;
                                     <td>{{ $berita->total_izin }}</td>
                                     <td>{{ $berita->total_alpa }}</td>
                                     <td>
-                                        <a href="/berita-acara/{{ $berita->id }}" class="btn btn-info btn-sm">Detail</a>
+                                        <a href="/instruktur/berita-acara/{{ $berita->id }}" class="btn btn-info btn-sm">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -76,9 +76,9 @@ use Illuminate\Support\Carbon;
                                                             <a href="{{ $jadwal->link }}" target="_blank" class="btn btn-primary btn-sm mr-2">Buka Link Virtual</a>
                                                         @endif
                                                         @if ($jadwal->jumlah_bap)
-                                                            <a href="/berita-acara/{{ $jadwal->id_bap }}" class="btn btn-info btn-sm mr-2">Lihat BAP</a>
+                                                            <a href="/instruktur/berita-acara/{{ $jadwal->id_bap }}" class="btn btn-info btn-sm mr-2">Lihat BAP</a>
                                                         @else
-                                                            <a href="/berita-acara/create/{{ $jadwal->id }}" class="btn btn-info btn-sm">Input BAP</a>
+                                                            <a href="/instruktur/berita-acara/create/{{ $jadwal->id }}" class="btn btn-info btn-sm">Input BAP</a>
                                                         @endif
                                                         <div class="form-group ml-3">
                                                             <select name="status_jadwal" id="status_jadwal" onchange="" class="form-control status_jadwal" data-id="{{ $jadwal->id }}">
@@ -160,9 +160,9 @@ use Illuminate\Support\Carbon;
                                                         <a href="{{ $jadwal->link }}" target="_blank" class="btn btn-primary btn-sm">Buka Link Virtual</a>
                                                     @endif
                                                     @if ($jadwal->jumlah_bap)
-                                                        <a href="/berita-acara/{{ $jadwal->id_bap }}" class="btn btn-info btn-sm">Lihat BAP</a>
+                                                        <a href="/instruktur/berita-acara/{{ $jadwal->id_bap }}" class="btn btn-info btn-sm">Lihat BAP</a>
                                                     @else
-                                                        <a href="/berita-acara/create/{{ $jadwal->id }}" class="btn btn-info btn-sm">Input BAP</a>
+                                                        <a href="/instruktur/berita-acara/create/{{ $jadwal->id }}" class="btn btn-info btn-sm">Input BAP</a>
                                                     @endif
                                                     <div class="form-group ml-3">
                                                         <select name="status_jadwal" id="status_jadwal" onchange="" class="form-control status_jadwal" data-id="{{ $jadwal->id }}">
