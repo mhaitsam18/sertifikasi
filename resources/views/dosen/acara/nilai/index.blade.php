@@ -142,7 +142,7 @@ use Illuminate\Support\Carbon;
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/acara/ubahStatusPeserta",
+                url: "/koordinator/acara/ubahStatusPeserta",
                 type: 'post',
                 data: {
                     peserta_id: peserta_id,

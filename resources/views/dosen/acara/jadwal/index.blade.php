@@ -127,7 +127,7 @@ use Illuminate\Support\Carbon;
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/acara/ubahStatusJadwal",
+                url: "/koordinator/acara/ubahStatusJadwal",
                 type: 'post',
                 data: {
                     jadwal_acara_id: jadwal_acara_id,
