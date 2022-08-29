@@ -20,7 +20,7 @@ class IsMahasiswa
             // abort(403);
             return redirect()->route('login');
         }
-        if (auth()->user()->role_id !== 2) {
+        if (auth()->user()->role_id !== IS_MAHASISWA) {
             // abort(403);
             return redirect()->route('login');
         }

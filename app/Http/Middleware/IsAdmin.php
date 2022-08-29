@@ -20,7 +20,7 @@ class IsAdmin
             // abort(403);
             return redirect()->route('login');
         }
-        if (auth()->user()->role_id !== 1) {
+        if (auth()->user()->role_id !== IS_ADMIN) {
             // abort(403);
             return redirect()->route('login');
         }

@@ -47,22 +47,71 @@ use App\Http\Controllers\MahasiswaNotifikasiController;
 
 
 //AUTH
+Route::middleware(['guest'])->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/', 'index')->name("index");
+        Route::get('/login', 'login')->name("login");
+        Route::post('/login', 'authenticate')->name("auth.authenticate");
 
-Route::get('/', [AuthController::class, 'index'])->middleware('guest');
-Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'authenticate']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
-Route::get('/registrasi', [AuthController::class, 'registrasi'])->middleware('guest');
-Route::post('/registrasi/email-blur', [AuthController::class, 'emailBlur'])->middleware('guest');
-Route::post('/registrasi/email-focus', [AuthController::class, 'emailFocus'])->middleware('guest');
-Route::post('/registrasi', [AuthController::class, 'store']);
-Route::put('/reset-password/{user}', [AuthController::class, 'resetPassword']);
+        Route::prefix('registrasi')->group(function () {
+            Route::get('/', 'registrasi')->name("auth.registrasi.index");
+            Route::post('/', 'registrasi')->name("auth.registrasi.store");
+            Route::get('/email-blur', 'emailBlur')->name("auth.registrasi.email-blur");
+            Route::get('/email-focus', 'emailFocus')->name("auth.registrasi.email-focus");
+            Route::put('/reset-password/{user}', 'resetPassword')->name("auth.registrasi.reset-password");
+        });
+    });
+});
 
-Route::get('/put-img', [HomeController::class, 'putImg'])->name('image');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name("auth.logout");
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/put-img', 'putImg')->name("home.put-img");
+        Route::get('/home', 'index')->name('home.index');
+    });
+    Route::controller(FileController::class)->group(function () {
+        Route::get('/view', 'index')->name("file.index");
+        Route::get('/get', 'getFile')->name("file.get");
+    });
 
-Route::get('/view', [FileController::class, 'index']);
-Route::get('/get', [FileController::class, 'getFile']);
+    Route::middleware('admin')->group(function () {
+        Route::prefix('admin')->group(function () {
+        });
+        Route::prefix('dashboard')->group(function () {
+            Route::get('/', function () {
+                return view('admin.index', [
+                    'title' => 'Dashboard',
+                    'active' => 'home',
+                ]);
+            })->name("admin.dashboard.index");
+            Route::controller(AdminDashboardController::class)->group(function () {
+                Route::get('/dashboard/profil', 'index')->name("admin.dashboard.profil");
+            });
+            Route::controller(AdminDashboardController::class)->group(function () {
+                Route::put('/userDosen', 'updateProfil')->name('admin.dashboard.update-profil');
+            });
+            Route::resource('/dosen', AdminDosenController::class);
+        });
+    });
+    Route::middleware('mahasiswa')->group(function () {
+        Route::prefix('mahasiswa')->group(function () {
+        });
+        Route::prefix('peserta')->group(function () {
+        });
+    });
+    Route::middleware('dosen')->group(function () {
+        Route::prefix('dosen')->group(function () {
+        });
+        Route::prefix('instruktur')->group(function () {
+        });
+        Route::prefix('koordinator')->group(function () {
+        });
+        Route::prefix('kaprodi')->group(function () {
+        });
+    });
+});
 
+//MASALAH NAMA
 Route::get('/home/berita', [AuthController::class, 'berita'])->middleware('guest');
 Route::get('/home/acara-dibuka', [AuthController::class, 'acaraBuka'])->middleware('guest');
 Route::get('/home/acara-berlangsung', [AuthController::class, 'acaraLangsung'])->middleware('guest');
@@ -75,14 +124,10 @@ Route::get('/home/acara/{acara}', [AuthController::class, 'showAcara'])->middlew
 
 //ADMIN
 // Route::get('/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->middleware('admin');
-Route::get('/dashboard', function () {
-    return view('admin.index', [
-        'title' => 'Dashboard',
-        'active' => 'home',
-    ]);
-});
-Route::get('/dashboard/profil', [AdminDashboardController::class, 'index'])->middleware(['admin']);
+
 Route::put('/dashboard/profil/{user}', [HomeController::class, 'updateProfil']);
+
+//Masalah nama Selesai
 
 Route::put('/dashboard/userDosen', [AdminDosenController::class, 'updateProfil'])->middleware(['admin']);
 Route::resource('/dashboard/dosen', AdminDosenController::class)->middleware(['admin']);
@@ -115,7 +160,7 @@ Route::post('/dashboard/sertifikat/isTake', [AdminSertifikatController::class, '
 Route::get('/dashboard/sertifikat/{acara}', [AdminSertifikatController::class, 'list'])->middleware(['auth', 'admin']);
 
 //MAHASISWA
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/mahasiswa', [MahasiswaHomeController::class, 'index'])->name('mahasiswa')->middleware('mahasiswa');
 Route::get('/mahasiswa/notifikasi', [MahasiswaNotifikasiController::class, 'index'])->name('mahasiswa.notifikasi')->middleware('mahasiswa');
 Route::get('/mahasiswa/notifikasi/read', [MahasiswaNotifikasiController::class, 'read'])->name('mahasiswa.notifikasi.read')->middleware('mahasiswa');

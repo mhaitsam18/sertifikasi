@@ -20,7 +20,7 @@ class IsDosen
             // abort(403);
             return redirect()->route('login');
         }
-        if (auth()->user()->role_id !== 3) {
+        if (auth()->user()->role_id !== IS_DOSEN) {
             // abort(403);
             return redirect()->route('login');
         }

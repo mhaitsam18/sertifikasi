@@ -32,6 +32,9 @@ class FileController extends Controller
     //     return response()->download('public/' . $request->image);
     // }
 
+    public function index()
+    {
+    }
     public function getFile(Request $request)
     {
         $filename = str_replace($request->file . "/", "", $request->image);

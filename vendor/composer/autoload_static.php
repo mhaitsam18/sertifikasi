@@ -51,6 +51,8 @@ class ComposerStaticInit4448f8cb997229d6aa8a526b40e033e7
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        'af5c7414008ffae8561d0514ad128022' => __DIR__ . '/../..' . '/app/Helpers/RoleHelper.php',
+        'a8572b9b8f384a573d5181b3cbe5d21e' => __DIR__ . '/../..' . '/app/Helpers/SertifikasiHelper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -714,6 +716,7 @@ class ComposerStaticInit4448f8cb997229d6aa8a526b40e033e7
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Providers\\RoleServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RoleServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
