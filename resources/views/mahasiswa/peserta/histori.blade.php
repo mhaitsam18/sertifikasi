@@ -64,7 +64,7 @@ use Illuminate\Support\Carbon;
                                                                 {{ $pelatihan->acara->nama }}
                                                             </label>
                                                         </div> <!-- end checkbox --> --}}
-                                                        <a href="/acara/{{ $pelatihan->acara->id }}" class="text-muted mb-4">{{ $pelatihan->acara->nama }}</a>
+                                                        <a href="/mahasiswa/acara/{{ $pelatihan->acara->id }}" class="text-muted mb-4">{{ $pelatihan->acara->nama }}</a>
                                                     </div> <!-- end col -->
                                                     <div class="col-lg-8">
                                                         <div class="d-sm-flex justify-content-between">
@@ -132,7 +132,7 @@ use Illuminate\Support\Carbon;
                                                                 {{ $sertifikasi->acara->nama }}
                                                             </label>
                                                         </div> <!-- end checkbox --> --}}
-                                                        <a href="/acara/{{ $sertifikasi->acara->id }}" class="text-muted mb-4">{{ $sertifikasi->acara->nama }}</a>
+                                                        <a href="/mahasiswa/acara/{{ $sertifikasi->acara->id }}" class="text-muted mb-4">{{ $sertifikasi->acara->nama }}</a>
                                                     </div> <!-- end col -->
                                                     <div class="col-lg-8">
                                                         <div class="d-sm-flex justify-content-between">

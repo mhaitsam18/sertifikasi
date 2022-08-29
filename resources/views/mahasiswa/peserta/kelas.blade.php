@@ -8,8 +8,8 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/mahasiswa">Mahasiswa</a></li>
-                    <li class="breadcrumb-item"><a href="/acara">Acara</a></li>
-                    <li class="breadcrumb-item"><a href="/acara/{{ $kelas->acara_id }}">Detail</a></li>
+                    <li class="breadcrumb-item"><a href="/mahasiswa/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/mahasiswa/acara/{{ $kelas->acara_id }}">Detail</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Kelas Acara</li>
                 </ol>
             </nav>

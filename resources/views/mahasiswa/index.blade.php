@@ -167,7 +167,7 @@
             <div class="col-md-6 px-0">
                 <h1 class="display-4 fst-italic">{{ $list_acara[0]->nama }}</h1>
                 <p class="lead my-3">{{ Str::limit(strip_tags($list_acara[0]->deskripsi), 200, '...') }}</p>
-                <p class="lead mb-0"><a href="/acara/{{ $list_acara[0]->id }}" class="text-white fw-bold">Continue reading...</a></p>
+                <p class="lead mb-0"><a href="/mahasiswa/acara/{{ $list_acara[0]->id }}" class="text-white fw-bold">Continue reading...</a></p>
             </div>
         </div>
 
@@ -195,7 +195,7 @@
                             
                             @endif
                             <p class="card-text mb-auto">{{ Str::limit(strip_tags($acara->deskripsi), 200, '...') }}</p>
-                            <a href="/acara/{{ $acara->id }}" class="stretched-link">Continue reading</a>
+                            <a href="/mahasiswa/acara/{{ $acara->id }}" class="stretched-link">Continue reading</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <img src="{{ asset("storage/$acara->thumbnail") }}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -216,7 +216,7 @@
     @endif
 </div>
 <div class="row justify-content-end">
-    <a href="/acara" class="btn btn-link">Lihat Semua <i data-feather="arrow-right"></i></a>
+    <a href="/mahasiswa/acara" class="btn btn-link">Lihat Semua <i data-feather="arrow-right"></i></a>
     {{ $list_acara->links() }}
 </div>
 <hr>
@@ -234,7 +234,7 @@
                             <h3 class="mb-0">{{ $berita->judul }}</h3>
                             <div class="mb-1 text-muted">diterbitkan pada: {{ Carbon::parse($berita->publish_at)->translatedFormat('d/m/Y') }}</div>
                             <p class="card-text mb-auto">{{ $berita->excerpt }}</p>
-                            <a href="/berita/{{ $berita->slug }}" class="stretched-link">Continue reading</a>
+                            <a href="/mahasiswa/berita/{{ $berita->slug }}" class="stretched-link">Continue reading</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <img src="{{ asset("storage/$berita->thumbnail") }}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -250,7 +250,7 @@
     @endif
 </div>
 <div class="row justify-content-end">
-    <a href="/berita" class="btn btn-link">Lihat Semua <i data-feather="arrow-right"></i></a>
+    <a href="/mahasiswa/berita" class="btn btn-link">Lihat Semua <i data-feather="arrow-right"></i></a>
     {{ $list_berita->links() }}
 </div>
 <!-- end row -->

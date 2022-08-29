@@ -51,11 +51,11 @@ class PesertaController extends Controller
         return back()->with('success', 'Selamat, Anda berhasil bergabung!');
     }
 
-    public function invoice(Request $request)
+    public function showInvoice(Peserta $peserta)
     {
         return view('mahasiswa.peserta.invoice', [
             'title' => 'Sertifikasi | Invoice',
-            'peserta' => Peserta::where('id', $request->peserta_id)->first(),
+            'peserta' => $peserta,
         ]);
     }
 
@@ -98,7 +98,7 @@ class PesertaController extends Controller
                 ->join('acara', 'acara.id', '=', 'peserta.acara_id')->get()
         ]);
     }
-    public function dataInvoice()
+    public function invoice()
     {
         return view('mahasiswa.invoice.index', [
             'title' => 'Sertifikasi | Data Tagihan',

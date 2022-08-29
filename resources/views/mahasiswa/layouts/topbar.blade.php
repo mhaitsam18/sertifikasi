@@ -27,7 +27,7 @@
         <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
             <li class="d-none d-sm-block">
                 <div class="app-search">
-                    <form action="/acara" method="get">
+                    <form action="/mahasiswa/acara" method="get">
                         <div class="input-group">
                             <input type="text" name="search" class="form-control" placeholder="Cari Event">
                             <span data-feather="search"></span>

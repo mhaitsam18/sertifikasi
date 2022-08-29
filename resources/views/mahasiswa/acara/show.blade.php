@@ -113,7 +113,7 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/mahasiswa">Mahasiswa</a></li>
-                    <li class="breadcrumb-item"><a href="/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/mahasiswa/acara">Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Detail</li>
                 </ol>
             </nav>
@@ -335,7 +335,7 @@ use Illuminate\Support\Carbon;
                         <div class="tab-content text-muted">
                             <div class="tab-pane show active" id="rating">
                                 @if ($peserta)
-                                    <form action="/acara/{{ ($rating) ? 'rateUpdate/'.$rating->id : 'rateCreate' }}" method="post">
+                                    <form action="/mahasiswa/acara/{{ ($rating) ? 'rateUpdate/'.$rating->id : 'rateCreate' }}" method="post">
                                         @csrf
                                         <input type="hidden" name="acara_id" value="{{ $acara->id }}">
                                         <input type="hidden" name="peserta_id" value="{{ $peserta->id }}">
@@ -559,7 +559,7 @@ use Illuminate\Support\Carbon;
                                         <p class="text-muted font-size-13 mb-0">{{ Carbon::parse($a->pelaksanaan_buka)->translatedFormat('M') }}</p>
                                     </div>
                                     <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/acara/{{ $a->id }}" class="text-dark">{{ $a->nama }}</a></h5>
+                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/mahasiswa/acara/{{ $a->id }}" class="text-dark">{{ $a->nama }}</a></h5>
                                         <p class="text-muted font-size-13 text-truncate mb-0">{{ Str::limit(strip_tags($a->deskripsi), 35, '...') }}</p>
                                     </div>
                                 </div>
@@ -567,7 +567,7 @@ use Illuminate\Support\Carbon;
                         @endforeach
                     </ul>
                     <div class="text-center">
-                        <a href="/acara" class="btn btn-sm border btn-white">
+                        <a href="/mahasiswa/acara" class="btn btn-sm border btn-white">
                             <i data-feather="loader" class="icon-dual icon-xs mr-2"></i>
                             Load more
                         </a>
@@ -583,7 +583,7 @@ use Illuminate\Support\Carbon;
                         @else
                             <span class="btn btn-danger btn-block">Kelas Belum dibuka</span>
                         @endif
-                            <a href="/peserta/invoice?peserta_id={{ $peserta->id }}" class="btn btn-success btn-block"><i class="uil uil-invoice mr-1"></i>Lihat Tagihan</a>
+                            <a href="/peserta/invoice/{{ $peserta->id }}" class="btn btn-success btn-block"><i class="uil uil-invoice mr-1"></i>Lihat Tagihan</a>
                         @if (isset($peserta->nilai))
                             <a href="/get?file=sertifikat&image={{ $peserta->nilai->sertifikat }}" class="btn btn-info btn-block">Unduh Sertifikat</a>
                         @endif

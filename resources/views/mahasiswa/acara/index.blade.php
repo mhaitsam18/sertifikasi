@@ -57,7 +57,7 @@
                         
                         @endif
                         <p class="card-text mb-auto">{{ Str::limit(strip_tags($acara->deskripsi), 200, '...') }}</p>
-                        <a href="/acara/{{ $acara->id }}" class="stretched-link">Continue reading</a>
+                        <a href="/mahasiswa/acara/{{ $acara->id }}" class="stretched-link">Continue reading</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <img src="{{ asset("storage/$acara->thumbnail") }}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">

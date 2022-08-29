@@ -44,7 +44,7 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/mahasiswa">Mahasiswa</a></li>
-                    <li class="breadcrumb-item"><a href="/berita">Berita</a></li>
+                    <li class="breadcrumb-item"><a href="/mahasiswa/berita">Berita</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Detail</li>
                 </ol>
             </nav>
@@ -271,7 +271,7 @@ use Illuminate\Support\Carbon;
                                         <a href="/profile"> <img class="media-object rounded-circle avatar-sm" alt="profile" src="{{ asset("storage/".auth()->user()->foto) }}"> </a>
                                     </div>
                                     <div class="media-body">
-                                        <form action="/berita/komentar" method="post">
+                                        <form action="/mahasiswa/berita/komentar" method="post">
                                             @csrf
                                             <input type="hidden" name="berita_id" id="berita_id" value="{{ $berita->id }}">
                                             <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
@@ -305,7 +305,7 @@ use Illuminate\Support\Carbon;
                                         <p class="text-muted font-size-13 mb-0">{{ Carbon::parse($a->publish_at)->translatedFormat('M') }}</p>
                                     </div>
                                     <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/berita/{{ $a->slug }}" class="text-dark">{{ $a->judul }}</a></h5>
+                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/mahasiswa/berita/{{ $a->slug }}" class="text-dark">{{ $a->judul }}</a></h5>
                                         <p class="text-muted font-size-13 text-truncate mb-0">{{ Str::limit(strip_tags($a->isi), 35, '...') }}</p>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@ use Illuminate\Support\Carbon;
                         @endforeach
                     </ul>
                     <div class="text-center">
-                        <a href="/berita" class="btn btn-sm border btn-white">
+                        <a href="/mahasiswa/berita" class="btn btn-sm border btn-white">
                             <i data-feather="loader" class="icon-dual icon-xs mr-2"></i>
                             Load more
                         </a>
@@ -337,7 +337,7 @@ use Illuminate\Support\Carbon;
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/berita/like",
+                url: "/mahasiswa/berita/like",
                 type: 'post',
                 data: {
                     berita_id: berita_id,

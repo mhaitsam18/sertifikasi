@@ -140,6 +140,23 @@ Route::middleware('auth')->group(function () {
         });
     });
     Route::middleware('mahasiswa')->group(function () {
+        Route::prefix('berita')->group(function () {
+            Route::controller(MahasiswaBeritaController::class)->group(function () {
+                Route::get('/', 'index')->name('mahasiswa.berita.index');
+                Route::post('/like', 'like')->name('mahasiswa.berita.like');
+                Route::post('/komentar', 'komentar')->name('mahasiswa.berita.komentar');
+                Route::get('/{berita:slug}', 'show')->name('mahasiswa.berita.show');
+            });
+        });
+        Route::prefix('acara')->group(function () {
+            Route::controller(MahasiswaAcaraController::class)->group(function () {
+                Route::get('/', 'index')->name('mahasiswa.acara.index');
+                Route::get('/diikuti', 'diikuti')->name('mahasiswa.acara.diikuti');
+                Route::get('/{acara}', 'show')->name('mahasiswa.acara.show');
+                Route::post('/rateCreate', 'rateCreate')->name('mahasiswa.acara.rate-create');
+                Route::post('/rateUpdate/{rating}', 'rateUpdate')->name('mahasiswa.acara.rate-create');
+            });
+        });
         Route::prefix('mahasiswa')->group(function () {
             Route::controller(MahasiswaHomeController::class)->group(function () {
                 Route::get('/', 'index')->name('mahasiswa.index');
@@ -160,13 +177,17 @@ Route::middleware('auth')->group(function () {
             Route::controller(PesertaController::class)->group(function () {
                 Route::get('/', 'index')->name('mahasiswa.peserta.index');
                 Route::post('/', 'store')->name('mahasiswa.peserta.store');
-                Route::get('/invoice', 'invoice')->name('mahasiswa.peserta.invoice');
                 Route::get('/bayar', 'bayar')->name('mahasiswa.peserta.bayar');
                 Route::post('/bayar', 'storeBayar')->name('mahasiswa.peserta.bayar.store');
+                Route::get('/invoice',  'invoice')->name('mahasiswa.peserta.invoice.index');
+                Route::get('/invoice/{peserta}', 'showInvoice')->name('mahasiswa.peserta.invoice.show');
                 Route::get('/kelas/{kelasAcara}', 'kelas')->name('mahasiswa.peserta.kelas');
                 Route::get('/histori', 'histori')->name('mahasiswa.peserta.histori');
+                Route::get('/pembayaran', 'pembayaran')->name('mahasiswa.peserta.pembayaran');
             });
         });
+        Route::get('/pelatihan', [MahasiswaPelatihanController::class, 'index'])->name('mahasiswa.pelatihan.index');
+        Route::get('/sertifikasi', [MahasiswaSertifikasiController::class, 'index'])->name('mahasiswa.sertifikasi.index');
     });
     Route::middleware('dosen')->group(function () {
         Route::prefix('dosen')->group(function () {
@@ -231,29 +252,9 @@ Route::get('/home/acara-berlangsung', [AuthController::class, 'acaraLangsung'])-
 Route::get('/home/berita/{berita:slug}', [AuthController::class, 'showBerita'])->middleware('guest');
 Route::get('/home/acara/{acara}', [AuthController::class, 'showAcara'])->middleware('guest');
 
-
 //MAHASISWA
 
-// MAHASISWAACARACONTROLLER
-Route::get('/acara/diikuti', [MahasiswaAcaraController::class, 'diikuti'])->name('event-mahasiswa')->middleware('mahasiswa');
-Route::get('/acara', [MahasiswaAcaraController::class, 'index'])->name('acara-mahasiswa')->middleware('mahasiswa');
-Route::get('/acara/{acara}', [MahasiswaAcaraController::class, 'show'])->name('acara-show-mahasiswa')->middleware('mahasiswa');
-Route::post('/acara/rateCreate', [MahasiswaAcaraController::class, 'rateCreate'])->name('acara-rateCreate-mahasiswa')->middleware('mahasiswa');
-Route::post('/acara/rateUpdate/{rating}', [MahasiswaAcaraController::class, 'rateUpdate'])->name('acara-rateUpdate-mahasiswa')->middleware('mahasiswa');
-
-
-Route::get('/pelatihan', [MahasiswaPelatihanController::class, 'index'])->name('pelatihan-mahasiswa')->middleware('mahasiswa');
-Route::get('/sertifikasi', [MahasiswaSertifikasiController::class, 'index'])->name('sertifikasi-mahasiswa')->middleware('mahasiswa');
-
-//MAHASISWABERITACONTROLLER
-Route::get('/berita', [MahasiswaBeritaController::class, 'index'])->name('berita-mahasiswa')->middleware('mahasiswa');
-Route::post('/berita/like', [MahasiswaBeritaController::class, 'like']);
-Route::post('/berita/komentar', [MahasiswaBeritaController::class, 'komentar']);
-Route::get('/berita/{berita:slug}', [MahasiswaBeritaController::class, 'show'])->name('show-berita-mahasiswa')->middleware('mahasiswa');
-
 //PESERTACONTROLLER
-Route::get('/pembayaran', [PesertaController::class, 'pembayaran'])->middleware('mahasiswa');
-Route::get('/invoice', [PesertaController::class, 'dataInvoice'])->middleware('mahasiswa');
 
 
 //DOSEN

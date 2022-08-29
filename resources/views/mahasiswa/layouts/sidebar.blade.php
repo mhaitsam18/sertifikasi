@@ -60,19 +60,19 @@
                     </a>
                 </li>                
                 <li>
-                    <a href="/acara/diikuti">
+                    <a href="/mahasiswa/acara/diikuti">
                         <i data-feather="home"></i>
                         <span> Acara yang Sedang diikuti </span>
                     </a>
                 </li>
                 <li>
-                    <a href="/invoice">
+                    <a href="/peserta/invoice">
                         <i data-feather="file-text"></i>
                         <span> Data Tagihan </span>
                     </a>
                 </li>
                 <li>
-                    <a href="/pembayaran">
+                    <a href="/peserta/pembayaran">
                         <i data-feather="credit-card"></i>
                         <span> List Pembayaran </span>
                     </a>
@@ -86,19 +86,19 @@
 
                 <li class="menu-title">Pelatihan, Sertifikasi dan Berita</li>
                 <li>
-                    <a href="/pelatihan">
+                    <a href="/mahasiswa/pelatihan">
                         <i data-feather="activity"></i>
                         <span> Pelatihan </span>
                     </a>
                 </li>
                 <li>
-                    <a href="/sertifikasi">
+                    <a href="/mahasiswa/sertifikasi">
                         <i data-feather="award"></i>
                         <span> Sertifikasi </span>
                     </a>
                 </li>
                 <li>
-                    <a href="/berita">
+                    <a href="/mahasiswa/berita">
                         <i data-feather="file-text"></i>
                         <span> Berita </span>
                     </a>
@@ -107,7 +107,7 @@
                 <li>
                     <a href="/calendar">
                         <i data-feather="calendar"></i>
-                        <span> Calendar </span>
+                        <span> Kalender </span>
                     </a>
                 </li>
                 {{-- <li>

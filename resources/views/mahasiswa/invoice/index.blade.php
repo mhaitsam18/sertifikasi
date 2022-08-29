@@ -85,7 +85,7 @@ use Illuminate\Support\Carbon;
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/peserta/invoice?peserta_id={{ $invoice->id }}" class="btn btn-primary btn-sm">Lihat Invoice</a>
+                                            <a href="/peserta/invoice/{{ $invoice->id }}" class="btn btn-primary btn-sm">Lihat Invoice</a>
                                             @if ($invoice->sisa_tagihan > 0)
                                                 <a href="/peserta/bayar?peserta_id={{ $invoice->id }}" class="btn btn-success btn-sm">Bayar</a>
                                             @else
