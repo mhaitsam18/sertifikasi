@@ -314,129 +314,23 @@
                     <!-- messages -->
                     <div class="tab-pane" id="pills-messages" role="tabpanel"
                     aria-labelledby="pills-messages-tab">
-                        <h5 class="mt-3">Messages</h5>
+                        <h5 class="mt-3">Chat</h5>
                         <ul class="list-unstyled">
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="mr-3">
-                                        <img src="/images/users/avatar-2.jpg" alt=""
-                                            class="avatar-md rounded-circle">
+                            @foreach ($data_pesan as $pesan)
+                                <li class="py-3 border-bottom">
+                                    <div class="media">
+                                        <div class="mr-3">
+                                            <img src="{{ asset('storage/'.$pesan->user->foto) }}" alt="" class="avatar-md rounded-circle">
+                                        </div>
+                                        <div class="media-body overflow-hidden">
+                                            <h5 class="font-size-15 mt-2 mb-1">
+                                                <a href="#" class="text-dark">{{ $pesan->user->nama }}</a>
+                                            </h5>
+                                            <p class="text-muted font-size-13 text-truncate mb-0"> The languages only differ in their grammar</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">John Jack</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">
-                                            The
-                                            languages only differ in their grammar</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="mr-3">
-                                        <img src="/images/users/avatar-3.jpg" alt=""
-                                            class="avatar-md rounded-circle">
-
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Theodore</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">
-                                            Everyone realizes why a new common language </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="avatar-md rounded-circle bg-soft-primary mr-3">
-                                        <span
-                                            class="font-size-18 avatar-title text-primary font-weight-semibold">
-                                            M
-                                        </span>
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Michael</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">To
-                                            an
-                                            English person, it will seem like simplified</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="mr-3">
-                                        <img src="/images/users/avatar-5.jpg" alt=""
-                                            class="avatar-md rounded-circle">
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Tony Lindsey</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">If
-                                            several languages coalesce the grammar</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="avatar-md rounded-circle bg-soft-primary mr-3">
-                                        <span
-                                            class="font-size-18 avatar-title text-primary font-weight-semibold">
-                                            R
-                                        </span>
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Robert Wilke</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">
-                                            Their separate existence is a myth</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="mr-3">
-                                        <img src="/images/users/avatar-7.jpg" alt=""
-                                            class="avatar-md rounded-circle">
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">James</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">
-                                            The European languages are members.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3 border-bottom">
-                                <div class="media">
-                                    <div class="avatar-md rounded-circle bg-soft-primary mr-3">
-                                        <span
-                                            class="font-size-18 avatar-title text-primary font-weight-semibold">
-                                            B
-                                        </span>
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Brian</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">At
-                                            vero eos et accusamus et iusto odio</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3">
-                                <div class="media">
-                                    <div class="mr-3">
-                                        <img src="/images/users/avatar-5.jpg" alt=""
-                                            class="avatar-md rounded-circle">
-                                    </div>
-                                    <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                class="text-dark">Aaron Nickel</a></h5>
-                                        <p class="text-muted font-size-13 text-truncate mb-0">
-                                            Itaque earum rerum hic tenetur a sapiente</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
 
                         <div class="text-center">

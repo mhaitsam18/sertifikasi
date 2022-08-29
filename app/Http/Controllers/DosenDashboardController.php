@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Acara;
+use App\Models\Chat;
 use App\Models\Dosen;
 use App\Models\Kelas;
+use App\Models\Mahasiswa;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class DosenDashboardController extends Controller
@@ -43,8 +46,20 @@ class DosenDashboardController extends Controller
     public function profil()
     {
 
+        $user_id = auth()->user()->id;
         return view('dosen.profil', [
             'title' => 'Sertifikasi | Profil',
+            'data_pesan' => Chat::selectRaw("*, users.id AS user_id, MAX(chat.id)")
+                ->rightJoin('users', DB::raw("IF(chat.pengirim_id = $user_id, chat.penerima_id, chat.pengirim_id)"), '=', DB::raw('users.id'))
+                ->where('role_id', 2)
+                ->where(function ($query) use ($user_id) {
+                    $query->where("pengirim_id", $user_id)
+                        ->orWhere("penerima_id", $user_id);
+                })
+                ->where('users.id', '!=', $user_id)
+                ->groupBy(DB::raw("IF(penerima_id = $user_id, pengirim_id, penerima_id)"))
+                ->orderBy('chat.id', 'DESC')
+                ->get(),
             // 'dosen' => dosen::where('user_id', auth()->user()->id)->with('user')->first(),
             'tanggal_lahir' => Carbon::parse(auth()->user()->tanggal_lahir)->translatedFormat('d F Y')
         ]);

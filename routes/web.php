@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminDosenController;
 use App\Http\Controllers\AdminSertifikatController;
 use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DosenDashboardController;
 use App\Http\Controllers\DosenAcaraController;
 use App\Http\Controllers\InstrukturController;
@@ -78,6 +79,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name("auth.chat");
     Route::post('/logout', [AuthController::class, 'logout'])->name("auth.logout");
     Route::controller(HomeController::class)->group(function () {
         Route::get('/put-img', 'putImg')->name("home.put-img");
