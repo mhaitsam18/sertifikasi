@@ -6,7 +6,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
                     <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/fasilitas?acara_id={{ $acara->id }}">Fasilitas</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara/fasilitas?acara_id={{ $acara->id }}">Fasilitas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>
                 </ol>
             </nav>
@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Fasilitas: "{{ $acara->nama }}" - Tambah Fasilitas</h4>
-                    <form action="/dosen/fasilitas" method="post">
+                    <form action="/koordinator/acara/fasilitas" method="post">
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $acara->id }}">
                         <div class="form-group">

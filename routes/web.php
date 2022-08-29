@@ -250,6 +250,13 @@ Route::middleware('auth')->group(function () {
                 Route::resource('/jadwal-acara', JadwalAcaraController::class);
                 Route::resource('/materi', MateriAcaraController::class)->middleware(['dosen']);
                 Route::controller(FasilitasAcaraController::class)->group(function () {
+                    Route::get('/fasilitas', 'index')->name('dosen.koordinator.acara.fasilitas.index');
+                    Route::post('/fasilitas', 'store')->name('dosen.koordinator.acara.fasilitas.store');
+                    Route::get('/fasilitas/create', 'create')->name('dosen.koordinator.acara.fasilitas.create');
+                    Route::get('/fasilitas/{fasilitas}', 'show')->name('dosen.koordinator.acara.fasilitas.show');
+                    Route::put('/fasilitas/{fasilitas}', 'update')->name('dosen.koordinator.acara.fasilitas.update');
+                    Route::delete('/fasilitas/{fasilitas}', 'destroy')->name('dosen.koordinator.acara.fasilitas.destroy');
+                    Route::get('/fasilitas/{fasilitas}/edit', 'edit')->name('dosen.koordinator.acara.fasilitas.edit');
                 });
             });
 
@@ -271,27 +278,3 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
-
-//URL BERMASALAH
-
-//KOORDINATOR
-
-
-Route::get('/dosen/fasilitas', [FasilitasAcaraController::class, 'index'])->name('dosen.koordinator.acara.fasilitas.index')->middleware('dosen');
-
-Route::post('/dosen/fasilitas', [FasilitasAcaraController::class, 'store'])->name('dosen.koordinator.acara.fasilitas.store')->middleware('dosen');
-
-Route::get('/dosen/fasilitas/create', [FasilitasAcaraController::class, 'create'])->name('dosen.koordinator.acara.fasilitas.create')->middleware('dosen');
-
-Route::get('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'show'])->name('dosen.koordinator.acara.fasilitas.show')->middleware('dosen');
-
-Route::put('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'update'])->name('dosen.koordinator.acara.fasilitas.update')->middleware('dosen');
-
-Route::delete('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'destroy'])->name('dosen.koordinator.acara.fasilitas.destroy')->middleware('dosen');
-
-Route::get('/dosen/fasilitas/{fasilitas}/edit', [FasilitasAcaraController::class, 'edit'])->name('dosen.koordinator.acara.fasilitas.edit')->middleware('dosen');
-
-
-
-
-//URL BERMASALAH

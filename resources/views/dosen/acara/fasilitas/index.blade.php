@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Data fasilitas "{{ $acara->nama }}"</h4>
                     {{-- <div class="table-responsive col-lg-12"> --}}
-                        <a href="/dosen/fasilitas/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Fasilitas</a>
+                        <a href="/koordinator/acara/fasilitas/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Fasilitas</a>
                         <table id="basic-datatable" class="table dt-responsive nowrap">
                             <thead>
                                 <tr>
@@ -49,8 +49,8 @@
                                         <td>{{ $fasilitas->fasilitas }}</td>
                                         <td>{{ $fasilitas->keterangan }}</td>
                                         <td>
-                                            <a href="/dosen/fasilitas/{{ $fasilitas->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dosen/fasilitas/{{ $fasilitas->id }}" method="post" class="d-inline">
+                                            <a href="/koordinator/acara/fasilitas/{{ $fasilitas->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/koordinator/acara/fasilitas/{{ $fasilitas->id }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
