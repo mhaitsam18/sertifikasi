@@ -41,7 +41,7 @@ class JadwalAcaraController extends Controller
             $data['kelas'] = null;
         }
 
-        return view('dosen.acara.jadwal.index', $data);
+        return view('dosen.koordinator.acara.jadwal.index', $data);
     }
 
     public function ubahStatusJadwal(Request $request)
@@ -71,7 +71,7 @@ class JadwalAcaraController extends Controller
             $data['kelas'] = null;
         }
 
-        return view('dosen.acara.jadwal.create', $data);
+        return view('dosen.koordinator.acara.jadwal.create', $data);
     }
 
     /**
@@ -138,7 +138,7 @@ class JadwalAcaraController extends Controller
     public function edit(JadwalAcara $jadwalAcara, Request $request)
     {
         echo $request->acara_id;
-        return view('dosen.acara.jadwal.edit', [
+        return view('dosen.koordinator.acara.jadwal.edit', [
             'title' => "Tambah Jadwal",
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_instruktur' => Dosen::join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')

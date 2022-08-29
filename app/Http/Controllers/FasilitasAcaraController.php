@@ -15,7 +15,7 @@ class FasilitasAcaraController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dosen.acara.fasilitas.index', [
+        return view('dosen.koordinator.acara.fasilitas.index', [
             'title' => "Data Fasilitas",
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_fasilitas' => Fasilitas::where('acara_id', $request->acara_id)->get()
@@ -29,7 +29,7 @@ class FasilitasAcaraController extends Controller
      */
     public function create(Request $request)
     {
-        return view('dosen.acara.fasilitas.create', [
+        return view('dosen.koordinator.acara.fasilitas.create', [
             'title' => "Data Fasilitas",
             'acara' => Acara::where('id', $request->acara_id)->first()
         ]);
@@ -71,7 +71,7 @@ class FasilitasAcaraController extends Controller
      */
     public function edit(Fasilitas $fasilitas)
     {
-        return view('dosen.acara.fasilitas.edit', [
+        return view('dosen.koordinator.acara.fasilitas.edit', [
             'title' => "Data Fasilitas",
             'acara' => Acara::where('id', $fasilitas->acara_id)->first(),
             'fasilitas' => $fasilitas

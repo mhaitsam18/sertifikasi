@@ -25,7 +25,7 @@ class DosenAcaraController extends Controller
      */
     public function index()
     {
-        return view('dosen.acara.index', [
+        return view('dosen.koordinator.acara.index', [
             'title' => "Master Pelatihan dan Sertifikasi",
             'list_acara' => Acara::withTrashed()->where('koordinator_id', session()->get('dosen_id'))->get()
         ]);
@@ -38,7 +38,7 @@ class DosenAcaraController extends Controller
      */
     public function create()
     {
-        return view('dosen.acara.create', [
+        return view('dosen.koordinator.acara.create', [
             'title' => "Tambah Acara",
             'list_kategori_acara' => KategoriAcara::all()
         ]);
@@ -84,7 +84,7 @@ class DosenAcaraController extends Controller
      */
     public function show(Acara $acara)
     {
-        return view('dosen.acara.show', [
+        return view('dosen.koordinator.acara.show', [
             'title' => "Detail Acara",
             'acara' => $acara,
             'list_rating' => Rating::where('acara_id', $acara->id)->get(),
@@ -104,7 +104,7 @@ class DosenAcaraController extends Controller
      */
     public function edit(Acara $acara)
     {
-        return view('dosen.acara.edit', [
+        return view('dosen.koordinator.acara.edit', [
             'title' => "Edit Acara",
             'acara' => $acara,
             'list_kategori_acara' => KategoriAcara::all()
@@ -168,7 +168,7 @@ class DosenAcaraController extends Controller
 
     public function instruktur(Acara $acara)
     {
-        return view('dosen.acara.instruktur', [
+        return view('dosen.koordinator.acara.instruktur', [
             'title' => "Data Instruktur",
             'acara' => $acara,
             'list_instruktur' => Dosen::join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')->where('acara_id', $acara->id)->with('user')->get(),
@@ -195,7 +195,7 @@ class DosenAcaraController extends Controller
 
     public function peserta(Acara $acara)
     {
-        return view('dosen.acara.peserta.index', [
+        return view('dosen.koordinator.acara.peserta.index', [
             'title' => "Sertifikasi | Peserta Pelatihan / Sertifikasi",
             'list_peserta' => Peserta::where('acara_id', $acara->id)->get(),
             'list_kelas' => KelasAcara::where('acara_id', $acara->id)->get(),

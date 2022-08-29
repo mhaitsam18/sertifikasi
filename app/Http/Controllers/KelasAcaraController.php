@@ -16,7 +16,7 @@ class KelasAcaraController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dosen.acara.kelas.index', [
+        return view('dosen.koordinator.acara.kelas.index', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_kelas' => KelasAcara::where('acara_id', $request->acara_id)->with(['instrukturAcara'])->get()
@@ -30,7 +30,7 @@ class KelasAcaraController extends Controller
      */
     public function create(Request $request)
     {
-        return view('dosen.acara.kelas.create', [
+        return view('dosen.koordinator.acara.kelas.create', [
             'title' => "Data Instruktur",
             'list_instruktur' => Dosen::select('*', 'dosen.id AS instruktur_id')->join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')
                 ->where('acara_id', $request->acara_id)->with('user')
@@ -76,7 +76,7 @@ class KelasAcaraController extends Controller
      */
     public function edit(KelasAcara $kelasAcara)
     {
-        return view('dosen.acara.kelas.edit', [
+        return view('dosen.koordinator.acara.kelas.edit', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $kelasAcara->acara_id)->first(),
             'kelas' => $kelasAcara,

@@ -15,7 +15,7 @@ class MateriAcaraController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dosen.acara.materi.index', [
+        return view('dosen.koordinator.acara.materi.index', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_materi' => Materi::where('acara_id', $request->acara_id)->with(['acara'])->get()
@@ -29,7 +29,7 @@ class MateriAcaraController extends Controller
      */
     public function create(Request $request)
     {
-        return view('dosen.acara.materi.create', [
+        return view('dosen.koordinator.acara.materi.create', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $request->acara_id)->first()
         ]);
@@ -59,7 +59,7 @@ class MateriAcaraController extends Controller
      */
     public function show(Materi $materi)
     {
-        return view('dosen.acara.materi.edit', [
+        return view('dosen.koordinator.acara.materi.edit', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $materi->acara_id)->first(),
             'materi' => $materi
@@ -74,7 +74,7 @@ class MateriAcaraController extends Controller
      */
     public function edit(Materi $materi)
     {
-        return view('dosen.acara.materi.edit', [
+        return view('dosen.koordinator.acara.materi.edit', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $materi->acara_id)->first(),
             'materi' => $materi

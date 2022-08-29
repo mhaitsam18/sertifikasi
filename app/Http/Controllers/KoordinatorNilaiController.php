@@ -11,7 +11,7 @@ class KoordinatorNilaiController extends Controller
 {
     public function index(Request $request)
     {
-        return view('dosen.acara.nilai.index', [
+        return view('dosen.koordinator.acara.nilai.index', [
             'title' => 'Sertifikasi | Nilai dan Sertifikat',
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_status' => StatusPeserta::all(),
