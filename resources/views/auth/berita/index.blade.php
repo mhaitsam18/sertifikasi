@@ -18,7 +18,7 @@
                                 <h3 class="mb-0">{{ $berita->judul }}</h3>
                                 <div class="mb-1 text-muted">diterbitkan pada: {{ Carbon::parse($berita->publish_at)->translatedFormat('d/m/Y') }}</div>
                                 <p class="card-text mb-auto">{{ $berita->excerpt }}</p>
-                                <a href="/home/berita/{{ $berita->slug }}" class="stretched-link">Continue reading</a>
+                                <a href="/berita/{{ $berita->slug }}" class="stretched-link">Continue reading</a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
                                 <img src="{{ asset("storage/$berita->thumbnail") }}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">

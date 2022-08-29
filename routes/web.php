@@ -63,6 +63,17 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/email-focus', 'emailFocus')->name("auth.registrasi.email-focus");
             Route::put('/reset-password/{user}', 'resetPassword')->name("auth.registrasi.reset-password");
         });
+
+        Route::prefix('acara')->group(function () {
+            Route::get('/', 'acara')->name('guest.acara.dibuka');
+            Route::get('/dibuka', 'acaraBuka')->name('guest.acara.dibuka');
+            Route::get('/berlangsung', 'acaraLangsung')->name('guest.acara.berlangsung');
+            Route::get('/{acara}', 'showAcara')->name('guest.acara.show');
+        });
+        Route::prefix('berita')->group(function () {
+            Route::get('/berita', 'berita')->name('guest.berita.index');
+            Route::get('/berita/{berita:slug}', 'showBerita')->name('guest.berita.show');
+        });
     });
 });
 
@@ -246,16 +257,6 @@ Route::middleware('auth')->group(function () {
 //GUEST
 
 //AUTHCONTROLLER
-Route::get('/home/berita', [AuthController::class, 'berita'])->middleware('guest');
-Route::get('/home/acara-dibuka', [AuthController::class, 'acaraBuka'])->middleware('guest');
-Route::get('/home/acara-berlangsung', [AuthController::class, 'acaraLangsung'])->middleware('guest');
-Route::get('/home/berita/{berita:slug}', [AuthController::class, 'showBerita'])->middleware('guest');
-Route::get('/home/acara/{acara}', [AuthController::class, 'showAcara'])->middleware('guest');
-
-//MAHASISWA
-
-//PESERTACONTROLLER
-
 
 //DOSEN
 Route::get('/berita-acara/create/{jadwal_acara}', [BeritaAcaraController::class, 'create'])->middleware('dosen');

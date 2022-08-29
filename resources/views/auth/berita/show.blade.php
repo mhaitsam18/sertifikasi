@@ -13,7 +13,7 @@
                 {{-- By. <a href="berita?author=<?= $berita->user->username ?>">{{ $berita->user->name }}</a>  --}}
                 {{-- in <a href="/categories/{{ $berita->category->slug }}">{{ $berita->category->name }}</a> --}}
                 {{-- in <a href="/berita?category={{ $berita->category->slug }}">{{ $berita->category->name }}</a> --}}
-                <a href="/home/berita" class="btn btn-success"><span data-feather="arrow-left"></span> Kembali</a>
+                <a href="/berita" class="btn btn-success"><span data-feather="arrow-left"></span> Kembali</a>
             </p>
             @if ($berita->thumbnail)
                 <div style="max-height: 350px; overflow:hidden;">

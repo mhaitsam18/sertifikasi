@@ -17,15 +17,15 @@
                         <a class="nav-link" href="/registrasi">Daftar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home/berita">Berita</a>
+                        <a class="nav-link" href="/berita">Berita</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Pelatihan & Sertifikasi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/home/acara-dibuka">Sedang dibuka</a></li>
-                            <li><a class="dropdown-item" href="/home/acara-berlangsung">Sedang berlangsung</a></li>
+                            <li><a class="dropdown-item" href="/acara/dibuka">Sedang dibuka</a></li>
+                            <li><a class="dropdown-item" href="/acara/berlangsung">Sedang berlangsung</a></li>
                             {{-- <li><a class="dropdown-item" href="#">Berita</a></li> --}}
                         </ul>
                     </li>
