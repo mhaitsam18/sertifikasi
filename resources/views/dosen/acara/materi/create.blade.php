@@ -6,7 +6,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
                     <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/materi?acara_id={{ $acara->id }}">Materi</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara/materi?acara_id={{ $acara->id }}">Materi</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>
                 </ol>
             </nav>

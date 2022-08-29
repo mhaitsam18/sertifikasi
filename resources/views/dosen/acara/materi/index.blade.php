@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Data Materi "{{ $acara->nama }}"</h4>
                     {{-- <div class="table-responsive col-lg-12"> --}}
-                        <a href="/dosen/materi/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Materi</a>
+                        <a href="/koordinator/acara/materi/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Materi</a>
                         <table id="basic-datatable" class="table dt-responsive nowrap">
                             <thead>
                                 <tr>
@@ -47,8 +47,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $materi->materi }}</td>
                                         <td>
-                                            <a href="/dosen/materi/{{ $materi->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dosen/materi/{{ $materi->id }}" method="post" class="d-inline">
+                                            <a href="/koordinator/acara/materi/{{ $materi->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/koordinator/acara/materi/{{ $materi->id }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
