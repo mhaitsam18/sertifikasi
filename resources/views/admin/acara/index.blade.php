@@ -55,8 +55,8 @@
                         <td>
                             <a href="/dashboard/acara/detail/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
                             @if (!$acara->is_valid)
-                                <a href="/dashboard/valid?acara_id={{ $acara->id }}&validasi=1" class="btn btn-success btn-sm text-decoration-none text-light">Valid</a>
-                                <a href="/dashboard/valid?acara_id={{ $acara->id }}&validasi=2" class="btn btn-danger btn-sm text-decoration-none text-light">Tidak Valid</a>
+                                <a href="/dashboard/acara/validasi?acara_id={{ $acara->id }}&validasi=1" class="btn btn-success btn-sm text-decoration-none text-light">Valid</a>
+                                <a href="/dashboard/acara/validasi?acara_id={{ $acara->id }}&validasi=2" class="btn btn-danger btn-sm text-decoration-none text-light">Tidak Valid</a>
                             @else
                                 @if ($acara->is_valid == 1)
                                     <a href="/dashboard/peserta?acara_id={{ $acara->id }}" class="btn btn-info btn-sm text-decoration-none text-light">List Peserta</a>

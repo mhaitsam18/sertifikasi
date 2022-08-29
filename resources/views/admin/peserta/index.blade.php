@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <td>
-                                <a href="/dashboard/pembayaran?peserta_id={{ $peserta->id }}" class="btn btn-success btn-sm">List Pembayaran</a>
+                                <a href="/dashboard/peserta/pembayaran?peserta_id={{ $peserta->id }}" class="btn btn-success btn-sm">List Pembayaran</a>
                                 <button type="button" class="btn btn-info btn-sm berkas-modal" data-bs-toggle="modal" data-bs-target="#berkasModal" data-id="{{ $peserta->mahasiswa_id }}">Lihat Berkas</button>
                             </td>
                         </td>

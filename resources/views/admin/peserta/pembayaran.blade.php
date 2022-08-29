@@ -86,7 +86,7 @@
                     <h5 class="modal-title" id="validasiModalLabel">Validasi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/dahsboard/pembayaran/validasi" method="post">
+                <form action="/dashboard/peserta/pembayaran/validasi" method="post">
                     @csrf
                     <input type="hidden" name="id" id="id">
                     <input type="hidden" name="peserta_id" id="peserta_id">

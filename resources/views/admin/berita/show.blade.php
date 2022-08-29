@@ -41,7 +41,7 @@
                                 <p class="text-muted mb-1">
                                     {{ $komentar->komentar }}
                                 </p>
-                                <form action="/komentar/hapus/{{ $komentar->id }}" method="post">
+                                <form action="/dashboard/berita/komentar/{{ $komentar->id }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <input type="hidden" name="komentar_id" value="{{ $komentar->id }}">

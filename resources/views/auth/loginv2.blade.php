@@ -15,7 +15,11 @@
 
                             <h6 class="h5 mb-0 mt-4">Selamat Datang!</h6>
                             <p class="text-muted mt-1 mb-4">Selamat Datang di Halaman Sertifikasi Telkom</p>
-
+                            @if (session()->has('loginError'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session('loginError') }}
+                                </div>
+                            @endif
                             <form action="/login" method="post" class="authentication-form needs-validation">
                                 @csrf
                                 <div class="form-group">

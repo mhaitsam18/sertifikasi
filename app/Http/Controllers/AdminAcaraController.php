@@ -30,7 +30,7 @@ class AdminAcaraController extends Controller
         ]);
     }
 
-    public function valid(Request $request)
+    public function validasi(Request $request)
     {
         $pesan = "";
         if ($request->validasi == 1) {

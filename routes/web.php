@@ -28,6 +28,7 @@ use App\Http\Controllers\MateriAcaraController;
 use App\Http\Controllers\SertifikatController;
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\KoordinatorNilaiController;
 use App\Http\Controllers\MahasiswaNotifikasiController;
 
 /*
@@ -41,9 +42,11 @@ use App\Http\Controllers\MahasiswaNotifikasiController;
 |
 */
 
+// Auth::routes();
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->middleware('admin');
 
 
 //AUTH
@@ -68,6 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::controller(HomeController::class)->group(function () {
         Route::get('/put-img', 'putImg')->name("home.put-img");
         Route::get('/home', 'index')->name('home.index');
+        Route::post('/profil/edit/{user}', 'updateProfil')->name('home.profil.edit');
+        Route::put('/profil/{user}', 'updateProfil')->name('home.profil.update');
+        Route::put('/update-password/{user}', 'updatePassword')->name('home.update-password');
     });
     Route::controller(FileController::class)->group(function () {
         Route::get('/view', 'index')->name("file.index");
@@ -83,182 +89,202 @@ Route::middleware('auth')->group(function () {
                     'title' => 'Dashboard',
                     'active' => 'home',
                 ]);
-            })->name("admin.dashboard.index");
-            Route::controller(AdminDashboardController::class)->group(function () {
-                Route::get('/dashboard/profil', 'index')->name("admin.dashboard.profil");
+            })->name("admin.index");
+
+            Route::controller(AdminAcaraController::class)->group(function () {
+                Route::prefix('acara')->group(function () {
+                    Route::get('/', 'index')->name('admin.acara.index');
+                    Route::post('/ubahStatus', 'ubahStatus')->name('admin.acara.ubah-status'); //URL SALAH
+                    Route::get('/detail/{acara}', 'show')->name('admin.acara.show'); //URL SALAH
+                    Route::get('/validasi', 'validasi')->name('admin.acara.validasi');
+                });
             });
-            Route::controller(AdminDashboardController::class)->group(function () {
-                Route::put('/userDosen', 'updateProfil')->name('admin.dashboard.update-profil');
+            Route::controller(AdminBeritaController::class)->group(function () {
+                Route::prefix('berita')->group(function () {
+                    Route::get('/', 'index')->name('admin.berita.index');
+                    Route::get('/checkSlug', 'checkSlug')->name('admin.berita.check-slug'); //URL SALAH
+                    Route::get('/publish/{berita:slug}', 'publish')->name('admin.berita.publish');
+                    Route::get('/takedown/{berita:slug}', 'takedown')->name('admin.berita.takedown');
+                    Route::post('/restore', 'restore')->name('admin.berita.restore');
+                    Route::get('/{berita:slug}', 'show')->name('admin.berita.show');
+                    Route::delete('/komentar/{komentarBerita}', 'hapusKomentar')->name('admin.berita.komentar.delete');
+                });
             });
+
+            Route::controller(AdminDashboardController::class)->group(function () {
+                Route::get('/profil', 'index')->name("admin.profil");
+            });
+            Route::controller(AdminDosenController::class)->group(function () {
+                Route::put('/userDosen', 'updateProfil')->name('admin.update-profil'); //URL SALAH
+            });
+            Route::controller(AdminPesertaController::class)->group(function () {
+                Route::prefix('peserta')->group(function () {
+                    Route::get('/', 'index')->name('admin.peserta.index');
+                    Route::post('/berkas-show', 'berkasShow')->name('admin.peserta.berkas-show');
+                    Route::post('/ubahStatus', 'ubahStatus')->name('admin.peserta.ubah-status'); //URL SALAH
+                    Route::post('/getPembayaranById', 'getPembayaranById')->name('admin.peserta.get-pembayaran-by-id');
+
+                    Route::get('/pembayaran', 'pembayaran')->name('admin.peserta.pembayaran');
+                    Route::post('/pembayaran/validasi', 'validasi')->name('admin.peserta.pembayaran.validasi');
+                });
+            });
+            Route::controller(AdminSertifikatController::class)->group(function () {
+                Route::prefix('sertifikat')->group(function () {
+                    Route::get('/', 'index')->name('admin.sertifikat.index');
+                    Route::post('/isTake', 'isTake')->name('admin.sertifikat.is-take'); //URL SALAH
+                    Route::get('/{acara}', 'list')->name('admin.sertifikat.list');
+                });
+            });
+            Route::resource('/beritas', AdminBeritaController::class);
             Route::resource('/dosen', AdminDosenController::class);
         });
     });
     Route::middleware('mahasiswa')->group(function () {
         Route::prefix('mahasiswa')->group(function () {
+            Route::controller(MahasiswaHomeController::class)->group(function () {
+                Route::get('/', 'index')->name('mahasiswa.index');
+                Route::get('/profil', 'profil')->name('mahasiswa.profil');
+                Route::get('/edit', 'editProfil')->name('mahasiswa.profil.edit');
+                Route::post('/edit/{mahasiswa}', 'update')->name('mahasiswa.profil.update'); //URL SALAH
+            });
+            Route::controller(MahasiswaNotifikasiController::class)->group(function () {
+                Route::prefix('notifikasi')->group(function () {
+                    Route::get('/', 'index')->name('mahasiswa.notifikasi.index');
+                    Route::get('/read', 'read')->name('mahasiswa.notifikasi.read');
+                    Route::post('/clear', 'clear')->name('mahasiswa.notifikasi.clear');
+                    Route::get('/{notifikasi}', 'show')->name('mahasiswa.notifikasi.show');
+                });
+            });
         });
         Route::prefix('peserta')->group(function () {
+            Route::controller(PesertaController::class)->group(function () {
+                Route::get('/', 'index')->name('mahasiswa.peserta.index');
+                Route::post('/', 'store')->name('mahasiswa.peserta.store');
+                Route::get('/invoice', 'invoice')->name('mahasiswa.peserta.invoice');
+                Route::get('/bayar', 'bayar')->name('mahasiswa.peserta.bayar');
+                Route::post('/bayar', 'storeBayar')->name('mahasiswa.peserta.bayar.store');
+                Route::get('/kelas/{kelasAcara}', 'kelas')->name('mahasiswa.peserta.kelas');
+                Route::get('/histori', 'histori')->name('mahasiswa.peserta.histori');
+            });
         });
     });
     Route::middleware('dosen')->group(function () {
         Route::prefix('dosen')->group(function () {
+            Route::controller(DosenAcaraController::class)->group(function () {
+                Route::get('/', 'index')->name('dosen.acara.index');
+                Route::prefix('instruktur')->group(function () {
+                    Route::get('/{acara}', 'instruktur')->name('dosen.acara.instruktur');
+                    Route::post('/hapus', 'hapusInstruktur')->name('dosen.acara.instruktur.hapus');
+                    Route::post('/tambah', 'tambahInstruktur')->name('dosen.acara.instruktur.tambah');
+                }); //UNTUK DOSEN MEMILIH INSTRUKTUR ACARA
+                Route::get('/peserta/{acara}', 'peserta')->name('dosen.acara.peserta');
+            });
+            Route::controller(DosenDashboardController::class)->group(function () {
+                Route::get('/', 'index')->name('dosen.index');
+                Route::get('/profil', 'profil')->name('dosen.profil');
+                Route::get('/edit', 'editProfil')->name('dosen.edit');
+                Route::put('/edit/{dosen}', 'update')->name('dosen.update'); //URL SALAH
+                Route::get('/destroy/{user}', 'destroy')->name('dosen.destroy'); //URL SALAH
+            });
         });
         Route::prefix('instruktur')->group(function () {
+            Route::controller(InstrukturController::class)->group(function () {
+                Route::get('/', 'index')->name('dosen.instruktur.index');
+                Route::get('/list', 'list')->name('dosen.instruktur.list');
+                Route::get('/acara/{acara}', 'acara')->name('dosen.instruktur.acara');
+                Route::get('/jadwal/{kelas_acara}', 'jadwal')->name('dosen.instruktur.jadwal');
+                Route::get('/peserta/{kelas_acara}', 'peserta')->name('dosen.instruktur.peserta');
+                Route::get('/histori', 'histori')->name('dosen.instruktur.histori');
+            });
+            Route::controller(NilaiController::class)->group(function () {
+                Route::put('/updateTanpaSertifikat/{nilai}', 'updateTanpaSertifikat')->name('dosen.instruktur.update-nilai-tanpa-sertifikat');
+            });
+            Route::resource('/nilai', NilaiController::class);
         });
         Route::prefix('koordinator')->group(function () {
+            Route::get('/nilai', [KoordinatorNilaiController::class, 'index'])->name('dosen.koordinator.nilai.index');
+            Route::resource('/sertifikat', SertifikatController::class)->middleware(['dosen']); //KOORDINATOR
         });
         Route::prefix('kaprodi')->group(function () {
+            Route::controller(KaprodiController::class)->group(function () {
+                Route::get('/', 'index')->name('dosen.kaprodi');
+                Route::get('/index', 'index')->name('dosen.kaprodi.index');
+                Route::get('/pelatihan', 'pelatihan')->name('dosen.kaprodi.pelatihan');
+                Route::get('/sertifikasi', 'sertifikasi')->name('dosen.kaprodi.sertifikasi');
+                Route::get('/histori', 'histori')->name('dosen.kaprodi.histori');
+                Route::get('/master', 'master')->name('dosen.kaprodi.master');
+                Route::get('/peserta',  'peserta')->name('dosen.kaprodi.peserta');
+                Route::get('/peserta-lulus', 'pesertaLulus')->name('dosen.kaprodi.peserta-lulus');
+            });
         });
     });
 });
 
-//MASALAH NAMA
+//URL BERMASALAH
+
+//GUEST
+
+//AUTHCONTROLLER
 Route::get('/home/berita', [AuthController::class, 'berita'])->middleware('guest');
 Route::get('/home/acara-dibuka', [AuthController::class, 'acaraBuka'])->middleware('guest');
 Route::get('/home/acara-berlangsung', [AuthController::class, 'acaraLangsung'])->middleware('guest');
-
-
 Route::get('/home/berita/{berita:slug}', [AuthController::class, 'showBerita'])->middleware('guest');
 Route::get('/home/acara/{acara}', [AuthController::class, 'showAcara'])->middleware('guest');
-// Auth::routes();
 
-
-//ADMIN
-// Route::get('/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->middleware('admin');
-
-Route::put('/dashboard/profil/{user}', [HomeController::class, 'updateProfil']);
-
-//Masalah nama Selesai
-
-Route::put('/dashboard/userDosen', [AdminDosenController::class, 'updateProfil'])->middleware(['admin']);
-Route::resource('/dashboard/dosen', AdminDosenController::class)->middleware(['admin']);
-
-Route::get('/dashboard/berita/checkSlug', [AdminBeritaController::class, 'checkSlug'])->middleware('admin');
-Route::get('/dashboard/berita/', [AdminBeritaController::class, 'index']);
-Route::get('/dashboard/berita/publish/{berita:slug}', [AdminBeritaController::class, 'publish']);
-Route::get('/dashboard/berita/takedown/{berita:slug}', [AdminBeritaController::class, 'takedown']);
-Route::post('/dashboard/berita/restore', [AdminBeritaController::class, 'restore']);
-Route::get('/dashboard/berita/{berita:slug}', [AdminBeritaController::class, 'show']);
-Route::resource('dashboard/beritas', AdminBeritaController::class)->middleware(['auth', 'admin']);
-
-Route::delete('/komentar/hapus/{komentarBerita}', [AdminBeritaController::class, 'hapusKomentar']);
-
-Route::get('/dashboard/acara', [AdminAcaraController::class, 'index']);
-Route::get('/dashboard/valid', [AdminAcaraController::class, 'valid']);
-Route::post('/dashboard/acara/ubahStatus', [AdminAcaraController::class, 'ubahStatus']);
-Route::get('/dashboard/acara/detail/{acara}', [AdminAcaraController::class, 'show']);
-
-Route::get('/dashboard/peserta', [AdminPesertaController::class, 'index'])->middleware(['auth', 'admin']);
-Route::post('/dashboard/peserta/berkas-show', [AdminPesertaController::class, 'berkasShow']);
-Route::post('/dashboard/peserta/ubahStatus', [AdminPesertaController::class, 'ubahStatus']);
-Route::post('/dashboard/peserta/getPembayaranById', [AdminPesertaController::class, 'getPembayaranById'])->middleware(['auth', 'admin']);
-
-Route::get('/dashboard/pembayaran', [AdminPesertaController::class, 'pembayaran'])->middleware(['auth', 'admin']);
-Route::post('/dahsboard/pembayaran/validasi', [AdminPesertaController::class, 'validasi'])->middleware(['auth', 'admin']);
-
-Route::get('/dashboard/sertifikat', [AdminSertifikatController::class, 'index'])->middleware(['auth', 'admin']);
-Route::post('/dashboard/sertifikat/isTake', [AdminSertifikatController::class, 'isTake'])->middleware(['auth', 'admin']);
-Route::get('/dashboard/sertifikat/{acara}', [AdminSertifikatController::class, 'list'])->middleware(['auth', 'admin']);
 
 //MAHASISWA
 
-Route::get('/mahasiswa', [MahasiswaHomeController::class, 'index'])->name('mahasiswa')->middleware('mahasiswa');
-Route::get('/mahasiswa/notifikasi', [MahasiswaNotifikasiController::class, 'index'])->name('mahasiswa.notifikasi')->middleware('mahasiswa');
-Route::get('/mahasiswa/notifikasi/read', [MahasiswaNotifikasiController::class, 'read'])->name('mahasiswa.notifikasi.read')->middleware('mahasiswa');
-Route::post('/mahasiswa/notifikasi/clear', [MahasiswaNotifikasiController::class, 'clear'])->name('mahasiswa.notifikasi.clear')->middleware('mahasiswa');
-Route::get('/mahasiswa/notifikasi/{notifikasi}', [MahasiswaNotifikasiController::class, 'show'])->name('mahasiswa.notifikasi.show')->middleware('mahasiswa');
-
-Route::get('/mahasiswa/profil', [MahasiswaHomeController::class, 'profil'])->name('profil-mahasiswa')->middleware('mahasiswa');
-Route::get('/mahasiswa/edit', [MahasiswaHomeController::class, 'editProfil'])->name('profil-mahasiswa-edit')->middleware('mahasiswa');
-
-Route::post('/mahasiswa/edit/{mahasiswa}', [MahasiswaHomeController::class, 'update'])->middleware('mahasiswa');
-Route::post('/profil/edit/{user}', [HomeController::class, 'updateProfil']);
-Route::put('/update-password/{user}', [HomeController::class, 'updatePassword']);
-
+// MAHASISWAACARACONTROLLER
 Route::get('/acara/diikuti', [MahasiswaAcaraController::class, 'diikuti'])->name('event-mahasiswa')->middleware('mahasiswa');
 Route::get('/acara', [MahasiswaAcaraController::class, 'index'])->name('acara-mahasiswa')->middleware('mahasiswa');
 Route::get('/acara/{acara}', [MahasiswaAcaraController::class, 'show'])->name('acara-show-mahasiswa')->middleware('mahasiswa');
 Route::post('/acara/rateCreate', [MahasiswaAcaraController::class, 'rateCreate'])->name('acara-rateCreate-mahasiswa')->middleware('mahasiswa');
 Route::post('/acara/rateUpdate/{rating}', [MahasiswaAcaraController::class, 'rateUpdate'])->name('acara-rateUpdate-mahasiswa')->middleware('mahasiswa');
+
+
 Route::get('/pelatihan', [MahasiswaPelatihanController::class, 'index'])->name('pelatihan-mahasiswa')->middleware('mahasiswa');
 Route::get('/sertifikasi', [MahasiswaSertifikasiController::class, 'index'])->name('sertifikasi-mahasiswa')->middleware('mahasiswa');
+
+//MAHASISWABERITACONTROLLER
 Route::get('/berita', [MahasiswaBeritaController::class, 'index'])->name('berita-mahasiswa')->middleware('mahasiswa');
 Route::post('/berita/like', [MahasiswaBeritaController::class, 'like']);
 Route::post('/berita/komentar', [MahasiswaBeritaController::class, 'komentar']);
 Route::get('/berita/{berita:slug}', [MahasiswaBeritaController::class, 'show'])->name('show-berita-mahasiswa')->middleware('mahasiswa');
-// Route::resource('/pesertas', PesertaController::class)->middleware('mahasiswa');
 
-Route::get('/peserta', [PesertaController::class, 'index'])->middleware('mahasiswa');
-Route::post('/peserta', [PesertaController::class, 'store'])->middleware('mahasiswa');
-Route::get('/peserta/invoice', [PesertaController::class, 'invoice'])->middleware('mahasiswa');
-Route::get('/peserta/bayar', [PesertaController::class, 'bayar'])->middleware('mahasiswa');
-Route::post('/peserta/bayar', [PesertaController::class, 'storeBayar'])->middleware('mahasiswa');
-Route::get('/peserta/kelas/{kelasAcara}', [PesertaController::class, 'kelas'])->middleware('mahasiswa');
-Route::get('/peserta/histori', [PesertaController::class, 'histori'])->middleware('mahasiswa');
-
+//PESERTACONTROLLER
 Route::get('/pembayaran', [PesertaController::class, 'pembayaran'])->middleware('mahasiswa');
 Route::get('/invoice', [PesertaController::class, 'dataInvoice'])->middleware('mahasiswa');
 
 
 //DOSEN
-Route::get('/dosen', [DosenDashboardController::class, 'index'])->name('dosen');
-Route::get('/dosen/profil', [DosenDashboardController::class, 'profil'])->name('profil-dosen')->middleware('dosen');
-Route::get('/dosen/edit', [DosenDashboardController::class, 'editProfil'])->name('profil-dosen-edit')->middleware('dosen');
-Route::put('/dosen/edit/{dosen}', [DosenDashboardController::class, 'update'])->name('profil-dosen-update')->middleware('dosen');
-Route::get('/dosen/destroy/{user}', [DosenDashboardController::class, 'destroy'])->name('dosen-destroy')->middleware('dosen');
-
-
-
-Route::get('/dosen/acara', [DosenAcaraController::class, 'index'])->name('dosen');
-Route::get('/dosen/acara/instruktur/{acara}', [DosenAcaraController::class, 'instruktur'])->middleware('dosen');
-Route::get('/dosen/acara/peserta/{acara}', [DosenAcaraController::class, 'peserta'])->middleware('dosen');
-Route::post('/dosen/acara/instruktur/hapus', [DosenAcaraController::class, 'hapusInstruktur'])->middleware('dosen');
-Route::post('/dosen/acara/instruktur/tambah', [DosenAcaraController::class, 'tambahInstruktur'])->middleware('dosen');
-
-
-Route::get('/instruktur', [InstrukturController::class, 'index'])->middleware('dosen');
-Route::get('/instruktur/list', [InstrukturController::class, 'list'])->middleware('dosen');
-Route::get('/instruktur/acara/{acara}', [InstrukturController::class, 'acara'])->middleware('dosen');
-Route::get('/instruktur/jadwal/{kelas_acara}', [InstrukturController::class, 'jadwal'])->middleware('dosen');
-Route::get('/instruktur/peserta/{kelas_acara}', [InstrukturController::class, 'peserta'])->middleware('dosen');
-
 Route::get('/berita-acara/create/{jadwal_acara}', [BeritaAcaraController::class, 'create'])->middleware('dosen');
 Route::resource('/berita-acara', BeritaAcaraController::class)->middleware('dosen');
-
-
 Route::post('/acara/ubahStatusJadwal', [JadwalAcaraController::class, 'ubahStatusJadwal']);
 Route::post('/acara/ubahKelasPeserta', [DosenAcaraController::class, 'ubahKelasPeserta']);
 Route::post('/acara/ubahStatusPeserta', [DosenAcaraController::class, 'ubahStatusPeserta']);
 
-Route::get('/dosen/fasilitas', [FasilitasAcaraController::class, 'index'])->middleware('dosen');
-Route::post('/dosen/fasilitas', [FasilitasAcaraController::class, 'store'])->middleware('dosen');
-Route::get('/dosen/fasilitas/create', [FasilitasAcaraController::class, 'create'])->middleware('dosen');
-Route::get('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'show'])->middleware('dosen');
-Route::put('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'update'])->middleware('dosen');
-Route::delete('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'destroy'])->middleware('dosen');
-Route::get('/dosen/fasilitas/{fasilitas}/edit', [FasilitasAcaraController::class, 'edit'])->middleware('dosen');
+Route::get('/dosen/fasilitas', [FasilitasAcaraController::class, 'index'])->name('dosen.koordinator.acara.fasilitas.index')->middleware('dosen');
+
+Route::post('/dosen/fasilitas', [FasilitasAcaraController::class, 'store'])->name('dosen.koordinator.acara.fasilitas.store')->middleware('dosen');
+
+Route::get('/dosen/fasilitas/create', [FasilitasAcaraController::class, 'create'])->name('dosen.koordinator.acara.fasilitas.create')->middleware('dosen');
+
+Route::get('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'show'])->name('dosen.koordinator.acara.fasilitas.show')->middleware('dosen');
+
+Route::put('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'update'])->name('dosen.koordinator.acara.fasilitas.update')->middleware('dosen');
+
+Route::delete('/dosen/fasilitas/{fasilitas}', [FasilitasAcaraController::class, 'destroy'])->name('dosen.koordinator.acara.fasilitas.destroy')->middleware('dosen');
+Route::get('/dosen/fasilitas/{fasilitas}/edit', [FasilitasAcaraController::class, 'edit'])->name('dosen.koordinator.acara.fasilitas.edit')->middleware('dosen');
 
 
-Route::resource('/dosen/kelasAcara', KelasAcaraController::class)->middleware('dosen');
-
-
-
-Route::resource('/dosen/jadwalAcara', JadwalAcaraController::class)->middleware('dosen');
-
-
+//DOSEN DAN KOORDINATOR
 Route::resource('/dosen/acara', DosenAcaraController::class)->middleware(['dosen']);
+
+
+//KOORDINATOR
+Route::resource('/dosen/kelasAcara', KelasAcaraController::class)->middleware('dosen');
+Route::resource('/dosen/jadwalAcara', JadwalAcaraController::class)->middleware('dosen');
 Route::resource('/dosen/materi', MateriAcaraController::class)->middleware(['dosen']);
-Route::resource('/koordinator/sertifikat', SertifikatController::class)->middleware(['dosen']);
-Route::resource('/instruktur/nilai', NilaiController::class)->middleware(['dosen']);
-Route::put('/instruktur/updateTanpaSertifikat/{nilai}', [NilaiController::class, 'updateTanpaSertifikat'])->middleware(['dosen']);
 
-Route::get('/instruktur/histori', [InstrukturController::class, 'histori'])->middleware(['dosen']);
 
-Route::get('/koordinator/nilai', [NilaiController::class, 'index'])->middleware(['dosen']);
-
-Route::get('/kaprodi/pelatihan', [KaprodiController::class, 'pelatihan'])->middleware(['dosen']);
-Route::get('/kaprodi/sertifikasi', [KaprodiController::class, 'sertifikasi'])->middleware(['dosen']);
-Route::get('/kaprodi/histori', [KaprodiController::class, 'histori'])->middleware(['dosen']);
-Route::get('/kaprodi/master', [KaprodiController::class, 'master'])->middleware(['dosen']);
-Route::get('/kaprodi/index', [KaprodiController::class, 'index'])->middleware(['dosen']);
-Route::get('/kaprodi/peserta', [KaprodiController::class, 'peserta'])->middleware(['dosen']);
-Route::get('/kaprodi/peserta-lulus', [KaprodiController::class, 'pesertaLulus'])->middleware(['dosen']);
+//URL BERMASALAH

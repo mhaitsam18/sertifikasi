@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="/dashboard/profil/{{ $user->id }}" method="post" enctype="multipart/form-data">
+                    <form action="/profil/{{ $user->id }}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <h6 class="h6">Data Profil</h6>
