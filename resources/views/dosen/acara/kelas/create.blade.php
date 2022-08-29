@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     <li class="breadcrumb-item"><a href="/dosen/kelasAcara?acara_id={{ $acara->id }}">Kelas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>
                 </ol>

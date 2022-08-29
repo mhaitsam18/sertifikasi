@@ -54,7 +54,7 @@ class KelasAcaraController extends Controller
             'kuota' => 'required'
         ]);
         KelasAcara::create($validateData);
-        return redirect('/dosen/kelasAcara?acara_id=' . $request->acara_id)->with('success', 'Kelas baru telah ditambahkan!');
+        return redirect('/koordinator/acara/kelasAcara?acara_id=' . $request->acara_id)->with('success', 'Kelas baru telah ditambahkan!');
     }
 
     /**
@@ -102,7 +102,7 @@ class KelasAcaraController extends Controller
         ]);
         KelasAcara::where('id', $kelasAcara->id)
             ->update($validateData);
-        return redirect('/dosen/kelasAcara?acara_id=' . $request->acara_id)->with('success', 'Data Kelas berhasil diperbarui!');
+        return redirect('/koordinator/acara/kelasAcara?acara_id=' . $request->acara_id)->with('success', 'Data Kelas berhasil diperbarui!');
     }
 
     /**

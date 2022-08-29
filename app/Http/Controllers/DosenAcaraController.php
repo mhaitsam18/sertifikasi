@@ -73,7 +73,7 @@ class DosenAcaraController extends Controller
         $validateData['biaya'] = str_replace(['Rp.', '.', ' '], '', $request->biaya);
         $validateData['status_acara_id'] = 1;
         Acara::create($validateData);
-        return redirect('/dosen/acara')->with('success', 'Acara baru telah ditambahkan!');
+        return redirect('/koordinator/acara')->with('success', 'Acara baru telah ditambahkan!');
     }
 
     /**
@@ -145,7 +145,7 @@ class DosenAcaraController extends Controller
         // $validateData['status_acara_id'] = 1;
         Acara::where('id', $acara->id)
             ->update($validateData);
-        return redirect('/dosen/acara')->with('success', 'Data Acara berhasil diperbarui!!');
+        return redirect('/koordinator/acara')->with('success', 'Data Acara berhasil diperbarui!!');
     }
 
     /**
@@ -157,13 +157,13 @@ class DosenAcaraController extends Controller
     public function destroy(Acara $acara)
     {
         Acara::destroy($acara->id);
-        return redirect('/dosen/acara')->with('success', 'Acara telah dihapus / dinonaktifkan!');
+        return redirect('/koordinator/acara')->with('success', 'Acara telah dihapus / dinonaktifkan!');
     }
 
     public function restore(Request $request)
     {
         Acara::where('id', $request->id)->restore();
-        return redirect('/dosen/acara')->with('success', 'Acara telah dipulihkan / diaktifkan!');
+        return redirect('/koordinator/acara')->with('success', 'Acara telah dipulihkan / diaktifkan!');
     }
 
     public function instruktur(Acara $acara)

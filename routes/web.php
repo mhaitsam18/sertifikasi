@@ -202,7 +202,6 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('dosen')->group(function () {
         Route::prefix('dosen')->group(function () {
-
             //KOORDINATOR
             Route::prefix('acara')->group(function () {
                 Route::controller(DosenAcaraController::class)->group(function () {
@@ -243,6 +242,19 @@ Route::middleware('auth')->group(function () {
             Route::resource('/nilai', NilaiController::class);
         });
         Route::prefix('koordinator')->group(function () {
+
+            Route::prefix('acara')->group(function () {
+                Route::controller(DosenAcaraController::class)->group(function () {
+                    Route::get('/', 'index')->name('dosen.acara.index');
+                    Route::prefix('instruktur')->group(function () {
+                        Route::get('/{acara}', 'instruktur')->name('dosen.acara.instruktur');
+                        Route::post('/hapus', 'hapusInstruktur')->name('dosen.acara.instruktur.hapus');
+                        Route::post('/tambah', 'tambahInstruktur')->name('dosen.acara.instruktur.tambah');
+                    }); //UNTUK DOSEN MEMILIH INSTRUKTUR ACARA
+                    Route::get('/peserta/{acara}', 'peserta')->name('dosen.acara.peserta');
+                });
+            });
+
             Route::get('/nilai', [KoordinatorNilaiController::class, 'index'])->name('dosen.koordinator.nilai.index');
             Route::resource('/sertifikat', SertifikatController::class)->middleware(['dosen']); //KOORDINATOR
 

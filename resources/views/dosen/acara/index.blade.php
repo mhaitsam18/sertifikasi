@@ -31,7 +31,7 @@
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Data Pelatihan & Sertifikasi</h4>
                     <div class="table-responsive col-lg-12">
-                        <a href="/dosen/acara/create" class="btn btn-primary mb-3">Buat Pelatihan / Sertifikasi Baru</a>
+                        <a href="/koordinator/acara/create" class="btn btn-primary mb-3">Buat Pelatihan / Sertifikasi Baru</a>
                         <table id="basic-datatable" class="table dt-responsive nowrap">
                             <thead>
                                 <tr>
@@ -72,10 +72,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="/dosen/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
-                                            <a href="/dosen/acara/{{ $acara->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/dosen/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
-                                            <a href="/dosen/acara/instruktur/{{ $acara->id }}" class="btn btn-success btn-sm">Data Instruktur</a>
+                                            <a href="/koordinator/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
+                                            <a href="/koordinator/acara/{{ $acara->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/koordinator/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
+                                            <a href="/koordinator/acara/instruktur/{{ $acara->id }}" class="btn btn-success btn-sm">Data Instruktur</a>
                                             <a href="/dosen/kelasAcara?acara_id={{ $acara->id }}" class="btn btn-dark btn-sm">Data Kelas</a>
                                             <a href="/dosen/materi?acara_id={{ $acara->id }}" class="btn btn-secondary btn-sm">Data Materi</a>
                                             <a href="/dosen/jadwalAcara?acara_id={{ $acara->id }}" class="btn btn-danger btn-sm">Kelola Jadwal</a>

@@ -79,7 +79,7 @@ class BeritaAcaraController extends Controller
             ]);
         }
 
-        return redirect("/berita-acara/$beritaAcara->id")->with('success', 'Berita Acara Berhasil diinput!');
+        return redirect("/instruktur/berita-acara/$beritaAcara->id")->with('success', 'Berita Acara Berhasil diinput!');
     }
 
     /**

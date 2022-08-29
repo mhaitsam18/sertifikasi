@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Peserta</li>
                 </ol>
             </nav>
@@ -121,7 +121,7 @@ use Illuminate\Support\Carbon;
                     kelas_acara_id: kelas_acara_id
                 },
                 success: function() {
-                    document.location.href = "/dosen/acara/peserta/<?= $acara->id ?>";
+                    document.location.href = "/koordinator/acara/peserta/<?= $acara->id ?>";
                 }
             });
             

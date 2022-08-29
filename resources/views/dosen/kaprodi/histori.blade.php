@@ -74,7 +74,7 @@
                                             @endif
                                         </td> --}}
                                         <td>
-                                            <a href="/dosen/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
+                                            <a href="/koordinator/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
                                             <a href="/kaprodi/peserta?acara_id={{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
                                         </td>
                                     </tr>

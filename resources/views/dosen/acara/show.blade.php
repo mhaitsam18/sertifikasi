@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Detail</li>
                 </ol>
             </nav>
@@ -49,18 +49,18 @@ use Illuminate\Support\Carbon;
                 <a href="/dosen/kelasAcara?acara_id={{ $acara->id }}" class="btn btn-soft-success btn-sm"><i class="uil uil-edit mr-1"></i>Kelola Kelas</a>
             </div>
             <div class="btn-group ml-2 d-none d-sm-inline-block">
-                <a href="/dosen/acara/{{ $acara->id }}/edit/" class="btn btn-soft-primary btn-sm"><i class="uil uil-edit mr-1"></i>Edit</a>
+                <a href="/koordinator/acara/{{ $acara->id }}/edit/" class="btn btn-soft-primary btn-sm"><i class="uil uil-edit mr-1"></i>Edit</a>
             </div>
             <div class="btn-group d-none d-sm-inline-block">
                 @if ($acara->deleted_at)
-                    <form action="/dosen/acara/restore/" method="post" class="d-inline">
+                    <form action="/koordinator/acara/restore/" method="post" class="d-inline">
                         {{-- @method('restore') --}}
                         <input type="hidden" name="id" value="{{ $acara->id }}">
                         @csrf
                         <button type="submit" class="btn btn-soft-danger btn-sm" onclick="return confirm('Are Your Sure?')"><i class="uil uil-redo-alt mr-1"></i>Delete</button>
                     </form>
                 @else
-                    <form action="/dosen/acara/{{ $acara->id }}" method="post" class="d-inline">
+                    <form action="/koordinator/acara/{{ $acara->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-soft-danger btn-sm" onclick="return confirm('Are Your Sure?')"><i class="uil uil-trash-alt mr-1"></i>Delete</button>
@@ -372,7 +372,7 @@ use Illuminate\Support\Carbon;
                                         <p class="text-muted font-size-13 mb-0">{{ Carbon::parse($a->pelaksanaan_buka)->translatedFormat('M') }}</p>
                                     </div>
                                     <div class="media-body overflow-hidden">
-                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/dosen/acara/{{ $a->id }}" class="text-dark">{{ $a->nama }}</a></h5>
+                                        <h5 class="font-size-15 mt-2 mb-1"><a href="/koordinator/acara/{{ $a->id }}" class="text-dark">{{ $a->nama }}</a></h5>
                                         <p class="text-muted font-size-13 text-truncate mb-0">{{ Str::limit(strip_tags($a->deskripsi), 35, '...') }}</p>
                                     </div>
                                 </div>
@@ -380,7 +380,7 @@ use Illuminate\Support\Carbon;
                         @endforeach
                     </ul>
                     <div class="text-center">
-                        <a href="/dosen/acara" class="btn btn-sm border btn-white">
+                        <a href="/koordinator/acara" class="btn btn-sm border btn-white">
                             <i data-feather="loader" class="icon-dual icon-xs mr-2"></i>
                             Load more
                         </a>

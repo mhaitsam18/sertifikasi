@@ -68,12 +68,12 @@ class MahasiswaNotifikasiController extends Controller
     public function show(Notifikasi $notifikasi)
     {
         if ($notifikasi->kategori_notifikasi_id == 4) {
-            $url = "/acara/$notifikasi->sub_id";
+            $url = "/mahasiswa/acara/$notifikasi->sub_id";
         } elseif ($notifikasi->kategori_notifikasi_id == 5) {
             $url = "/peserta/histori";
         } elseif ($notifikasi->kategori_notifikasi_id == 6) {
             $slug = Berita::find($notifikasi->sub_id)->slug;
-            $url = "/berita/$slug";
+            $url = "/mahasiswa/berita/$slug";
         }
         return redirect($url);
     }

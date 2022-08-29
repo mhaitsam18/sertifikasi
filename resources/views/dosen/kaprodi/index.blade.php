@@ -74,8 +74,8 @@
                                             @endif
                                         </td> --}}
                                         <td>
-                                            <a href="/dosen/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
-                                            <a href="/dosen/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
+                                            <a href="/koordinator/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
+                                            <a href="/koordinator/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
                                         </td>
                                     </tr>
                                 @endforeach

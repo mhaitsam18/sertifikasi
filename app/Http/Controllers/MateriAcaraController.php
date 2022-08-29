@@ -48,7 +48,7 @@ class MateriAcaraController extends Controller
             'materi' => 'required|max:255'
         ]);
         Materi::create($validateData);
-        return redirect('/dosen/materi?acara_id=' . $request->acara_id)->with('success', 'Materi baru telah ditambahkan!');
+        return redirect('/koodinator/acara/materi?acara_id=' . $request->acara_id)->with('success', 'Materi baru telah ditambahkan!');
     }
 
     /**
@@ -95,7 +95,7 @@ class MateriAcaraController extends Controller
         ]);
         Materi::where('id', $materi->id)
             ->update($validateData);
-        return redirect('/dosen/materi?acara_id=' . $request->acara_id)->with('success', 'Data Materi berhasil diperbarui!');
+        return redirect('/koodinator/acara/materi?acara_id=' . $request->acara_id)->with('success', 'Data Materi berhasil diperbarui!');
     }
 
     /**

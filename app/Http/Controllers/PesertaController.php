@@ -84,7 +84,7 @@ class PesertaController extends Controller
         }
         $validateData['waktu_transfer'] = $request->tanggal_transfer . ' ' . $request->waktu_transfer;
         Pembayaran::create($validateData);
-        return redirect('/pembayaran')->with('success', 'Bukti Transfer Terkirim!');
+        return redirect('/peserta/pembayaran')->with('success', 'Bukti Transfer Terkirim!');
     }
 
     public function pembayaran()

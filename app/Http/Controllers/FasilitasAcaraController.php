@@ -49,7 +49,7 @@ class FasilitasAcaraController extends Controller
             'keterangan' => 'max:255'
         ]);
         Fasilitas::create($validateData);
-        return redirect('/dosen/fasilitas?acara_id=' . $request->acara_id)->with('success', 'Fasilitas baru telah ditambahkan!');
+        return redirect('/koordinator/acara/fasilitas?acara_id=' . $request->acara_id)->with('success', 'Fasilitas baru telah ditambahkan!');
     }
 
     /**
@@ -93,7 +93,7 @@ class FasilitasAcaraController extends Controller
         ]);
         Fasilitas::where('id', $fasilitas->id)
             ->update($validateData);
-        return redirect('/dosen/fasilitas?acara_id=' . $request->acara_id)->with('success', 'Data Fasilitas berhasil diperbarui!');
+        return redirect('/koordinator/acara/fasilitas?acara_id=' . $request->acara_id)->with('success', 'Data Fasilitas berhasil diperbarui!');
     }
 
     /**

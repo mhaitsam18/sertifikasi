@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/acara/{{ $acara->id }}">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara/{{ $acara->id }}">Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Instruktur</li>
                 </ol>
             </nav>
@@ -52,7 +52,7 @@
                                         <td>{{ $instruktur->nip }}</td>
                                         <td>{{ $instruktur->user->nama }}</td>
                                         <td>
-                                            <form action="/dosen/acara/instruktur/hapus/" method="post">
+                                            <form action="/koordinator/acara/instruktur/hapus/" method="post">
                                                 @csrf
                                                 <input type="hidden" name="dosen_id" value="{{ $instruktur->dosen_id }}">
                                                 <input type="hidden" name="acara_id" value="{{ $instruktur->acara_id }}">
@@ -94,7 +94,7 @@
                                         <td>{{ $dosen->nip }}</td>
                                         <td>{{ $dosen->nama }}</td>
                                         <td>
-                                            <form action="/dosen/acara/instruktur/tambah/" method="post">
+                                            <form action="/koordinator/acara/instruktur/tambah/" method="post">
                                                 @csrf
                                                 <input type="hidden" name="acara_id" value="{{ $acara->id }}">
                                                 <input type="hidden" name="dosen_id" value="{{ $dosen->dosen_id }}">

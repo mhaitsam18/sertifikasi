@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
             <nav aria-label="breadcrumb" class="float-right mt-1">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dosen">Dosen</a></li>
-                    <li class="breadcrumb-item"><a href="/dosen/acara">Acara</a></li>
+                    <li class="breadcrumb-item"><a href="/koordinator/acara">Acara</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Edit</li>
                 </ol>
             </nav>
@@ -34,7 +34,7 @@ use Illuminate\Support\Carbon;
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Ubah Data Acara</h4>
-                    <form action="/dosen/acara/{{ $acara->id }}" method="post" enctype="multipart/form-data">
+                    <form action="/koordinator/acara/{{ $acara->id }}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="form-group">

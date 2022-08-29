@@ -59,7 +59,7 @@
                 @can('koordinator')
                     <li class="menu-title">Koordinator</li>
                     <li>
-                        <a href="/dosen/acara">
+                        <a href="/koordinator/acara">
                             <i data-feather="clipboard"></i>
                             <span> Master Pelatihan & Sertifikasi </span>
                         </a>

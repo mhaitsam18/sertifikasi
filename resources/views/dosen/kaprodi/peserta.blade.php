@@ -111,7 +111,7 @@ use Illuminate\Support\Carbon;
                     kelas_acara_id: kelas_acara_id
                 },
                 success: function() {
-                    document.location.href = "/dosen/acara/peserta/<?= $acara->id ?>";
+                    document.location.href = "/koordinator/acara/peserta/<?= $acara->id ?>";
                 }
             });
             
