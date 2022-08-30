@@ -1,6 +1,9 @@
 @extends('dosen.layouts.main')
 
 @section('container')
+@php
+    use App\Models\Chat;
+@endphp
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
@@ -38,7 +41,7 @@
 
                 <!-- profile  -->
                 <div class="mt-5 pt-2 border-top">
-                    <h4 class="mb-3 font-size-15">Tentang</h4>
+                    {{-- <h4 class="mb-3 font-size-15">Tentang</h4>
                     <p class="text-muted mb-4">{{ auth()->user()->tentang}}</p>
                     <div class="table-responsive">
                         <table class="table table-borderless mb-0 text-muted">
@@ -58,8 +61,8 @@
 
                             </tbody>
                         </table>
-                    </div>
-                </div>
+                    </div>--}}
+                </div> 
                 <div class="mt-3 pt-2 border-top">
                     <h4 class="mb-3 font-size-15">Informasi Kontak</h4>
                     <div class="table-responsive">
@@ -317,21 +320,60 @@
                         <h5 class="mt-3">Chat</h5>
                         <ul class="list-unstyled">
                             @foreach ($data_pesan as $pesan)
+                                @php
+                                    $chat = Chat::where(function ($query) use ($pesan) {
+                                        $query->where("pengirim_id", $pesan->id)
+                                            ->orWhere("penerima_id", $pesan->id);
+                                        })
+                                        ->orderBy('chat.id', 'DESC')
+                                        ->first();
+                                @endphp
                                 <li class="py-3 border-bottom">
                                     <div class="media">
                                         <div class="mr-3">
-                                            <img src="{{ asset('storage/'.$pesan->user->foto) }}" alt="" class="avatar-md rounded-circle">
+                                            <img src="{{ asset('storage/'.$pesan->foto) }}" alt="" class="avatar-md rounded-circle">
                                         </div>
                                         <div class="media-body overflow-hidden">
                                             <h5 class="font-size-15 mt-2 mb-1">
-                                                <a href="#" class="text-dark">{{ $pesan->user->nama }}</a>
+                                                <a href="#" class="text-dark chat" data-user_id="{{ $pesan->id }}">{{ $pesan->nama }}</a>
                                             </h5>
-                                            <p class="text-muted font-size-13 text-truncate mb-0"> The languages only differ in their grammar</p>
+                                            <p class="text-muted font-size-13 text-truncate mb-0"> 
+                                                @if (isset($chat))
+                                                    {{ $chat->pesan }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
+                        <div class="chatbox overflow-hidden" style="display: none;" id="show-chat">
+                            <div class="bg-primary p-2">
+                                <div class="media">
+                                    <img src="/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded ml-1 mr-2">
+                                    <div class="media-body">
+                                        <h5 class="font-size-13 text-white m-0"></h5>
+                                        <small class="text-white-50"><i class="uil uil-circle font-size-11 text-success mr-1"></i></small>
+                                    </div>
+                                    <div class="float-right font-size-18 mt-1">
+                                        <a href="#" class="text-white mr-2"><i class="uil uil-comment-alt-notes font-size-16"></i></a>
+                                        <a href="#" class="chat-close text-white mr-2"><i class="uil uil-multiply font-size-14"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-conversation p-2">
+                                <ul class="conversation-list slimscroll" style="max-height: 220px;"  id="show-chat-2">
+                                    
+                                </ul>
+                                <div class="position-relative chat-input">
+                                    <textarea type="text" class="form-control" placeholder="Type your message..."></textarea>
+                                    <div class="chat-link">
+                                        <a href="#" class="p-1"><i class="uil-navigator"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="text-center">
                             <a href="#" class="btn btn-primary btn-sm">Load more</a>
@@ -1184,4 +1226,91 @@
         <!-- end card -->
     </div>
 </div>
+@endsection
+
+@section('script')
+{{-- <script src="/js/pages/email-inbox.init.js"></script> --}}
+<script>
+    
+    $(".chat-close").click(function(c) {
+        return c.preventDefault(), $(".chatbox").css({
+            opacity: "0"
+        }).hide(), !1
+    }), $(".chat").click(function(c) {
+        var loading = '<div class="bg-primary p-2"><div class="media"><div class="media-body"><div class="spinner-border text-secondary" role="status"><span class="sr-only">Loading...</span></div><h5 class="font-size-13 text-white m-0"></h5></div><div class="float-right font-size-18 mt-1"><a href="#" class="text-white mr-2"><i class="uil uil-comment-alt-notes font-size-16"></i></a><a href="#" class="chat-close text-white mr-2"><i class="uil uil-multiply font-size-14"></i></a></div></div></div><div class="chat-conversation p-2"><ul class="conversation-list slimscroll" style="max-height: 220px;"></ul><div class="position-relative chat-input"><input type="text" class="form-control" placeholder="Type your message..."><div class="chat-link"><a href="#" class="p-1"><i class="uil-image"></i></a><a href="#" class="p-1"><i class="uil-navigator"></i></a></div></div></div>';
+        $('#show-chat').html(loading);
+
+        const user_id = $(this).data('user_id');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'post',
+            url: '/chat/get-chat/',
+            data: {
+                user_id: user_id
+            },
+            success: function(data) {
+                $('#show-chat').html(data);
+                $('#show-chat').scrollTop($('#show-chat')[0].scrollHeight);
+            }
+        });
+        return c.preventDefault(), $(".chatbox").css({
+            opacity: "0",
+            display: "block"
+        }).show().animate({
+            opacity: 1
+        }), !1
+    });
+
+    
+
+    function kirimChat(other_id) {
+        var pesan = document.getElementById("pesan").value;
+        $.ajax({
+            type: 'post',
+            url: '/chat/kirim-chat',
+            data: {
+                other_id: other_id,
+                pesan: pesan
+            },
+            success: function(data) {
+                $('#pesan').val('');
+                $('#show-chat').html(data);
+            }
+        });
+    }
+
+    function getCaret(el) {
+        if (el.selectionStart) {
+            return el.selectionStart;
+        } else if (document.selection) {
+            el.focus();
+            var r = document.selection.createRange();
+            if (r == null) {
+                return 0;
+            }
+            var re = el.createTextRange(),
+                rc = re.duplicate();
+            re.moveToBookmark(r.getBookmark());
+            rc.setEndPoint('EndToStart', re);
+            return rc.text.length;
+        }
+        return 0;
+    }
+
+    $('.text-chat').keyup(function(event) {
+        if (event.keyCode == 13) {
+            var content = this.value;
+            var caret = getCaret(this);
+            if (event.shiftKey) {
+                this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content.length);
+                event.stopPropagation();
+            } else {
+                this.value = content.substring(0, caret - 1) + content.substring(caret, content.length);
+                $('#kirim-chat').click();
+            }
+        }
+    });
+</script>
 @endsection
