@@ -104,12 +104,12 @@
     </div>
 </div>
 @include('auth.layouts.script')
-{{-- $(document).ready(function() {
-    setInterval(function() {
-        $('.live<?= $other->id ?>').load('<?= "get-chat-2/".$other->id ?>')
-    }, 1000);
-}); --}}
 <script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $('.live<?= $other->id ?>').load('<?= "/chat/get-chat-3?other_id=".$other->id ?>')
+        }, 1000);
+    });
     $('#show-chat-2').scrollTop($('#show-chat-2')[0].scrollHeight);
     $(document).ready(function() {
         $(".chat-close").click(function(c) {

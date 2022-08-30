@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Acara;
 use App\Models\Berita;
+use App\Models\Chat;
 use App\Models\JadwalAcara;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
@@ -77,6 +78,7 @@ class MahasiswaHomeController extends Controller
                     'tanggal' => date('Y-m-d'),
                 ])
                 ->get(),
+            'data_pesan' => User::where('id', '!=', auth()->user()->id)->get(),
             'tanggal_lahir' => Carbon::parse(auth()->user()->tanggal_lahir)->translatedFormat('d F Y')
         ]);
     }

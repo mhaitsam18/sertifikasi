@@ -81,6 +81,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/chat', [ChatController::class, 'index'])->name("auth.chat.index");
     Route::get('/chat/get-chat-2', [ChatController::class, 'getChat2'])->name("auth.chat.get2");
+    Route::get('/chat/get-chat-3', [ChatController::class, 'getChat3'])->name("auth.chat.get3");
     Route::post('/chat/get-chat', [ChatController::class, 'getChat'])->name("auth.chat.get");
     Route::post('/chat/kirim-chat', [ChatController::class, 'kirimChat'])->name("auth.chat.kirim");
     Route::post('/logout', [AuthController::class, 'logout'])->name("auth.logout");

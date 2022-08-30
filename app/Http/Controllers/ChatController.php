@@ -58,6 +58,27 @@ class ChatController extends Controller
             "my" => User::find($user['my_id'])
         ]);
     }
+    public function getChat3(Request $request)
+    {
+        $user = [
+            'my_id' => auth()->user()->id,
+            'other_id' => $request->other_id
+        ];
+
+        $chat = Chat::where(function ($query) use ($user) {
+            $query->where("pengirim_id", $user['my_id'])
+                ->where("penerima_id", $user['other_id']);
+        })->orWhere(function ($query) use ($user) {
+            $query->where("penerima_id", $user['my_id'])
+                ->where("pengirim_id", $user['other_id']);
+        })->oldest()->get();
+
+        echo view('auth.chat.get-chat-2', [
+            "data_chat" => $chat,
+            "other" => User::find($user['other_id']),
+            "my" => User::find($user['my_id'])
+        ]);
+    }
 
     public function kirimChat(Request $request)
     {

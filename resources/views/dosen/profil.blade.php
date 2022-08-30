@@ -315,15 +315,23 @@
                     </div>
 
                     <!-- messages -->
-                    <div class="tab-pane" id="pills-messages" role="tabpanel"
-                    aria-labelledby="pills-messages-tab">
+
+                    <div class="tab-pane" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">
                         <h5 class="mt-3">Chat</h5>
                         <ul class="list-unstyled">
                             @foreach ($data_pesan as $pesan)
                                 @php
-                                    $chat = Chat::where(function ($query) use ($pesan) {
-                                        $query->where("pengirim_id", $pesan->id)
-                                            ->orWhere("penerima_id", $pesan->id);
+                                    $user = [
+                                        'my_id' => auth()->user()->id,
+                                        'other_id' => $pesan->id,
+                                    ];
+                                    $chat = Chat::where(function ($query) use ($user) {
+                                        $query->where("pengirim_id", $user['other_id'])
+                                            ->Where("penerima_id", $user['my_id']);
+                                        })
+                                        ->orWhere(function ($query) use ($user) {
+                                            $query->where("pengirim_id", $user['my_id'])
+                                                ->Where("penerima_id", $user['other_id']);
                                         })
                                         ->orderBy('chat.id', 'DESC')
                                         ->first();
