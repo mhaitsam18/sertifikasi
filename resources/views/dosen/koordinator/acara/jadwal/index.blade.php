@@ -101,7 +101,7 @@ use Illuminate\Support\Carbon;
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
                                         </form>
-                                        <a href="/koordinator/acara/jadwal-acara/bap/{{ $jadwal->jadwal_id }}" class="btn btn-info btn-sm">Lihat BAP</a>
+                                        <a href="/koordinator/acara/jadwal-acara/bap/{{ $jadwal->beritaAcara->id }}" class="btn btn-info btn-sm">Lihat BAP</a>
                                     </td>
                                 </tr>
                             @endforeach

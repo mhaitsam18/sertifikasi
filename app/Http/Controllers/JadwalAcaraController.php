@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Acara;
+use App\Models\BeritaAcara;
 use App\Models\JadwalAcara;
 use App\Models\Dosen;
 use App\Models\KelasAcara;
+use App\Models\Presensi;
 use App\Models\StatusJadwal;
 use Illuminate\Http\Request;
 
@@ -208,5 +210,14 @@ class JadwalAcaraController extends Controller
     {
         JadwalAcara::destroy($jadwalAcara->id);
         return back()->with('success', 'Jadwal  telah dihapus / dinonaktifkan!');
+    }
+
+    public function showBerita(BeritaAcara $beritaAcara)
+    {
+        return view('dosen.koordinator.acara.jadwal.berita-acara', [
+            'title' => 'Sertifikasi | Invoice',
+            'beritaAcara' => $beritaAcara,
+            'list_presensi' => Presensi::where('berita_acara_id', $beritaAcara->id)->get(),
+        ]);
     }
 }

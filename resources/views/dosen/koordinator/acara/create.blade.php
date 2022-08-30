@@ -30,11 +30,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mt-0 mb-1">Tambah Data Acara</h4>
+                    <h4 class="header-title mt-0 mb-1">Tambah Data Pelatihan & Sertifikasi</h4>
                     <form action="/koordinator/acara" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="nama">Nama Acara</label>
+                            <label for="nama">Nama Acara<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">
                             @error('nama')
                                 <div class="invalid-feedback">
@@ -43,7 +43,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="kategori_acara_id">Kategori Acara</label>
+                            <label for="kategori_acara_id">Kategori Acara<span class="text-danger">*</span></label>
                             <select class="form-control @error('kategori_acara_id') is-invalid @enderror" name="kategori_acara_id" id="kategori_acara_id" required value="{{ old('kategori_acara_id') }}">
                                 <option value="" selected disabled>Pilih Kategori Acara</option>
                                 @foreach ($list_kategori_acara as $kategori)
@@ -61,7 +61,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <label for="deskripsi" class="form-label">Deskripsi<span class="text-danger">*</span></label>
                             @error('deskripsi')
                                 <p class="text-danger">
                                     {{ $message }}
@@ -74,7 +74,7 @@
                             <h5>Pendaftaran Buka</h5>
                             <div class="row">
                                 <div class="col">
-                                    <label for="deskripsi">Tanggal</label>
+                                    <label for="deskripsi">Tanggal<span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('tanggal_pendaftaran_buka') is-invalid @enderror" name="tanggal_pendaftaran_buka" id="tanggal_pendaftaran_buka" value="{{ old('tanggal_pendaftaran_buka') }}">
                                     @error('tanggal_pendaftaran_buka')
                                         <div class="invalid-feedback">
@@ -83,7 +83,7 @@
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="deskripsi">Waktu</label>
+                                    <label for="deskripsi">Waktu<span class="text-danger">*</span></label>
                                     <input type="time" class="form-control @error('waktu_pendaftaran_buka') is-invalid @enderror" name="waktu_pendaftaran_buka" id="waktu_pendaftaran_buka" value="{{ old('waktu_pendaftaran_buka') }}">
                                     @error('waktu_pendaftaran_buka')
                                         <div class="invalid-feedback">
@@ -97,7 +97,7 @@
                             <h5>Pendaftaran Tutup</h5>
                             <div class="row">
                                 <div class="col">
-                                    <label for="deskripsi">Tanggal</label>
+                                    <label for="deskripsi">Tanggal<span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('tanggal_pendaftaran_tutup') is-invalid @enderror" name="tanggal_pendaftaran_tutup" id="tanggal_pendaftaran_tutup" value="{{ old('tanggal_pendaftaran_tutup') }}">
                                     @error('tanggal_pendaftaran_tutup')
                                         <div class="invalid-feedback">
@@ -106,7 +106,7 @@
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="deskripsi">Waktu</label>
+                                    <label for="deskripsi">Waktu<span class="text-danger">*</span></label>
                                     <input type="time" class="form-control @error('waktu_pendaftaran_tutup') is-invalid @enderror" name="waktu_pendaftaran_tutup" id="waktu_pendaftaran_tutup" value="{{ old('waktu_pendaftaran_tutup') }}">
                                     @error('waktu_pendaftaran_tutup')
                                         <div class="invalid-feedback">
@@ -120,7 +120,7 @@
                             <h5>Pelaksanaan Buka</h5>
                             <div class="row">
                                 <div class="col">
-                                    <label for="deskripsi">Tanggal</label>
+                                    <label for="deskripsi">Tanggal<span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('tanggal_pelaksanaan_buka') is-invalid @enderror" name="tanggal_pelaksanaan_buka" id="tanggal_pelaksanaan_buka" value="{{ old('tanggal_pelaksanaan_buka') }}">
                                     @error('tanggal_pelaksanaan_buka')
                                         <div class="invalid-feedback">
@@ -129,7 +129,7 @@
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="deskripsi">Waktu</label>
+                                    <label for="deskripsi">Waktu<span class="text-danger">*</span></label>
                                     <input type="time" class="form-control @error('waktu_pelaksanaan_buka') is-invalid @enderror" name="waktu_pelaksanaan_buka" id="waktu_pelaksanaan_buka" value="{{ old('waktu_pelaksanaan_buka') }}">
                                     @error('waktu_pelaksanaan_buka')
                                         <div class="invalid-feedback">
@@ -140,10 +140,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h5>Pendaftaran Tutup</h5>
+                            <h5>Pelaksanaan Tutup</h5>
                             <div class="row">
                                 <div class="col">
-                                    <label for="deskripsi">Tanggal</label>
+                                    <label for="deskripsi">Tanggal<span class="text-danger">*</span></label>
                                     <input type="date" class="form-control @error('tanggal_pelaksanaan_tutup') is-invalid @enderror" name="tanggal_pelaksanaan_tutup" id="tanggal_pelaksanaan_tutup" value="{{ old('tanggal_pelaksanaan_tutup') }}">
                                     @error('tanggal_pelaksanaan_tutup')
                                         <div class="invalid-feedback">
@@ -152,7 +152,7 @@
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="deskripsi">Waktu</label>
+                                    <label for="deskripsi">Waktu<span class="text-danger">*</span></label>
                                     <input type="time" class="form-control @error('waktu_pelaksanaan_tutup') is-invalid @enderror" name="waktu_pelaksanaan_tutup" id="waktu_pelaksanaan_tutup" value="{{ old('waktu_pelaksanaan_tutup') }}">
                                     @error('waktu_pelaksanaan_tutup')
                                         <div class="invalid-feedback">
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lokasi">Lokasi Acara</label>
+                            <label for="lokasi">Lokasi Acara<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('lokasi') is-invalid @enderror" name="lokasi" id="lokasi" required value="{{ old('lokasi') }}">
                             @error('lokasi')
                                 <div class="invalid-feedback">
@@ -172,7 +172,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="biaya">Biaya Acara</label>
+                            <label for="biaya">Biaya Acara<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('biaya') is-invalid @enderror" name="biaya" id="rupiah" required value="{{ old('biaya') }}">
                             @error('biaya')
                                 <div class="invalid-feedback">
@@ -181,8 +181,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="kuota">Kuota</label>
-                            <input type="number" class="form-control @error('kuota') is-invalid @enderror" name="kuota" id="kuota" value="{{ old('kuota') }}">
+                            <label for="kuota">Kuota<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control @error('kuota') is-invalid @enderror" name="kuota" id="kuota" value="{{ old('kuota') }}" min="0">
                             @error('kuota')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -190,15 +190,19 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="thumbnail">Thumbnail Acara</label>
+                            <label for="thumbnail">Poster Pelatihan/Sertifikasi<span class="text-danger">*</span></label>
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail" id="thumbnail" onchange="previewThumbnail()">
+                            <small>Format file: jpg, jpeg, png</small>
                             @error('thumbnail')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
+                        <p class="text-muted">
+                            <span class="text-danger">*</span>) Wajib diisi
+                        </p>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>

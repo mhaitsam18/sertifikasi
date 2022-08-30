@@ -51,7 +51,7 @@ use App\Http\Controllers\MahasiswaNotifikasiController;
 
 
 //AUTH
-Route::middleware(['guest'])->group(function () {
+Route::middleware('guest')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/', 'index')->name("index");
         Route::get('/login', 'login')->name("login");
@@ -72,8 +72,8 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/{acara}', 'showAcara')->name('guest.acara.show');
         });
         Route::prefix('berita')->group(function () {
-            Route::get('/berita', 'berita')->name('guest.berita.index');
-            Route::get('/berita/{berita:slug}', 'showBerita')->name('guest.berita.show');
+            Route::get('/', 'berita')->name('guest.berita.index');
+            Route::get('/{berita:slug}', 'showBerita')->name('guest.berita.show');
         });
     });
 });
@@ -157,24 +157,24 @@ Route::middleware('auth')->group(function () {
         });
     });
     Route::middleware('mahasiswa')->group(function () {
-        Route::prefix('berita')->group(function () {
-            Route::controller(MahasiswaBeritaController::class)->group(function () {
-                Route::get('/', 'index')->name('mahasiswa.berita.index');
-                Route::post('/like', 'like')->name('mahasiswa.berita.like');
-                Route::post('/komentar', 'komentar')->name('mahasiswa.berita.komentar');
-                Route::get('/{berita:slug}', 'show')->name('mahasiswa.berita.show');
-            });
-        });
-        Route::prefix('acara')->group(function () {
-            Route::controller(MahasiswaAcaraController::class)->group(function () {
-                Route::get('/', 'index')->name('mahasiswa.acara.index');
-                Route::get('/diikuti', 'diikuti')->name('mahasiswa.acara.diikuti');
-                Route::get('/{acara}', 'show')->name('mahasiswa.acara.show');
-                Route::post('/rateCreate', 'rateCreate')->name('mahasiswa.acara.rate-create');
-                Route::post('/rateUpdate/{rating}', 'rateUpdate')->name('mahasiswa.acara.rate-create');
-            });
-        });
         Route::prefix('mahasiswa')->group(function () {
+            Route::prefix('berita')->group(function () {
+                Route::controller(MahasiswaBeritaController::class)->group(function () {
+                    Route::get('/', 'index')->name('mahasiswa.berita.index');
+                    Route::post('/like', 'like')->name('mahasiswa.berita.like');
+                    Route::post('/komentar', 'komentar')->name('mahasiswa.berita.komentar');
+                    Route::get('/{berita:slug}', 'show')->name('mahasiswa.berita.show');
+                });
+            });
+            Route::prefix('acara')->group(function () {
+                Route::controller(MahasiswaAcaraController::class)->group(function () {
+                    Route::get('/', 'index')->name('mahasiswa.acara.index');
+                    Route::get('/diikuti', 'diikuti')->name('mahasiswa.acara.diikuti');
+                    Route::get('/{acara}', 'show')->name('mahasiswa.acara.show');
+                    Route::post('/rateCreate', 'rateCreate')->name('mahasiswa.acara.rate-create');
+                    Route::post('/rateUpdate/{rating}', 'rateUpdate')->name('mahasiswa.acara.rate-create');
+                });
+            });
             Route::controller(MahasiswaHomeController::class)->group(function () {
                 Route::get('/', 'index')->name('mahasiswa.index');
                 Route::get('/profil', 'profil')->name('mahasiswa.profil');
@@ -215,16 +215,15 @@ Route::middleware('auth')->group(function () {
                 Route::put('/edit/{dosen}', 'update')->name('dosen.update'); //URL SALAH
                 Route::get('/destroy/{user}', 'destroy')->name('dosen.destroy'); //URL SALAH
             });
-            Route::resource('/acara', DosenAcaraController::class);
         });
         Route::prefix('instruktur')->group(function () {
             Route::controller(InstrukturController::class)->group(function () {
                 Route::get('/', 'index')->name('dosen.instruktur.index');
                 Route::get('/list', 'list')->name('dosen.instruktur.list');
-                Route::get('/acara/{acara}', 'acara')->name('dosen.instruktur.acara');
                 Route::get('/jadwal/{kelas_acara}', 'jadwal')->name('dosen.instruktur.jadwal');
                 Route::get('/peserta/{kelas_acara}', 'peserta')->name('dosen.instruktur.peserta');
                 Route::get('/histori', 'histori')->name('dosen.instruktur.histori');
+                Route::get('/acara/{acara}', 'acara')->name('dosen.instruktur.acara');
             });
             Route::controller(NilaiController::class)->group(function () {
                 Route::put('/updateTanpaSertifikat/{nilai}', 'updateTanpaSertifikat')->name('dosen.instruktur.update-nilai-tanpa-sertifikat');
@@ -248,12 +247,14 @@ Route::middleware('auth')->group(function () {
                     Route::post('/ubahKelasPeserta', 'ubahKelasPeserta')->name('dosen.acara.ubah-kelas-peserta');
                     Route::post('/ubahStatusPeserta', 'ubahStatusPeserta')->name('dosen.acara.ubah-status-peserta');
                 });
+                Route::resource('/', DosenAcaraController::class);
 
                 Route::resource('/kelas-acara', KelasAcaraController::class);
 
                 Route::post('/ubahStatusJadwal', [JadwalAcaraController::class, 'ubahStatusJadwal'])->name('dosen.acara.jadwal.ubah-status-jadwal');
 
                 Route::resource('/jadwal-acara', JadwalAcaraController::class);
+                Route::get('/jadwal-acara/bap/{berita_acara}', [JadwalAcaraController::class, 'showBerita'])->name('dosen.acara.jadwal.berita-acara');
                 Route::resource('/materi', MateriAcaraController::class)->middleware(['dosen']);
                 Route::controller(FasilitasAcaraController::class)->group(function () {
                     Route::get('/fasilitas', 'index')->name('dosen.koordinator.acara.fasilitas.index');

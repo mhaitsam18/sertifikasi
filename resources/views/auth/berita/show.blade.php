@@ -23,7 +23,9 @@
                 <img src="https://source.unsplash.com/1200x400/?{{ $berita->judul }}" alt="{{ $berita->judul }}" class="img-fluid mt-3">
             @endif
             <article class="my-3 fs-5">
-                {!! $berita->isi !!}
+                <div class="" style="text-align: justify !important">
+                    {!! $berita->isi !!}
+                </div>
             </article>
             {{-- <a href="/dashboard/berita" class="d-block">Back to Blog</a> --}}
         </div>

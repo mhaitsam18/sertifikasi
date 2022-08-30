@@ -44,7 +44,7 @@ class BeritaAcaraController extends Controller
             'list_peserta' => Peserta::select('peserta.*')
                 ->where([
                     'kelas_acara.id' => $jadwalAcara->kelasAcara->id,
-                    'status_peserta_id' => 3
+                    // 'status_peserta_id' => 3
                 ])
                 ->join('kelas_acara', 'kelas_acara.id', '=', 'peserta.kelas_acara_id')
                 ->get(),
@@ -71,12 +71,14 @@ class BeritaAcaraController extends Controller
 
         $beritaAcara = BeritaAcara::create($validateData);
         foreach ($request->peserta_id as $key => $value) {
-            Presensi::create([
-                'peserta_id' => $value,
-                'berita_acara_id' => $beritaAcara->id,
-                'is_present' => (isset($request->is_present[$key])) ? 1 : 0,
-                'keterangan' => (isset($request->keterangan[$key])) ? $request->keterangan[$key] : ''
-            ]);
+            if ($value) {
+                Presensi::create([
+                    'peserta_id' => $value,
+                    'berita_acara_id' => $beritaAcara->id,
+                    'is_present' => (isset($request->is_present[$key])) ? 1 : 0,
+                    'keterangan' => (isset($request->keterangan[$key])) ? $request->keterangan[$key] : ''
+                ]);
+            }
         }
 
         return redirect("/instruktur/berita-acara/$beritaAcara->id")->with('success', 'Berita Acara Berhasil diinput!');

@@ -76,6 +76,7 @@ use Illuminate\Support\Carbon;
                                         </tr>
                                     @endforeach
                                 @else
+                                    <input type="hidden" name="peserta_id[]" value="" id="peserta_id">
                                     <tr>
                                         <th scope="row" colspan="5">Data Tidak ditemukan</th>
                                     </tr>

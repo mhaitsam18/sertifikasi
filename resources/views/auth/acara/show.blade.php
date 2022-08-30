@@ -26,8 +26,10 @@
                 <img src="https://source.unsplash.com/1200x400/?{{ $acara->nama }}" alt="{{ $acara->nama }}" class="img-fluid mt-3">
             @endif
             <article class="my-3 fs-5">
-                {!! $acara->deskripsi !!}
-                <p>Berikut adalah Fasilitas-fasilitas yang Akan didapat:</p>
+                <div class="" style="text-align: justify !important">
+                    {!! $acara->deskripsi !!}
+                </div>
+                <p class="">Berikut adalah Fasilitas-fasilitas yang Akan didapat:</p>
                 <ul>
                     @foreach ($list_fasilitas as $fasilitas)
                         <li>{{ $fasilitas->fasilitas }} | {{ $fasilitas->keterangan }}</li> 
@@ -38,70 +40,70 @@
         <div class="col-lg-4">
             <ol class="list-group list-group-numbered mt-3">
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Pendaftaran dibuka</div>
                         {{ Carbon::parse($acara->pendaftaran_buka)->translatedFormat('l, d F Y') }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Pendaftaran ditutup</div>
                         {{ Carbon::parse($acara->pendaftaran_tutup)->translatedFormat('l, d F Y') }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Tanggal Pelaksanaan dimulai</div>
                         {{ Carbon::parse($acara->pelaksanaan_buka)->translatedFormat('l, d F Y') }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Tanggal Pelaksanaan Selesai</div>
                         {{ Carbon::parse($acara->pelaksanaan_tutup)->translatedFormat('l, d F Y') }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Lokasi</div>
                         {{ $acara->lokasi }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Biaya</div>
                         Rp.{{ number_format($acara->biaya,2,',','.') }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Kuota</div>
                         {{ $acara->kuota }} orang
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Koordinator</div>
                         {{ $acara->koordinator->kode_dosen }} | {{ $acara->koordinator->user->nama }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Status Acara</div>
                         {{ $acara->statusAcara->status }}
                     </div>
                     {{-- <span class="badge bg-primary rounded-pill">14</span> --}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
+                    <div class="ms-2 me-auto"  style="text-align: left !important;">
                         <div class="fw-bold">Validasi</div>
                         @if ($acara->is_valid == 1)
                             <span class="badge bg-success">Valid</span>

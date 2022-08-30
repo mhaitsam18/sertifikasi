@@ -71,7 +71,8 @@ class DosenAcaraController extends Controller
         $validateData['pelaksanaan_tutup'] = $request->tanggal_pelaksanaan_tutup . ' ' . $request->waktu_pelaksanaan_tutup;
         $validateData['koordinator_id'] = session()->get('dosen_id');
         $validateData['biaya'] = str_replace(['Rp.', '.', ' '], '', $request->biaya);
-        $validateData['status_acara_id'] = 1;
+        $validateData['status_acara_id'] = 2;
+        $validateData['is_valid'] = 1;
         Acara::create($validateData);
         return redirect('/koordinator/acara')->with('success', 'Acara baru telah ditambahkan!');
     }
