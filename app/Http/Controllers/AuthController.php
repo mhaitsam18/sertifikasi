@@ -133,6 +133,7 @@ class AuthController extends Controller
                 case 3:
                     $dosen = Dosen::where('user_id', auth()->user()->id)->first();
                     $request->session()->put('dosen_id', $dosen->id);
+                    $request->session()->put('role_dosen', $request->role);
                     return redirect()->intended('/dosen');
                     break;
                 default:

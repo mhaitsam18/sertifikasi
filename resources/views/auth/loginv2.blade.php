@@ -57,14 +57,41 @@
                                     @enderror
                                 </div>
 
-                                {{-- <div class="form-group mb-4">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
-                                        <label class="custom-control-label" for="checkbox-signin">Remember
-                                            me</label>
+                                <div class="form-group mb-4 row">
+                                    <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" name="role" class="custom-control-input" id="role-admin" value="admin">
+                                            <label class="custom-control-label" for="role-admin">Admin</label>
+                                        </div>
                                     </div>
-                                </div> --}}
-
+                                    <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" name="role" class="custom-control-input" id="role-mahsiswa" value="mahsiswa">
+                                            <label class="custom-control-label" for="role-mahsiswa">Mahasiswa</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group mb-4 row">
+                                    <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" name="role" class="custom-control-input" id="role-instruktur" value="instruktur">
+                                            <label class="custom-control-label" for="role-instruktur">Instruktur</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" name="role" class="custom-control-input" id="role-koordinator" value="koordinator">
+                                            <label class="custom-control-label" for="role-koordinator">Koordinator</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" name="role" class="custom-control-input" id="role-kaprodi" value="kaprodi">
+                                            <label class="custom-control-label" for="role-kaprodi">Kaprodi</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group mb-0 text-center">
                                     <button class="btn btn-primary btn-block" type="submit"> Log In
                                     </button>

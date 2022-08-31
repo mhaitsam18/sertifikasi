@@ -38,10 +38,28 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('koordinator', function (User $user) {
-            return $user->dosen->is_koordinator;
+            if (session()->get('role_dosen') != "koordinator") {
+                return false;
+            } else {
+                return true;
+            }
+            // return $user->dosen->is_koordinator;
         });
         Gate::define('kaprodi', function (User $user) {
-            return $user->dosen->is_kaprodi;
+            if (session()->get('role_dosen') != "kaprodi") {
+                return false;
+            } else {
+                return true;
+            }
+            // return $user->dosen->is_kaprodi;
+        });
+        Gate::define('instruktur', function (User $user) {
+            if (session()->get('role_dosen') != "instruktur") {
+                return false;
+            } else {
+                return true;
+            }
+            // return $user->dosen->is_instruktur;
         });
     }
 }

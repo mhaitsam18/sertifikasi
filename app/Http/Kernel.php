@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
 
         'kaprodi' => \App\Http\Middleware\IsKaprodi::class,
         'koordinator' => \App\Http\Middleware\IsKoordinator::class,
+        'instruktur' => \App\Http\Middleware\IsInstruktur::class,
     ];
 }

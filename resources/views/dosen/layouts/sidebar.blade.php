@@ -66,19 +66,21 @@
                     </li>
                 @endcan
 
-                <li class="menu-title">Instruktur</li>
-                <li>
-                    <a href="/instruktur">
-                        <i data-feather="activity"></i>
-                        <span> BAP Pelatihan & Sertifikasi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/instruktur/histori">
-                        <i data-feather="award"></i>
-                        <span> Histori Pelatihan & Sertifikasi </span>
-                    </a>
-                </li>
+                @can('instruktur')
+                    <li class="menu-title">Instruktur</li>
+                    <li>
+                        <a href="/instruktur">
+                            <i data-feather="activity"></i>
+                            <span> BAP Pelatihan & Sertifikasi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/instruktur/histori">
+                            <i data-feather="award"></i>
+                            <span> Histori Pelatihan & Sertifikasi </span>
+                        </a>
+                    </li>                    
+                @endcan
                 @can('kaprodi')
                     <li class="menu-title">Kaprodi</li>
                     <li>

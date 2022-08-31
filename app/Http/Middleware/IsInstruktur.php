@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsKoordinator
+class IsInstruktur
 {
     /**
      * Handle an incoming request.
@@ -20,11 +20,11 @@ class IsKoordinator
             // abort(403);
             return redirect()->route('login');
         }
-        if (!auth()->user()->dosen->is_koordinator) {
+        if (!auth()->user()->dosen->is_kaprodi) {
             // abort(403);
             return redirect()->route('login');
         }
-        if (session()->get('role_dosen') != "koordinator") {
+        if (session()->get('role_dosen') != "instruktur") {
             // abort(403);
             return redirect()->route('login');
         }

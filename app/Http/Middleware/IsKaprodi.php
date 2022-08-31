@@ -32,6 +32,10 @@ class IsKaprodi
             // abort(403);
             return redirect()->route('login');
         }
+        if (session()->get('role_dosen') != "kaprodi") {
+            // abort(403);
+            return redirect()->route('login');
+        }
         return $next($request);
     }
 }
