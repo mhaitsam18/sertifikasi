@@ -23,7 +23,6 @@ class AdminBeritaController extends Controller
             'title' => "Berita Saya",
             'list_berita' => Berita::where('penulis_id', auth()->user()->id)->get()
         ]);
-        echo "haloooo";
     }
 
     public function hapusKomentar(KomentarBerita $komentarBerita, Request $request)
