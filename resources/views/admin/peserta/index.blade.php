@@ -57,7 +57,7 @@
                         <td>
                             <td>
                                 <a href="/dashboard/peserta/pembayaran?peserta_id={{ $peserta->id }}" class="btn btn-success btn-sm">List Pembayaran</a>
-                                <button type="button" class="btn btn-info btn-sm berkas-modal" data-bs-toggle="modal" data-bs-target="#berkasModal" data-id="{{ $peserta->mahasiswa_id }}">Lihat Berkas</button>
+                                <button type="button" class="btn btn-info btn-sm berkas-modal" data-bs-toggle="modal" data-bs-target="#berkasModal" data-mahasiswa_id="{{ $peserta->mahasiswa_id }}" data-peserta_id="{{ $peserta->id }}">Lihat Berkas</button>
                             </td>
                         </td>
                     </tr>
@@ -75,11 +75,13 @@
                     <h5 class="modal-title" id="berkasModalLabel">Berkas Peserta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body berkas-show">
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <div class="berkas-show">
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,7 +110,8 @@
             
         });
         $('.berkas-modal').on('click', function() {
-            const id = $(this).data('id');
+            const mahasiswa_id = $(this).data('mahasiswa_id');
+            const peserta_id = $(this).data('peserta_id');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -116,7 +119,8 @@
                 url: "/dashboard/peserta/berkas-show",
                 type: 'post',
                 data: {
-                    id: id
+                    mahasiswa_id: mahasiswa_id,
+                    peserta_id: peserta_id
                 },
                 success: function(data) {
                     $(".berkas-show").html(data);

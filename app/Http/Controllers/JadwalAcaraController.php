@@ -117,7 +117,7 @@ class JadwalAcaraController extends Controller
             $validateData['kelas_acara_id'] = $request->kelas_acara_id;
             JadwalAcara::create($validateData);
         }
-        return redirect('/koordinator/acara/jadwalAcara?acara_id=' . $request->acara_id)->with('success', 'Jadwal baru telah ditambahkan!');
+        return redirect('/koordinator/acara/jadwal-acara?acara_id=' . $request->acara_id)->with('success', 'Jadwal baru telah ditambahkan!');
     }
 
     /**
@@ -197,7 +197,7 @@ class JadwalAcaraController extends Controller
             JadwalAcara::where('id', $jadwalAcara->id)
                 ->update($validateData);
         }
-        return redirect('/koordinator/acara/jadwalAcara?acara_id=' . $request->acara_id)->with('success', 'Jadwal baru telah diperbarui!');
+        return redirect('/koordinator/acara/jadwal-acara?acara_id=' . $request->acara_id)->with('success', 'Jadwal baru telah diperbarui!');
     }
 
     /**

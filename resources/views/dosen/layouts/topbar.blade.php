@@ -22,7 +22,7 @@
         </ul>
 
         <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
-            <li class="d-none d-sm-block">
+            {{-- <li class="d-none d-sm-block">
                 <div class="app-search">
                     <form>
                         <div class="input-group">
@@ -31,7 +31,7 @@
                         </div>
                     </form>
                 </div>
-            </li>
+            </li> --}}
 
             {{-- <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="Change language">
                 <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

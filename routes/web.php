@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminAcaraController;
 use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminDosenController;
+use App\Http\Controllers\AdminKelasAcaraController;
 use App\Http\Controllers\AdminSertifikatController;
 use App\Http\Controllers\BeritaAcaraController;
 use App\Http\Controllers\ChatController;
@@ -116,6 +117,7 @@ Route::middleware('auth')->group(function () {
                     Route::get('/validasi', 'validasi')->name('admin.acara.validasi');
                 });
             });
+            Route::resource('/acara/kelas-acara', AdminKelasAcaraController::class);
             Route::controller(AdminBeritaController::class)->group(function () {
                 Route::prefix('berita')->group(function () {
                     Route::get('/', 'index')->name('admin.berita.index');
@@ -143,7 +145,9 @@ Route::middleware('auth')->group(function () {
 
                     Route::get('/pembayaran', 'pembayaran')->name('admin.peserta.pembayaran');
                     Route::post('/pembayaran/validasi', 'validasi')->name('admin.peserta.pembayaran.validasi');
+                    Route::post('/validasi-berkas/{peserta}', 'validasiBerkas')->name('admin.peserta.validasi-berkas');
                 });
+                Route::get('/pembayaran', 'pembayaran')->name('admin.pembayaran');
             });
             Route::controller(AdminSertifikatController::class)->group(function () {
                 Route::prefix('sertifikat')->group(function () {
@@ -210,6 +214,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('dosen')->group(function () {
             Route::controller(DosenDashboardController::class)->group(function () {
                 Route::get('/', 'index')->name('dosen.index');
+                Route::post('/filter-kelas', 'pesertaByKelas')->name('dosen.filter-kelas');
                 Route::get('/profil', 'profil')->name('dosen.profil');
                 Route::get('/edit', 'editProfil')->name('dosen.edit');
                 Route::put('/edit/{dosen}', 'update')->name('dosen.update'); //URL SALAH

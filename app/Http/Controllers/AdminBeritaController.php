@@ -21,7 +21,7 @@ class AdminBeritaController extends Controller
     {
         return view('admin.berita.index', [
             'title' => "Berita Saya",
-            'list_berita' => Berita::withTrashed()->where('penulis_id', auth()->user()->id)->get()
+            'list_berita' => Berita::where('penulis_id', auth()->user()->id)->get()
         ]);
     }
 

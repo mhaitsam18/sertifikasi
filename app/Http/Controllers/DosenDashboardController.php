@@ -29,7 +29,7 @@ class DosenDashboardController extends Controller
             'list_acara' => Acara::selectRaw('acara.*, COUNT(kelas_acara.id) AS jumlah_kelas, COUNT(peserta.id) AS jumlah_peserta')
                 ->groupBy('acara.id')
                 ->where('kelas_acara.instruktur_id', session()->get('dosen_id'))
-                ->whereIn('acara.status_acara_id', [6])
+                // ->whereIn('acara.status_acara_id', [6])
                 ->leftJoin('kelas_acara', 'kelas_acara.acara_id', '=', 'acara.id')
                 ->leftJoin('peserta', 'peserta.kelas_acara_id', '=', 'kelas_acara.id')
                 // ->leftJoin('peserta', 'peserta.acara_id', '=', 'acara.id')
@@ -38,7 +38,28 @@ class DosenDashboardController extends Controller
                 //         ->where('kelas_acara.instruktur_id', '=', session()->get('dosen_id'));
                 // })
                 // ->groupByRaw('acara.*')
-                ->get()
+                ->get(),
+            'jumlah_peserta' => Peserta::where('status_peserta_id', 3)->count(),
+            'jumlah_pelatihan' => Acara::where('kategori_acara_id', 2)->count(),
+            'jumlah_sertifikasi' => Acara::where('kategori_acara_id', 1)->count(),
+            'data_kelas' => Kelas::all(),
+        ]);
+    }
+
+    public function pesertaByKelas(Request $request)
+    {
+        $kelas_id = $request->kelas_id;
+        return view('dosen.filter-kelas', [
+            'list_peserta_sertifikasi' => Peserta::join('acara', 'acara.id', '=', 'peserta.acara_id')
+                ->join('mahasiswa', 'mahasiswa.id', '=', 'peserta.mahasiswa_id')
+                ->where('kelas_id', $kelas_id)
+                ->where(['koordinator_id' => session()->get('dosen_id'), 'kategori_acara_id' => 1])
+                ->get(),
+            'list_peserta_pelatihan' => Peserta::join('acara', 'acara.id', '=', 'peserta.acara_id')
+                ->join('mahasiswa', 'mahasiswa.id', '=', 'peserta.mahasiswa_id')
+                ->where('kelas_id', $kelas_id)
+                ->where(['koordinator_id' => session()->get('dosen_id'), 'kategori_acara_id' => 2])
+                ->get(),
         ]);
     }
 

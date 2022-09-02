@@ -1,5 +1,8 @@
 @extends('dosen.layouts.main')
 @section('container')
+@php
+    use Illuminate\Support\Carbon;
+@endphp
     <div class="row page-title">
         <div class="col-md-12">
             <nav aria-label="breadcrumb" class="float-right mt-1">
@@ -36,15 +39,18 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama Pelatihan / Sertifikasi</th>
+                                    <th scope="col">Waktu Pendaftaran</th>
+                                    <th scope="col">Waktu Pelaksanaan</th>
                                     <th scope="col">Koordinator</th>
                                     <th scope="col">Lokasi</th>
-                                    <th scope="col">Biaya</th>
+                                    {{-- <th scope="col">Biaya</th> --}}
+                                    {{-- <th scope="col">Status Kegiatan</th> --}}
                                     <th scope="col">Kuota</th>
                                     <th scope="col">Jumlah Peserta</th>
                                     <th scope="col">Kategori</th>
                                     {{-- <th scope="col">Status Acara</th> --}}
                                     {{-- <th scope="col">Status Validasi</th> --}}
-                                    <th scope="col">Action</th>
+                                    {{-- <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,9 +58,12 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $acara->nama }}</td>
+                                        <td>{{ Carbon::parse($acara->pendaftaran_buka)->translatedFormat('d F Y') }} s/d {{ Carbon::parse($acara->pendaftaran_tutup)->translatedFormat('d F Y') }}</td>
+                                        <td>{{ Carbon::parse($acara->pelaksanaan_buka)->translatedFormat('d F Y') }} s/d {{ Carbon::parse($acara->pelaksanaan_tutup)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $acara->koordinator->user->nama }}</td>
                                         <td>{{ $acara->lokasi }}</td>
-                                        <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td>
+                                        {{-- <td>{{ $acara->statusAcara->status }}</td> --}}
+                                        {{-- <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td> --}}
                                         <td>{{ $acara->kuota }}</td>
                                         <td>{{ $acara->jumlah_peserta }}</td>
                                         <td>
@@ -73,10 +82,10 @@
                                                 <span class="badge badge-soft-danger py-1">Tidak Valid</span>
                                             @endif
                                         </td> --}}
-                                        <td>
+                                        {{-- <td>
                                             <a href="/koordinator/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
                                             <a href="/kaprodi/peserta?acara_id={{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KelasAcara;
 use App\Models\Acara;
 use App\Models\Dosen;
+use App\Models\KelasAcara;
 use Illuminate\Http\Request;
 
-class KelasAcaraController extends Controller
+class AdminKelasAcaraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class KelasAcaraController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dosen.koordinator.acara.kelas.index', [
+        return view('admin.acara.kelas.index', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $request->acara_id)->first(),
             'list_kelas' => KelasAcara::where('acara_id', $request->acara_id)->with(['instrukturAcara'])->get()
@@ -30,7 +30,7 @@ class KelasAcaraController extends Controller
      */
     public function create(Request $request)
     {
-        return view('dosen.koordinator.acara.kelas.create', [
+        return view('admin.acara.kelas.create', [
             'title' => "Data Instruktur",
             'list_instruktur' => Dosen::select('*', 'dosen.id AS instruktur_id')->join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')
                 ->where('acara_id', $request->acara_id)->with('user')
@@ -54,7 +54,7 @@ class KelasAcaraController extends Controller
             'kuota' => 'required'
         ]);
         KelasAcara::create($validateData);
-        return redirect('/koordinator/acara/kelas-acara?acara_id=' . $request->acara_id)->with('success', 'Kelas baru telah ditambahkan!');
+        return redirect('/dashboard/acara/kelas-acara?acara_id=' . $request->acara_id)->with('success', 'Kelas baru telah ditambahkan!');
     }
 
     /**
@@ -76,7 +76,7 @@ class KelasAcaraController extends Controller
      */
     public function edit(KelasAcara $kelasAcara)
     {
-        return view('dosen.koordinator.acara.kelas.edit', [
+        return view('admin.acara.kelas.edit', [
             'title' => "Data Instruktur",
             'acara' => Acara::where('id', $kelasAcara->acara_id)->first(),
             'kelas' => $kelasAcara,
@@ -102,7 +102,7 @@ class KelasAcaraController extends Controller
         ]);
         KelasAcara::where('id', $kelasAcara->id)
             ->update($validateData);
-        return redirect('/koordinator/acara/kelas-acara?acara_id=' . $request->acara_id)->with('success', 'Data Kelas berhasil diperbarui!');
+        return redirect('/dashboard/acara/kelas-acara?acara_id=' . $request->acara_id)->with('success', 'Data Kelas berhasil diperbarui!');
     }
 
     /**

@@ -82,7 +82,22 @@ class AdminPesertaController extends Controller
     public function berkasShow(Request $request)
     {
         return view('admin.peserta.berkas-show', [
-            'mahasiswa' => Mahasiswa::find($request->id)
+            'mahasiswa' => Mahasiswa::find($request->mahasiswa_id),
+            'peserta' => Peserta::find($request->peserta_id),
         ]);
+    }
+    public function validasiBerkas(Request $request, Peserta $peserta)
+    {
+        if ($request->validasi == 1) {
+            Peserta::find($peserta->id)->update([
+                'berkas_valid_at' => date('Y-m-d H:i:s'),
+                'status_peserta_id' => 3
+            ]);
+        } elseif ($request->validasi == 0) {
+            Peserta::find($peserta->id)->update([
+                'status_peserta_id' => 2
+            ]);
+        }
+        return back()->with('success', 'Berkas berhasil divalidasi!');
     }
 }

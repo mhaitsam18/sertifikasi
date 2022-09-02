@@ -38,13 +38,13 @@
                                     <th scope="col">Nama Pelatihan / Sertifikasi</th>
                                     <th scope="col">Koordinator</th>
                                     <th scope="col">Lokasi</th>
-                                    <th scope="col">Biaya</th>
+                                    <th scope="col">Status Kegiatan</th>
                                     <th scope="col">Kuota</th>
                                     <th scope="col">Jumlah Peserta</th>
                                     <th scope="col">Kategori</th>
                                     {{-- <th scope="col">Status Acara</th> --}}
                                     {{-- <th scope="col">Status Validasi</th> --}}
-                                    <th scope="col">Action</th>
+                                    {{-- <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +54,7 @@
                                         <td>{{ $acara->nama }}</td>
                                         <td>{{ $acara->koordinator->user->nama }}</td>
                                         <td>{{ $acara->lokasi }}</td>
-                                        <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td>
+                                        <td>{{ $acara->statusKegiatan->status }}</td>
                                         <td>{{ $acara->kuota }}</td>
                                         <td>{{ $acara->jumlah_peserta }}</td>
                                         <td>
@@ -73,10 +73,10 @@
                                                 <span class="badge badge-soft-danger py-1">Tidak Valid</span>
                                             @endif
                                         </td> --}}
-                                        <td>
+                                        {{-- <td>
                                             <a href="/koordinator/acara/{{ $acara->id }}" class="btn btn-primary btn-sm">Detail</a>
                                             <a href="/koordinator/acara/peserta/{{ $acara->id }}" class="btn btn-info btn-sm">List Peserta</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

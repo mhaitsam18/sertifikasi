@@ -583,7 +583,10 @@ use Illuminate\Support\Carbon;
                         @else
                             <span class="btn btn-danger btn-block">Kelas Belum dibuka</span>
                         @endif
+                        @if ($peserta->berkas_valid_at)
                             <a href="/peserta/invoice/{{ $peserta->id }}" class="btn btn-success btn-block"><i class="uil uil-invoice mr-1"></i>Lihat Tagihan</a>
+                            
+                        @endif
                         @if (isset($peserta->nilai))
                             <a href="/get?file=sertifikat&image={{ $peserta->nilai->sertifikat }}" class="btn btn-info btn-block">Unduh Sertifikat</a>
                         @endif

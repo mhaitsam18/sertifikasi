@@ -60,6 +60,7 @@
                             @else
                                 @if ($acara->is_valid == 1)
                                     <a href="/dashboard/peserta?acara_id={{ $acara->id }}" class="btn btn-info btn-sm text-decoration-none text-light">List Peserta</a>
+                                    <a href="/dashboard/acara/kelas-acara?acara_id={{ $acara->id }}" class="btn btn-dark btn-sm">List Kelas</a>
                                 @endif
                                 <form action="">
                                     <div class="form-group mt-1">

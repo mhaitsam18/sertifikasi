@@ -36,7 +36,7 @@
 
 <!-- content -->
 <div class="row">
-    <div class="col-md-6 col-xl-3">
+    {{-- <div class="col-md-6 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -51,54 +51,54 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Peserta Aktif</span>
-                        <h2 class="mb-0">1065</h2>
+                        <h2 class="mb-0">{{ $jumlah_peserta }}</h2>
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-product-sold-chart" class="apex-charts"></div>
                         <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Sertifikasi</span>
-                        <h2 class="mb-0">11</h2>
+                        <h2 class="mb-0">{{ $jumlah_sertifikasi }}</h2>
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-new-customer-chart" class="apex-charts"></div>
                         <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i> 25.16%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Pelatihan</span>
-                        <h2 class="mb-0">750</h2>
+                        <h2 class="mb-0">{{ $jumlah_pelatihan }}</h2>
                     </div>
-                    <div class="align-self-center">
+                    {{-- <div class="align-self-center">
                         <div id="today-new-visitors-chart" class="apex-charts"></div>
                         <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i> 5.05%</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -118,7 +118,11 @@
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Lokasi</th>
-                                <th scope="col">Biaya</th>
+                                @if (session()->get('role_dosen') == "kaprodi")
+                                    <th scope="col">Status Kegiatan</th>
+                                @else
+                                    <th scope="col">Biaya</th>
+                                @endif
                                 <th scope="col">Kuota</th>
                                 <th scope="col">Koordinator</th>
                             </tr>
@@ -127,12 +131,16 @@
                             @if ($list_acara->count())
                                 @foreach ($list_acara as $acara)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $acara->nama }}</td>
                                         <td>{{ $acara->kategoriAcara->kategori }}</td>
-                                        <td>{{ strip_tags($acara->deskripsi) }}</td>
+                                        <td>{{ Str::limit(strip_tags($acara->deskripsi), 200, '...') }}</td>
                                         <td>{{ $acara->lokasi }}</td>
-                                        <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td>
+                                        @if (session()->get('role_dosen') == "kaprodi")
+                                            <td>{{ $acara->statusAcara->status }}</td>
+                                        @else
+                                            <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td>
+                                        @endif
                                         <td>{{ $acara->kuota }}</td>
                                         <td>{{ $acara->koordinator->kode_dosen }}</td>
                                     </tr>
@@ -145,101 +153,129 @@
                         </tbody>
                     </table>
                 </div>
-                <h5 class="card-title header-title border-bottom p-3 mb-0">Data Peserta Sertifikasi</h5>
-                <div class="table-responsive col-lg-12">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">NIM</th>
-                                <th scope="col">Nama Peserta</th>
-                                <th scope="col">Acara yang diikuti</th>
-                                <th scope="col">Jumlah Tagihan</th>
-                                <th scope="col">Sisa Tagihan</th>
-                                <th scope="col">Status Tagihan</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($list_peserta_sertifikasi->count())
-                                @foreach ($list_peserta_sertifikasi as $sertifikasi)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $sertifikasi->mahasiswa->nim }}</td>
-                                        <td>{{ $sertifikasi->mahasiswa->user->nama }}</td>
-                                        <td>{{ $sertifikasi->acara->nama }}</td>
-                                        <td>Rp.{{ number_format($sertifikasi->tagihan,2,',','.') }}</td>
-                                        <td>Rp.{{ number_format($sertifikasi->sisa_tagihan,2,',','.') }}</td>
-                                        <td>
-                                            @if ($sertifikasi->sisa_tagihan > 0)
-                                                Belum Lunas
-                                            @else
-                                                Lunas
-                                            @endif
-                                        </td>
-                                        <td>
-                                            {{ $sertifikasi->statusPeserta->status }}
-                                        </td>
-                                    </tr>
-                                @endforeach                                
-                            @else
-                                <tr>
-                                    <td colspan="8">Data tidak ditemukan</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+                <div class="row px-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="kelas" id="kelas" class="form-control pilih-kelas" id="pilih-kelas">
+                                <option value="" selected disabled>Pilih Kelas</option>
+                                @foreach ($data_kelas as $kelas)
+                                    <option value="{{ $kelas->id }}">{{ $kelas->kelas }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <h5 class="card-title header-title border-bottom p-3 mb-0">Data Peserta Pelatihan</h5>
-                <div class="table-responsive col-lg-12">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">NIM</th>
-                                <th scope="col">Nama Peserta</th>
-                                <th scope="col">Acara yang diikuti</th>
-                                <th scope="col">Jumlah Tagihan</th>
-                                <th scope="col">Sisa Tagihan</th>
-                                <th scope="col">Status Tagihan</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($list_peserta_pelatihan->count())
-                                @foreach ($list_peserta_pelatihan as $pelatihan)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $pelatihan->mahasiswa->nim }}</td>
-                                        <td>{{ $pelatihan->mahasiswa->user->nama }}</td>
-                                        <td>{{ $pelatihan->acara->nama }}</td>
-                                        <td>Rp.{{ number_format($pelatihan->tagihan,2,',','.') }}</td>
-                                        <td>Rp.{{ number_format($pelatihan->sisa_tagihan,2,',','.') }}</td>
-                                        <td>
-                                            @if ($pelatihan->sisa_tagihan > 0)
-                                                Belum Lunas
-                                            @else
-                                                Lunas
-                                            @endif
-                                        </td>
-                                        <td>
-                                            {{ $pelatihan->statusPeserta->status }}
-                                        </td>
-                                    </tr>
-                                @endforeach                                
-                            @else
+                <div class="filter-kelas">
+                    <h5 class="card-title header-title border-bottom p-3 mb-0">Data Peserta Sertifikasi</h5>
+                    <div class="table-responsive col-lg-12">
+                        <table class="table table-striped table-sm">
+                            <thead>
                                 <tr>
-                                    <td colspan="8">Data tidak ditemukan</td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">NIM</th>
+                                    <th scope="col">Nama Peserta</th>
+                                    <th scope="col">Kelas</th>
+                                    <th scope="col">Acara yang diikuti</th>
+                                    @if (session()->get('role_dosen') != "kaprodi")
+                                        <th scope="col">Jumlah Tagihan</th>
+                                        <th scope="col">Sisa Tagihan</th>
+                                        <th scope="col">Status Tagihan</th>
+                                    @endif
+                                    <th scope="col">Status</th>
                                 </tr>
-                            @endif
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @if ($list_peserta_sertifikasi->count())
+                                    @foreach ($list_peserta_sertifikasi as $sertifikasi)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $sertifikasi->mahasiswa->nim }}</td>
+                                            <td>{{ $sertifikasi->mahasiswa->user->nama }}</td>
+                                            <td>{{ $sertifikasi->mahasiswa->kelas->kelas }}</td>
+                                            <td>{{ $sertifikasi->acara->nama }}</td>
+                                            @if (session()->get('role_dosen') != "kaprodi")
+                                                <td>Rp.{{ number_format($sertifikasi->tagihan,2,',','.') }}</td>
+                                                <td>Rp.{{ number_format($sertifikasi->sisa_tagihan,2,',','.') }}</td>
+                                                <td>
+                                                    @if ($sertifikasi->sisa_tagihan > 0)
+                                                        Belum Lunas
+                                                    @else
+                                                        Lunas
+                                                    @endif
+                                                </td>
+                                            @endif
+                                            <td>
+                                                {{ $sertifikasi->statusPeserta->status }}
+                                            </td>
+                                        </tr>
+                                    @endforeach                                
+                                @else
+                                    <tr>
+                                        <td colspan="8">Data tidak ditemukan</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <h5 class="card-title header-title border-bottom p-3 mb-0">Data Peserta Pelatihan</h5>
+                    <div class="table-responsive col-lg-12">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">NIM</th>
+                                    <th scope="col">Nama Peserta</th>
+                                    <th scope="col">Kelas</th>
+                                    <th scope="col">Acara yang diikuti</th>
+                                    @if (session()->get('role_dosen') != "kaprodi")
+                                        <th scope="col">Jumlah Tagihan</th>
+                                        <th scope="col">Sisa Tagihan</th>
+                                        <th scope="col">Status Tagihan</th>
+                                        
+                                    @endif
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($list_peserta_pelatihan->count())
+                                    @foreach ($list_peserta_pelatihan as $pelatihan)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $pelatihan->mahasiswa->nim }}</td>
+                                            <td>{{ $pelatihan->mahasiswa->user->nama }}</td>
+                                            <td>{{ $sertifikasi->mahasiswa->kelas->kelas }}</td>
+                                            <td>{{ $pelatihan->acara->nama }}</td>
+                                            @if (session()->get('role_dosen') != "kaprodi")
+                                                <td>Rp.{{ number_format($pelatihan->tagihan,2,',','.') }}</td>
+                                                <td>Rp.{{ number_format($pelatihan->sisa_tagihan,2,',','.') }}</td>
+                                                <td>
+                                                    @if ($pelatihan->sisa_tagihan > 0)
+                                                        Belum Lunas
+                                                    @else
+                                                        Lunas
+                                                    @endif
+                                                </td>
+                                                
+                                            @endif
+                                            <td>
+                                                {{ $pelatihan->statusPeserta->status }}
+                                            </td>
+                                        </tr>
+                                    @endforeach                                
+                                @else
+                                    <tr>
+                                        <td colspan="8">Data tidak ditemukan</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- stats + charts -->
+{{-- <!-- stats + charts -->
 <div class="row">
     <div class="col-xl-3">
         <div class="card">
@@ -698,6 +734,30 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- end row -->
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.pilih-kelas').on('change', function() {
+        const kelas_id = $(this).val();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/dosen/filter-kelas",
+            type: 'post',
+            data: {
+                kelas_id: kelas_id
+            },
+            success: function(data) {
+                $(".filter-kelas").html(data);
+            }
+        });
+        
+    });
+</script>
+    
 @endsection
