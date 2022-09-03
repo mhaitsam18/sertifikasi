@@ -3,7 +3,7 @@
         <i class="icon-dual" data-feather="mail"></i>
     </span>
 </div>
-<input type="email" class="form-control email-input" id="email" autofocus value="{{ $email_focus }}">
+<input type="text" class="form-control email-input" id="email" autofocus value="{{ $email_focus }}">
 <div class="input-group-prepend">
     <span class="input-group-text">
         @student.telkomuniversity.ac.id

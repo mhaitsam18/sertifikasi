@@ -4,7 +4,7 @@
         <i class="icon-dual" data-feather="mail"></i>
     </span>
 </div>
-<input type="email" class="form-control email-input" id="email" value="{{ $email }}">
+<input type="text" class="form-control email-input" id="email" value="{{ $email }}">
 <input type="hidden" name="email" id="email-hidden" value="{{ $email }}">
 @include('auth.layouts.script')
 <script>

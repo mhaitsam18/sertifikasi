@@ -30,7 +30,7 @@
                                                 <i class="icon-dual" data-feather="mail"></i>
                                             </span>
                                         </div>
-                                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" autofocus>
+                                        <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" autofocus>
                                     </div>
                                     @error('email')
                                         <div class="invalid-feedback">
