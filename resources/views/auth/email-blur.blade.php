@@ -14,7 +14,7 @@
             headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-            url: 'registrasi/email-focus',
+            url: '/registrasi/email-focus',
             type: "post",
             data: {
                 'email': email

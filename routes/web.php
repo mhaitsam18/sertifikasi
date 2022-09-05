@@ -61,8 +61,8 @@ Route::middleware('guest')->group(function () {
         Route::prefix('registrasi')->group(function () {
             Route::get('/', 'registrasi')->name("auth.registrasi.index");
             Route::post('/', 'registrasi')->name("auth.registrasi.store");
-            Route::get('/email-blur', 'emailBlur')->name("auth.registrasi.email-blur");
-            Route::get('/email-focus', 'emailFocus')->name("auth.registrasi.email-focus");
+            Route::post('/email-blur', 'emailBlur')->name("auth.registrasi.email-blur");
+            Route::post('/email-focus', 'emailFocus')->name("auth.registrasi.email-focus");
             Route::put('/reset-password/{user}', 'resetPassword')->name("auth.registrasi.reset-password");
         });
 

@@ -29,7 +29,7 @@
                                                 <i class="icon-dual" data-feather="mail"></i>
                                             </span>
                                         </div>
-                                        <input type="email" class="form-control" id="email"  name="email" autofocus value="{{ old('email') }}">
+                                        <input type="text" class="form-control" id="email"  name="email" autofocus value="{{ old('email') }}">
                                     </div>                                            
                                     @else
                                     <div class="input-group input-group-merge email-text">
@@ -38,7 +38,7 @@
                                                 <i class="icon-dual" data-feather="mail"></i>
                                             </span>
                                         </div>
-                                        <input type="email" class="form-control email-input" id="email" autofocus value="{{ old('email') }}">
+                                        <input type="text" class="form-control email-input" id="email" autofocus value="{{ old('email') }}">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 @student.telkomuniversity.ac.id
@@ -374,7 +374,7 @@
             headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-            url: 'registrasi/email-blur',
+            url: '/registrasi/email-blur',
             type: "post",
             data: {
                 'email': email
