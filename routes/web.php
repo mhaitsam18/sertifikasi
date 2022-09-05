@@ -193,6 +193,8 @@ Route::middleware('auth')->group(function () {
                     Route::get('/{notifikasi}', 'show')->name('mahasiswa.notifikasi.show');
                 });
             });
+            Route::get('/pelatihan', [MahasiswaPelatihanController::class, 'index'])->name('mahasiswa.pelatihan.index');
+            Route::get('/sertifikasi', [MahasiswaSertifikasiController::class, 'index'])->name('mahasiswa.sertifikasi.index');
         });
         Route::prefix('peserta')->group(function () {
             Route::controller(PesertaController::class)->group(function () {
@@ -207,8 +209,6 @@ Route::middleware('auth')->group(function () {
                 Route::get('/pembayaran', 'pembayaran')->name('mahasiswa.peserta.pembayaran');
             });
         });
-        Route::get('/pelatihan', [MahasiswaPelatihanController::class, 'index'])->name('mahasiswa.pelatihan.index');
-        Route::get('/sertifikasi', [MahasiswaSertifikasiController::class, 'index'])->name('mahasiswa.sertifikasi.index');
     });
     Route::middleware('dosen')->group(function () {
         Route::prefix('dosen')->group(function () {
