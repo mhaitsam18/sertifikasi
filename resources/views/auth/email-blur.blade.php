@@ -8,7 +8,7 @@
 <input type="hidden" name="email" id="email-hidden" value="{{ $email }}">
 @include('auth.layouts.script')
 <script>
-    $(".email-input").on('blur', function() {
+    $(".email-input").on('focus', function() {
         const email = $(this).val();
         $.ajax({
             headers: {
