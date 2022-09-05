@@ -6,7 +6,7 @@
         <h4 class="mb-1 mt-0">Dashboard</h4>
     </div>
     <div class="col-sm-8 col-xl-6">
-        <form class="form-inline float-sm-right mt-3 mt-sm-0">
+        {{-- <form class="form-inline float-sm-right mt-3 mt-sm-0">
             <div class="form-group mb-sm-0 mr-2">
                 <input type="text" class="form-control" id="dash-daterange" style="min-width: 190px;" />
             </div>
@@ -30,7 +30,7 @@
                     </a>
                 </div>
             </div>
-        </form>
+        </form> --}}
     </div>
 </div>
 
