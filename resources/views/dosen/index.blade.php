@@ -243,7 +243,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pelatihan->mahasiswa->nim }}</td>
                                             <td>{{ $pelatihan->mahasiswa->user->nama }}</td>
-                                            <td>{{ $sertifikasi->mahasiswa->kelas->kelas }}</td>
+                                            <td>{{ $pelatihan->mahasiswa->kelas->kelas }}</td>
                                             <td>{{ $pelatihan->acara->nama }}</td>
                                             @if (session()->get('role_dosen') != "kaprodi")
                                                 <td>Rp.{{ number_format($pelatihan->tagihan,2,',','.') }}</td>
