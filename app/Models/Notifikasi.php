@@ -12,7 +12,7 @@ class Notifikasi extends Model
     use SoftDeletes;
     protected $table = 'notifikasi';
     protected $guarded = ['id'];
-    protected $with = ['user'];
+    protected $with = ['user', 'creator'];
 
     public function user()
     {
@@ -27,5 +27,20 @@ class Notifikasi extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function peserta()
+    {
+        return $this->belongsTo(Peserta::class, 'sub_id');
+    }
+
+    public function pembayaran()
+    {
+        return $this->belongsTo(Pembayaran::class, 'sub_id');
+    }
+
+    public function berita()
+    {
+        return $this->belongsTo(Berita::class, 'sub_id');
     }
 }

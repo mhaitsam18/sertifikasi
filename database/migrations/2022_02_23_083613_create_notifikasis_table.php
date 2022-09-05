@@ -15,20 +15,21 @@ return new class extends Migration
     {
         Schema::create('notifikasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
+            $table->foreignId('user_id')->nullable()
                 ->constrained('users')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                // ->onDelete('cascade');
+                ->nullOnDelete();
             $table->foreignId('kategori_notifikasi_id')->nullable()
                 ->constrained('kategori_notifikasi')
                 ->onUpdate('cascade')
                 // ->onDelete('cascade');
                 ->nullOnDelete();
             $table->bigInteger('sub_id')->unsigned()->nullable();
-            $table->string('subjek');
-            $table->text('pesan');
+            $table->string('subjek')->nullable();
+            $table->text('pesan')->nullable();
             $table->boolean('is_read')->default(0);
-            $table->foreignId('creator_id');
+            $table->foreignId('creator_id')->nullable();
             // ->constrained('users')
             // ->onUpdate('cascade')
             // ->onDelete('cascade');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalAcara;
 use App\Models\KelasAcara;
+use App\Models\Notifikasi;
 use App\Models\Pembayaran;
 use App\Models\Peserta;
 use App\Models\Rekening;
@@ -47,7 +48,16 @@ class PesertaController extends Controller
             'tagihan' => 'required'
         ]);
         $validateData['sisa_tagihan'] = $validateData['tagihan'];
-        Peserta::create($validateData);
+        $peserta = Peserta::create($validateData);
+
+        Notifikasi::create([
+            'kategori_notifikasi_id' => 2,
+            'sub_id' => $peserta->id,
+            'subjek' => "Peserta Baru",
+            'pesan' => "Acara " . $peserta->acara->kategoriAcara->kategori . ": " . $peserta->acara->nama,
+            'is_read' => 0,
+            'creator_id' => auth()->user()->id
+        ]);
         return back()->with('success', 'Selamat, Anda berhasil bergabung!');
     }
 
@@ -83,7 +93,16 @@ class PesertaController extends Controller
             $validateData['bukti'] = $request->file('bukti')->store('bukti-transfer');
         }
         $validateData['waktu_transfer'] = $request->tanggal_transfer . ' ' . $request->waktu_transfer;
-        Pembayaran::create($validateData);
+        $pembayaran = Pembayaran::create($validateData);
+
+        Notifikasi::create([
+            'kategori_notifikasi_id' => 3,
+            'sub_id' => $pembayaran->id,
+            'subjek' => "Pembayaran Masuk",
+            'pesan' => "Pembayaran sebesar Rp." . number_format($pembayaran->nominal_transfer, 2, ',', '.') . " masuk",
+            'is_read' => 0,
+            'creator_id' => auth()->user()->id
+        ]);
         return redirect('/peserta/pembayaran')->with('success', 'Bukti Transfer Terkirim!');
     }
 

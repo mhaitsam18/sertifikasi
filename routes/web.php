@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminAcaraController;
 use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminDosenController;
 use App\Http\Controllers\AdminKelasAcaraController;
+use App\Http\Controllers\AdminNotifikasiController;
 use App\Http\Controllers\AdminSertifikatController;
 use App\Http\Controllers\BeritaAcaraController;
 use App\Http\Controllers\ChatController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\KoordinatorNilaiController;
 use App\Http\Controllers\MahasiswaNotifikasiController;
+use App\Models\Notifikasi;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,12 +102,14 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
+            Route::delete('/tutup-notifikasi/{notifikasi}', [AdminNotifikasiController::class, 'destroy'])->name('admin.tutup-notifikasi');
         });
         Route::prefix('dashboard')->group(function () {
             Route::get('/', function () {
                 return view('admin.index', [
                     'title' => 'Dashboard',
                     'active' => 'home',
+                    'data_notifikasi' => Notifikasi::whereIn('kategori_notifikasi_id', [2, 3])->get(),
                 ]);
             })->name("admin.index");
 
