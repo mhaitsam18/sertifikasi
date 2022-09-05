@@ -54,7 +54,11 @@
                                         <td>{{ $acara->nama }}</td>
                                         <td>{{ $acara->koordinator->user->nama }}</td>
                                         <td>{{ $acara->lokasi }}</td>
-                                        <td>{{ $acara->statusKegiatan->status }}</td>
+                                        <td>
+                                            @if (isset($acara->statusAcara->status))
+                                                {{ $acara->statusAcara->status }}
+                                            @endif
+                                        </td>
                                         <td>{{ $acara->kuota }}</td>
                                         <td>{{ $acara->jumlah_peserta }}</td>
                                         <td>

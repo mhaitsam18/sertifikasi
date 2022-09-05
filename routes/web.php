@@ -252,7 +252,6 @@ Route::middleware('auth')->group(function () {
                     Route::post('/ubahKelasPeserta', 'ubahKelasPeserta')->name('dosen.acara.ubah-kelas-peserta');
                     Route::post('/ubahStatusPeserta', 'ubahStatusPeserta')->name('dosen.acara.ubah-status-peserta');
                 });
-                Route::resource('/', DosenAcaraController::class);
 
                 Route::resource('/kelas-acara', KelasAcaraController::class);
 
@@ -271,7 +270,7 @@ Route::middleware('auth')->group(function () {
                     Route::get('/fasilitas/{fasilitas}/edit', 'edit')->name('dosen.koordinator.acara.fasilitas.edit');
                 });
             });
-
+            Route::resource('/acara', DosenAcaraController::class);
             Route::get('/nilai', [KoordinatorNilaiController::class, 'index'])->name('dosen.koordinator.nilai.index'); //KOORDINATOR PESERTA
             Route::resource('/sertifikat', SertifikatController::class); //KOORDINATOR PESERTA
 
