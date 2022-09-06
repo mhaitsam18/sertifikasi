@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2022 at 02:09 PM
+-- Generation Time: Sep 06, 2022 at 02:08 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -587,7 +587,8 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `kelas_id`, `nim`, `scan_ktm`, `ksm`, `transkip_nilai`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 3, NULL, NULL, 1, '6701194088', 'ktm-mahasiswa/ktm-nadila.jpeg', 'ksm-mahasiswa/VsJ3B2Tr0kUB6Jx0dEe3pmlUwtZbMNBFKDCZ9KGz.pdf', 'transkip-nilai-mahasiswa/riBXyZMa2Yzo71b554ndLOhU8hHnvtcftVluVxQR.pdf', '2022-02-23 06:50:50', '2022-08-28 09:43:10', NULL),
 (2, 7, NULL, NULL, 4, '6701184040', 'ktm-mahasiswa/sNeDOQ1uOufW6l0ntlW5Ipahz65yXXDmWgJd8vLI.jpg', NULL, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
-(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', NULL, NULL, '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL);
+(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', NULL, NULL, '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL),
+(4, 10, NULL, NULL, 2, '1234', 'ktm-mahasiswa/15S4PereHIt2zX2MgfSiTtfdBPvh71OTFaUqkYkQ.jpg', NULL, NULL, '2022-09-05 18:07:43', '2022-09-05 18:07:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -697,13 +698,13 @@ INSERT INTO `nilai` (`id`, `peserta_id`, `nilai`, `sertifikat`, `is_take`, `crea
 
 CREATE TABLE `notifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `kategori_notifikasi_id` bigint(20) UNSIGNED DEFAULT NULL,
   `sub_id` bigint(20) UNSIGNED DEFAULT NULL,
   `subjek` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pesan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT 0,
-  `creator_id` bigint(20) UNSIGNED NOT NULL,
+  `creator_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -714,7 +715,9 @@ CREATE TABLE `notifikasi` (
 --
 
 INSERT INTO `notifikasi` (`id`, `user_id`, `kategori_notifikasi_id`, `sub_id`, `subjek`, `pesan`, `is_read`, `creator_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 6, 10, 'Berita Baru', 'Doni Mendaki Gunung', 1, 1, '2022-08-28 04:26:51', '2022-08-28 08:05:35', NULL);
+(1, 3, 6, 10, 'Berita Baru', 'Doni Mendaki Gunung', 1, 1, '2022-08-28 04:26:51', '2022-08-28 08:05:35', NULL),
+(2, NULL, 2, 5, 'Peserta Baru', 'Acara Sertifikasi: Tes EPrT', 0, 3, '2022-09-05 22:57:03', '2022-09-05 23:48:19', NULL),
+(3, NULL, 3, 4, 'Pembayaran Masuk', 'Pembayaran sebesar Rp.250.000,00 masuk', 0, 3, '2022-09-05 23:11:01', '2022-09-05 23:47:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -759,7 +762,8 @@ CREATE TABLE `pembayaran` (
 INSERT INTO `pembayaran` (`id`, `peserta_id`, `rekening_tujuan_id`, `rekening_pengirim`, `bank_pengirim`, `nama_pengirim`, `waktu_transfer`, `nominal_transfer`, `bukti`, `catatan`, `keterangan`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, '0634526114', 'BNI', 'Muhammad Haitsam', '2022-04-20 17:37:00', 150000.00, 'bukti-transfer/r2gMLuVRH5LHdMTIJDQ4FPc8QYxDyHvHukVmMx1Z.jpg', 'Oke', 'Makasih ya', 1, '2022-04-20 10:39:56', '2022-04-21 04:44:32', NULL),
 (2, 2, 1, '1234', 'BNI', 'Christine Yenny', '2022-05-02 16:03:00', 250000.00, 'bukti-transfer/im6yzGA5gQk89gLfpkhKO2J1KnDpNM2L7bWpFM7e.jpg', 'Makasih', 'Valid', 1, '2022-05-02 09:03:41', '2022-05-02 09:08:48', NULL),
-(3, 3, 2, '1234', 'BNI', 'Rayhan', '2022-05-02 16:12:00', 250000.00, 'bukti-transfer/2L6f6JDEy6G1d389wW0yJCYGu2FBmBSG6kpzx1H6.jpg', NULL, NULL, 1, '2022-05-02 09:12:52', '2022-05-02 09:13:35', NULL);
+(3, 3, 2, '1234', 'BNI', 'Rayhan', '2022-05-02 16:12:00', 250000.00, 'bukti-transfer/2L6f6JDEy6G1d389wW0yJCYGu2FBmBSG6kpzx1H6.jpg', NULL, NULL, 1, '2022-05-02 09:12:52', '2022-05-02 09:13:35', NULL),
+(4, 5, 2, '12341232121', 'BNI', 'Asep', '2022-09-06 06:10:00', 250000.00, 'bukti-transfer/i8bYpiJFDBzesNfya1XhBMRyh2E974WMiMrISHQ2.jpg', 'bayar', '', 0, '2022-09-05 23:11:01', '2022-09-05 23:11:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -807,7 +811,8 @@ INSERT INTO `peserta` (`id`, `mahasiswa_id`, `acara_id`, `tagihan`, `sisa_tagiha
 (1, 1, 2, 150000.00, 0.00, 3, 4, NULL, '2022-04-20 02:57:01', '2022-08-28 09:49:56', NULL),
 (2, 2, 3, 250000.00, 0.00, 3, 10, NULL, '2022-05-02 09:02:58', '2022-05-16 12:49:55', NULL),
 (3, 1, 3, 250000.00, 0.00, 3, 10, NULL, '2022-05-02 09:12:15', '2022-05-02 09:57:27', NULL),
-(4, 1, 5, 0.00, 0.00, 3, NULL, '2022-09-01 17:44:42', '2022-09-01 17:04:24', '2022-09-01 17:44:42', NULL);
+(4, 1, 5, 0.00, 0.00, 3, NULL, '2022-09-01 17:44:42', '2022-09-01 17:04:24', '2022-09-01 17:44:42', NULL),
+(5, 1, 4, 250000.00, 250000.00, 1, NULL, NULL, '2022-09-05 22:57:03', '2022-09-05 22:57:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -1123,7 +1128,8 @@ INSERT INTO `users` (`id`, `nama`, `email`, `jenis_kelamin`, `tempat_lahir`, `ta
 (6, 'Calon', 'dutabiawak@tass.telkomuniversity.ac.id', 'Perempuan', 'Jakarta', '2001-08-29', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
 (7, 'Christine Yenny', 'christine@student.telkomuniversity.ac.id', 'Perempuan', 'Kalimantan', '2022-03-02', '082117503120', 'Kalimantan', 'Islam', 'Hebat', 'foto-profil/t0rJoRXfYM2K9QbiuVT3dC668lwnjvwPw81NAGqx.jpg', NULL, '$2y$10$FHhE00gzwdNcH.mlWdtzNerTx0.XcLY.EqMIjQNENT8LY8c5f2Kny', 2, 1, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
 (8, 'Dudung', 'dudung@student.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '2022-04-15', '82117503125', 'Bandung', 'Islam', 'Oke', 'foto-profil/X5bWssRfoWQIEXHfa1pQiTyhfEw1PMcYMcly0jwM.jpg', NULL, '$2y$10$3hBRJeOQBaepKOSgVK5J3.OJbKD9ZPmi2u/1zJ/A//o3s0DrV9uHq', 2, 1, NULL, '2022-04-15 00:52:51', '2022-04-15 00:52:51', NULL),
-(9, 'Muhammad Barja Sanjaya', 'mbarja@tass.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL);
+(9, 'Muhammad Barja Sanjaya', 'mbarja@tass.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL),
+(10, 'asd asd', 'asdasd@student.telkomuniversity.ac.id', 'Perempuan', 'asd', '2022-09-07', '1234', 'asda', 'Hindu', NULL, 'foto-profil/ESekwXrvBMNMcDEhB3XOv0xQd4BzE8mHM3qQo8eP.png', NULL, '$2y$10$nyqKmQI2VEd89JQSZX8jIe3J79ap8Kg9WB4Oi.r9y7oL63n8XtsCu', 2, 1, NULL, '2022-09-05 18:07:43', '2022-09-05 18:07:43', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1522,7 +1528,7 @@ ALTER TABLE `like_berita`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `materi`
@@ -1546,13 +1552,13 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1564,7 +1570,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `presensi`
@@ -1636,7 +1642,7 @@ ALTER TABLE `status_peserta`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
