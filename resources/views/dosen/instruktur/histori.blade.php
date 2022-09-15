@@ -90,9 +90,9 @@ use Illuminate\Support\Carbon;
                                                                                 <i class='uil uil-users-alt font-16 mr-1'></i>
                                                                                 {{ $pelatihan->jumlah_peserta }}
                                                                             </li>
-                                                                            <li class="list-inline-item">
+                                                                            {{-- <li class="list-inline-item">
                                                                                 <span class="badge badge-soft-{{ ($pelatihan->kategori_acara_id == 1) ? 'primary' : 'success' }} p-1">{{ $pelatihan->kategoriAcara->kategori }}</span>
-                                                                            </li>
+                                                                            </li> --}}
                                                                         </ul>
                                                                     </div>
                                                                 </div> <!-- end .d-flex-->
@@ -147,9 +147,9 @@ use Illuminate\Support\Carbon;
                                                                                 <i class='uil uil-users-alt font-16 mr-1'></i>
                                                                                 {{ $sertifikasi->jumlah_peserta }}
                                                                             </li>
-                                                                            <li class="list-inline-item">
+                                                                            {{-- <li class="list-inline-item">
                                                                                 <span class="badge badge-soft-{{ ($sertifikasi->kategori_acara_id == 1) ? 'primary' : 'success' }} p-1">{{ $sertifikasi->kategoriAcara->kategori }}</span>
-                                                                            </li>
+                                                                            </li> --}}
                                                                         </ul>
                                                                     </div>
                                                                 </div> <!-- end .d-flex-->

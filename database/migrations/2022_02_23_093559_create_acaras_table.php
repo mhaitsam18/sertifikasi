@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('acara', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('periode')->nullable();
+            $table->string('nama_penyelenggara')->nullable();
             $table->text('deskripsi');
             $table->foreignId('prodi_id')->nullable()
                 ->constrained('prodi')

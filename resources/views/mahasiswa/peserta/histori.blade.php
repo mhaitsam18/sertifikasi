@@ -96,9 +96,9 @@ use Illuminate\Support\Carbon;
                                                                             Nilai : {{ $pelatihan->nilai->nilai }}
                                                                         </li>
                                                                     @endif
-                                                                    <li class="list-inline-item">
+                                                                    {{-- <li class="list-inline-item">
                                                                         <span class="badge badge-soft-{{ $pelatihan->status_peserta_id == 6 ? 'success' : ($pelatihan->status_peserta_id == 7 ? 'danger' : 'primary') }} p-1">{{ $pelatihan->statusPeserta->status }}</span>
-                                                                    </li>
+                                                                    </li> --}}
                                                                 </ul>
                                                             </div>
                                                         </div> <!-- end .d-flex-->
@@ -165,9 +165,9 @@ use Illuminate\Support\Carbon;
                                                                             Nilai : {{ $sertifikasi->nilai->nilai }}
                                                                         </li>
                                                                     @endif
-                                                                    <li class="list-inline-item">
+                                                                    {{-- <li class="list-inline-item">
                                                                         <span class="badge badge-soft-{{ $sertifikasi->status_peserta_id == 7 ? 'danger' : ($sertifikasi->status_peserta_id == 6 ? 'success' : 'primary') }} p-1">{{ $sertifikasi->statusPeserta->status }}</span>
-                                                                    </li>
+                                                                    </li> --}}
                                                                 </ul>
                                                             </div>
                                                         </div> <!-- end .d-flex-->
