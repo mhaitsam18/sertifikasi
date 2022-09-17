@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2022 at 02:09 PM
+-- Generation Time: Sep 17, 2022 at 09:12 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -30,12 +30,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `acara` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `periode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_penyelenggara` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori_acara_id` bigint(20) UNSIGNED DEFAULT NULL,
   `pendaftaran_buka` datetime NOT NULL,
   `pendaftaran_tutup` datetime NOT NULL,
   `pelaksanaan_buka` datetime NOT NULL,
   `pelaksanaan_tutup` datetime NOT NULL,
+  `link_pendaftaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lokasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `biaya` double(16,2) NOT NULL,
   `kuota` int(11) NOT NULL,
@@ -53,12 +56,12 @@ CREATE TABLE `acara` (
 -- Dumping data for table `acara`
 --
 
-INSERT INTO `acara` (`id`, `nama`, `deskripsi`, `kategori_acara_id`, `pendaftaran_buka`, `pendaftaran_tutup`, `pelaksanaan_buka`, `pelaksanaan_tutup`, `lokasi`, `biaya`, `kuota`, `status_acara_id`, `koordinator_id`, `prodi_id`, `thumbnail`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Pembukaan Seminar Sertifikasi', '<div>Pembukaan Seminar</div>', 1, '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', 'Bandung', 150000.00, 1000, 6, 1, NULL, 'thumbnail-acara/seminar.jpg', 1, '2022-03-20 05:33:01', '2022-05-21 07:26:53', NULL),
-(2, 'Ngoding Bareng', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sed quia odio sint vel repudiandae, obcaecati facilis dicta temporibus et sapiente odit velit beatae officia quas aliquam eum. Non aliquid corporis reprehenderit doloribus exercitationem libero aut perferendis itaque voluptas, id temporibus omnis commodi aspernatur distinctio repudiandae debitis. Ipsam odit animi nulla ratione est deleniti, voluptates vero voluptate aspernatur officia impedit culpa molestiae laborum necessitatibus ullam dolores doloribus perspiciatis ut delectus, dicta dolorem cum nostrum neque! Atque illum alias in quisquam asperiores! At ratione ab recusandae magnam fugit accusamus fuga, atque laboriosam distinctio officia nulla magni dolore praesentium amet animi veniam inventore numquam alias iure enim quae dolorum. Fuga aperiam temporibus quos a corporis quae necessitatibus? Unde consequatur repellat corrupti ducimus, cumque fugiat veritatis nesciunt excepturi? Velit aspernatur facilis voluptatum amet magni, quia dolor! Earum nostrum eligendi porro asperiores placeat incidunt corrupti sit, doloribus exercitationem facilis. Consequatur architecto, eos autem ullam laboriosam sint amet porro beatae quaerat? Repellendus eligendi perferendis voluptates quae, officiis illo quos quo sit, esse accusamus libero dignissimos est ipsa corporis recusandae expedita natus quas molestiae nostrum doloremque explicabo veritatis delectus tempora. Cumque modi mollitia, in repellendus dolorem maxime deserunt nesciunt, quos laudantium ipsam nostrum, illum veniam quia velit nemo itaque quasi aspernatur neque optio? Esse saepe veritatis dignissimos dolorem consequatur deserunt optio error? A quisquam suscipit ex esse delectus non sunt reprehenderit quo laborum atque necessitatibus aperiam deleniti blanditiis repudiandae magni voluptatum facilis ab, voluptas itaque cumque, officiis nesciunt earum vitae consectetur! Error aspernatur ducimus hic quae nihil, eum nemo voluptas, fugiat, impedit voluptatum quidem similique. Aliquid modi quidem dolores adipisci eos neque sunt. Repudiandae repellat corrupti minus, nisi dolor perferendis nostrum quisquam totam deleniti quaerat nihil laboriosam placeat ad, iusto voluptate sed tempore! Facere obcaecati delectus quam itaque sed sit corporis porro similique expedita et eligendi inventore, cum voluptatibus adipisci, rerum, dolores consequatur modi? Molestiae illo architecto necessitatibus modi earum molestias error, velit nulla placeat magnam, doloribus veniam quas. Quo, provident. Nesciunt magnam alias id delectus ratione unde aperiam, laborum vitae ab sint architecto, maiores perferendis accusantium aspernatur, odio nihil culpa! Corporis dolorem atque deserunt ducimus voluptates error, repudiandae amet dolorum ratione iusto a consectetur consequatur tempore ipsam, placeat hic. Eveniet, provident molestias quia omnis, distinctio beatae optio quae quos unde cum tempore rerum suscipit maxime quam necessitatibus vitae. Rerum natus, dicta maiores, quidem illo, maxime quam molestiae blanditiis pariatur tempora perferendis magnam nobis. Animi nulla, dignissimos corporis quae facilis possimus veritatis facere omnis sapiente sequi quis ex expedita libero et, dolorem voluptatem alias ipsam earum aliquid nihil tempore sed? Odio eum quae alias, consequuntur nam, blanditiis iure officiis dolore culpa, impedit ipsam assumenda voluptate optio ut quibusdam est ducimus quisquam accusamus. Doloremque dignissimos et ea harum eaque autem libero sequi, quidem, animi veritatis distinctio reiciendis? Aliquid ipsa magni, enim molestiae unde non, molestias voluptatibus dolor ipsam accusantium vero pariatur, praesentium velit quae aliquam quod culpa nobis qui autem accusamus porro incidunt exercitationem. Pariatur officiis dolorum similique a soluta, error obcaecati quasi, aspernatur voluptates possimus vero minima placeat iure explicabo consequuntur! Accusamus tempore modi architecto aliquid, consequatur, dolorem vitae incidunt, sint libero natus rem? Illum accusamus eum quis blanditiis consequatur tempora magnam accusantium perferendis quasi nam. Asperiores inventore perspiciatis tempore odio deleniti voluptates nobis ullam atque ab ducimus ea aliquam quaerat ad sint illum, facere neque molestiae dolorum nesciunt ipsam tenetur numquam alias! Deleniti iure harum laboriosam voluptatibus reprehenderit, magnam facere rerum maiores neque esse cum suscipit accusamus odit id nulla quam animi dolore, ipsum asperiores molestiae sed. Eum molestiae, voluptate optio rerum cum pariatur repellat quasi accusamus nihil commodi! Dolor explicabo magnam ex illo iusto. Iste, voluptates atque. Sequi officia numquam ratione enim minima sunt perferendis exercitationem nam minus libero quisquam sapiente praesentium ipsum, rem deleniti dolores pariatur illum harum ea magnam itaque laboriosam consectetur, quia nesciunt? Sunt facere adipisci, explicabo assumenda, error officiis voluptatem eos optio, magni vero rem nisi quisquam minus eveniet pariatur dolores? Commodi ipsa nobis aliquam, necessitatibus voluptate iusto eius excepturi adipisci, asperiores aperiam quidem, ab autem consequuntur explicabo amet architecto nam totam dignissimos expedita distinctio quia. Nisi adipisci labore alias accusantium qui! Fugit quo voluptate facere reprehenderit quis libero dolores tempora a aperiam exercitationem, facilis inventore quibusdam optio accusamus. Veritatis quis molestias, porro nesciunt doloribus eligendi in dolorum, ab ad aut ipsum voluptatum possimus nostrum tempore aspernatur voluptas officiis pariatur quo inventore nobis iste? Voluptatem unde perferendis aliquid quas temporibus laboriosam voluptate ab odit maxime quidem! Ab voluptates tenetur iure laudantium libero suscipit maiores, reprehenderit placeat consequuntur perspiciatis dicta cum ipsam quibusdam natus nesciunt ullam praesentium culpa delectus minus quasi! Cum at, quia laborum deleniti ducimus porro facilis est voluptatum optio amet minus necessitatibus. Deserunt aperiam delectus, rerum esse vel molestias tempore aspernatur iusto modi consequuntur explicabo ut corrupti excepturi distinctio nesciunt ullam suscipit. Aliquid ducimus repudiandae cumque qui expedita rem sapiente repellendus dignissimos, et tenetur enim. Voluptatibus id quidem facilis reprehenderit, molestias voluptas repellendus? Nesciunt exercitationem quibusdam quasi illum totam ad expedita asperiores assumenda harum minus odio, a doloribus ipsa, nam dicta labore tempore ut. Dolorum voluptatibus voluptatum, similique ad, amet obcaecati recusandae sit in deleniti sed odit alias aspernatur incidunt praesentium? Unde excepturi aliquid qui corrupti adipisci repellendus officiis repudiandae atque nulla facere provident inventore, velit sint! Similique possimus illum eaque aliquam rerum recusandae sunt nisi deleniti facilis eos, harum iure hic aliquid commodi odio dolor consectetur error doloremque laborum. Similique, dolorum accusantium? Veniam assumenda vitae consequatur quae reiciendis, aperiam in, aut repellat ea eveniet eaque distinctio beatae corrupti odit! Quia ad nam totam magni dolorum iusto autem ullam in. Magni ratione eveniet nostrum fuga corporis alias ab. Vitae, autem! Corrupti debitis at, sed rerum est qui consequatur error, molestias quae optio minima laboriosam temporibus obcaecati nisi voluptatem tempora ipsa fugiat eius magnam, consequuntur neque! Sit deleniti fugiat reiciendis perferendis nisi ad fuga placeat quisquam in, at voluptatum quam aperiam. Voluptatem dolores debitis exercitationem similique aspernatur inventore nemo, sed repudiandae! Quis, laborum ipsam perspiciatis assumenda totam commodi enim, corrupti, odio explicabo nam ratione saepe eum officia cupiditate cumque!', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 7, 1, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-03-29 03:26:07', '2022-05-21 07:26:51', NULL),
-(3, 'Pelatihan Microsoft Azure', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', 'Bandung', 250000.00, 120, 6, 3, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
-(4, 'Tes EPrT', '<div>Tes EPrT Telkom University Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-01 09:00:00', '2022-04-30 23:59:00', '2022-04-04 07:00:00', '2022-04-09 17:13:35', 'Telkom University', 250000.00, 500, 2, 2, NULL, 'thumbnail-acara/9fVBEs4FYlXHnvOJkQxVzjHdiWp0jom3rvNNZwLa.png', 1, '2022-04-03 10:18:29', '2022-08-01 14:02:10', NULL),
-(5, 'Kuliah Umum Analisis Perancangna Sistem Informasi', '<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>', 1, '2022-07-20 12:00:00', '2022-07-30 12:00:00', '2022-08-01 14:00:00', '2022-08-01 14:00:00', 'https://meet.google.com/htt-rguu-dmi', 0.00, 1000, 2, 1, NULL, 'thumbnail-acara/ur6EWXNP5U054ZOfxoLF04e0NUiaBn9Ee0YxJ20H.jpg', 1, '2022-07-20 04:59:54', '2022-09-01 17:04:12', NULL);
+INSERT INTO `acara` (`id`, `nama`, `periode`, `nama_penyelenggara`, `deskripsi`, `kategori_acara_id`, `pendaftaran_buka`, `pendaftaran_tutup`, `pelaksanaan_buka`, `pelaksanaan_tutup`, `link_pendaftaran`, `lokasi`, `biaya`, `kuota`, `status_acara_id`, `koordinator_id`, `prodi_id`, `thumbnail`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Pembukaan Seminar Sertifikasi', '2022', 'Tel-U Career', '<div>Pembukaan Seminar</div>', 1, '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', '2022-03-20 06:31:13', NULL, 'Bandung', 150000.00, 1000, 6, 1, NULL, 'thumbnail-acara/seminar.jpg', 1, '2022-03-20 05:33:01', '2022-05-21 07:26:53', NULL),
+(2, 'Ngoding Bareng', '2022', 'HMDSI', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem sed quia odio sint vel repudiandae, obcaecati facilis dicta temporibus et sapiente odit velit beatae officia quas aliquam eum. Non aliquid corporis reprehenderit doloribus exercitationem libero aut perferendis itaque voluptas, id temporibus omnis commodi aspernatur distinctio repudiandae debitis. Ipsam odit animi nulla ratione est deleniti, voluptates vero voluptate aspernatur officia impedit culpa molestiae laborum necessitatibus ullam dolores doloribus perspiciatis ut delectus, dicta dolorem cum nostrum neque! Atque illum alias in quisquam asperiores! At ratione ab recusandae magnam fugit accusamus fuga, atque laboriosam distinctio officia nulla magni dolore praesentium amet animi veniam inventore numquam alias iure enim quae dolorum. Fuga aperiam temporibus quos a corporis quae necessitatibus? Unde consequatur repellat corrupti ducimus, cumque fugiat veritatis nesciunt excepturi? Velit aspernatur facilis voluptatum amet magni, quia dolor! Earum nostrum eligendi porro asperiores placeat incidunt corrupti sit, doloribus exercitationem facilis. Consequatur architecto, eos autem ullam laboriosam sint amet porro beatae quaerat? Repellendus eligendi perferendis voluptates quae, officiis illo quos quo sit, esse accusamus libero dignissimos est ipsa corporis recusandae expedita natus quas molestiae nostrum doloremque explicabo veritatis delectus tempora. Cumque modi mollitia, in repellendus dolorem maxime deserunt nesciunt, quos laudantium ipsam nostrum, illum veniam quia velit nemo itaque quasi aspernatur neque optio? Esse saepe veritatis dignissimos dolorem consequatur deserunt optio error? A quisquam suscipit ex esse delectus non sunt reprehenderit quo laborum atque necessitatibus aperiam deleniti blanditiis repudiandae magni voluptatum facilis ab, voluptas itaque cumque, officiis nesciunt earum vitae consectetur! Error aspernatur ducimus hic quae nihil, eum nemo voluptas, fugiat, impedit voluptatum quidem similique. Aliquid modi quidem dolores adipisci eos neque sunt. Repudiandae repellat corrupti minus, nisi dolor perferendis nostrum quisquam totam deleniti quaerat nihil laboriosam placeat ad, iusto voluptate sed tempore! Facere obcaecati delectus quam itaque sed sit corporis porro similique expedita et eligendi inventore, cum voluptatibus adipisci, rerum, dolores consequatur modi? Molestiae illo architecto necessitatibus modi earum molestias error, velit nulla placeat magnam, doloribus veniam quas. Quo, provident. Nesciunt magnam alias id delectus ratione unde aperiam, laborum vitae ab sint architecto, maiores perferendis accusantium aspernatur, odio nihil culpa! Corporis dolorem atque deserunt ducimus voluptates error, repudiandae amet dolorum ratione iusto a consectetur consequatur tempore ipsam, placeat hic. Eveniet, provident molestias quia omnis, distinctio beatae optio quae quos unde cum tempore rerum suscipit maxime quam necessitatibus vitae. Rerum natus, dicta maiores, quidem illo, maxime quam molestiae blanditiis pariatur tempora perferendis magnam nobis. Animi nulla, dignissimos corporis quae facilis possimus veritatis facere omnis sapiente sequi quis ex expedita libero et, dolorem voluptatem alias ipsam earum aliquid nihil tempore sed? Odio eum quae alias, consequuntur nam, blanditiis iure officiis dolore culpa, impedit ipsam assumenda voluptate optio ut quibusdam est ducimus quisquam accusamus. Doloremque dignissimos et ea harum eaque autem libero sequi, quidem, animi veritatis distinctio reiciendis? Aliquid ipsa magni, enim molestiae unde non, molestias voluptatibus dolor ipsam accusantium vero pariatur, praesentium velit quae aliquam quod culpa nobis qui autem accusamus porro incidunt exercitationem. Pariatur officiis dolorum similique a soluta, error obcaecati quasi, aspernatur voluptates possimus vero minima placeat iure explicabo consequuntur! Accusamus tempore modi architecto aliquid, consequatur, dolorem vitae incidunt, sint libero natus rem? Illum accusamus eum quis blanditiis consequatur tempora magnam accusantium perferendis quasi nam. Asperiores inventore perspiciatis tempore odio deleniti voluptates nobis ullam atque ab ducimus ea aliquam quaerat ad sint illum, facere neque molestiae dolorum nesciunt ipsam tenetur numquam alias! Deleniti iure harum laboriosam voluptatibus reprehenderit, magnam facere rerum maiores neque esse cum suscipit accusamus odit id nulla quam animi dolore, ipsum asperiores molestiae sed. Eum molestiae, voluptate optio rerum cum pariatur repellat quasi accusamus nihil commodi! Dolor explicabo magnam ex illo iusto. Iste, voluptates atque. Sequi officia numquam ratione enim minima sunt perferendis exercitationem nam minus libero quisquam sapiente praesentium ipsum, rem deleniti dolores pariatur illum harum ea magnam itaque laboriosam consectetur, quia nesciunt? Sunt facere adipisci, explicabo assumenda, error officiis voluptatem eos optio, magni vero rem nisi quisquam minus eveniet pariatur dolores? Commodi ipsa nobis aliquam, necessitatibus voluptate iusto eius excepturi adipisci, asperiores aperiam quidem, ab autem consequuntur explicabo amet architecto nam totam dignissimos expedita distinctio quia. Nisi adipisci labore alias accusantium qui! Fugit quo voluptate facere reprehenderit quis libero dolores tempora a aperiam exercitationem, facilis inventore quibusdam optio accusamus. Veritatis quis molestias, porro nesciunt doloribus eligendi in dolorum, ab ad aut ipsum voluptatum possimus nostrum tempore aspernatur voluptas officiis pariatur quo inventore nobis iste? Voluptatem unde perferendis aliquid quas temporibus laboriosam voluptate ab odit maxime quidem! Ab voluptates tenetur iure laudantium libero suscipit maiores, reprehenderit placeat consequuntur perspiciatis dicta cum ipsam quibusdam natus nesciunt ullam praesentium culpa delectus minus quasi! Cum at, quia laborum deleniti ducimus porro facilis est voluptatum optio amet minus necessitatibus. Deserunt aperiam delectus, rerum esse vel molestias tempore aspernatur iusto modi consequuntur explicabo ut corrupti excepturi distinctio nesciunt ullam suscipit. Aliquid ducimus repudiandae cumque qui expedita rem sapiente repellendus dignissimos, et tenetur enim. Voluptatibus id quidem facilis reprehenderit, molestias voluptas repellendus? Nesciunt exercitationem quibusdam quasi illum totam ad expedita asperiores assumenda harum minus odio, a doloribus ipsa, nam dicta labore tempore ut. Dolorum voluptatibus voluptatum, similique ad, amet obcaecati recusandae sit in deleniti sed odit alias aspernatur incidunt praesentium? Unde excepturi aliquid qui corrupti adipisci repellendus officiis repudiandae atque nulla facere provident inventore, velit sint! Similique possimus illum eaque aliquam rerum recusandae sunt nisi deleniti facilis eos, harum iure hic aliquid commodi odio dolor consectetur error doloremque laborum. Similique, dolorum accusantium? Veniam assumenda vitae consequatur quae reiciendis, aperiam in, aut repellat ea eveniet eaque distinctio beatae corrupti odit! Quia ad nam totam magni dolorum iusto autem ullam in. Magni ratione eveniet nostrum fuga corporis alias ab. Vitae, autem! Corrupti debitis at, sed rerum est qui consequatur error, molestias quae optio minima laboriosam temporibus obcaecati nisi voluptatem tempora ipsa fugiat eius magnam, consequuntur neque! Sit deleniti fugiat reiciendis perferendis nisi ad fuga placeat quisquam in, at voluptatum quam aperiam. Voluptatem dolores debitis exercitationem similique aspernatur inventore nemo, sed repudiandae! Quis, laborum ipsam perspiciatis assumenda totam commodi enim, corrupti, odio explicabo nam ratione saepe eum officia cupiditate cumque!', 1, '2022-03-31 10:00:00', '2022-04-06 23:59:00', '2022-04-11 07:00:00', '2022-04-23 22:00:00', NULL, 'https://meet.google.com/htt-rguu-dmi', 150000.00, 100, 7, 1, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-03-29 03:26:07', '2022-05-21 07:26:51', NULL),
+(3, 'Pelatihan Microsoft Azure', '2022', 'Microsoft', 'Berlatih bersama Microsoft, seru dan asyik sekali', 2, '2022-04-01 17:13:35', '2022-04-02 17:13:35', '2022-04-03 17:13:35', '2022-04-09 17:13:35', NULL, 'Bandung', 250000.00, 120, 6, 3, NULL, 'thumbnail-acara/azure.jpg', 1, '2022-04-03 10:18:17', '2022-05-02 09:39:40', NULL),
+(4, 'Tes EPrT', '2022', 'LaC Tel-U', '<div>Tes EPrT Telkom University Ngoding Bareng Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</div>', 1, '2022-03-01 09:00:00', '2022-04-30 23:59:00', '2022-04-04 07:00:00', '2022-04-09 17:13:35', NULL, 'Telkom University', 250000.00, 500, 2, 2, NULL, 'thumbnail-acara/9fVBEs4FYlXHnvOJkQxVzjHdiWp0jom3rvNNZwLa.png', 1, '2022-04-03 10:18:29', '2022-08-01 14:02:10', NULL),
+(5, 'Kuliah Umum Analisis Perancangna Sistem Informasi', '2022', 'FIT', '<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>', 1, '2022-07-20 12:00:00', '2022-07-30 12:00:00', '2022-08-01 14:00:00', '2022-08-01 14:00:00', NULL, 'https://meet.google.com/htt-rguu-dmi', 0.00, 1000, 2, 1, NULL, 'thumbnail-acara/ur6EWXNP5U054ZOfxoLF04e0NUiaBn9Ee0YxJ20H.jpg', 1, '2022-07-20 04:59:54', '2022-09-01 17:04:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -190,7 +193,8 @@ INSERT INTO `chat` (`id`, `pengirim_id`, `penerima_id`, `pesan`, `is_read`, `sha
 (11, 3, 5, 'tadi', 0, NULL, '2022-08-30 08:49:03', '2022-08-30 08:49:03', NULL),
 (12, 5, 3, 'wih berhasil nad', 0, NULL, '2022-08-30 08:49:19', '2022-08-30 08:49:19', NULL),
 (13, 3, 5, 'berhasil apa', 0, NULL, '2022-08-30 08:49:30', '2022-08-30 08:49:30', NULL),
-(14, 4, 3, 'halo', 0, NULL, '2022-09-02 04:21:09', '2022-09-02 04:21:09', NULL);
+(14, 4, 3, 'halo', 0, NULL, '2022-09-02 04:21:09', '2022-09-02 04:21:09', NULL),
+(15, 5, 3, 'haloo', 0, NULL, '2022-09-06 00:24:48', '2022-09-06 00:24:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -450,6 +454,28 @@ INSERT INTO `kategori_notifikasi` (`id`, `kategori`, `role_id`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `keahlian`
+--
+
+CREATE TABLE `keahlian` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `dosen_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `keahlian` varchar(255) DEFAULT NULL,
+  `sertifikat` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keahlian`
+--
+
+INSERT INTO `keahlian` (`id`, `dosen_id`, `keahlian`, `sertifikat`, `created_at`, `updated_at`) VALUES
+(2, 2, 'Ngelem', 'sertifikat-keahlian/VCzADSYkFKi5VTPbTlPk27AIKKrGXvlYvWd95SCw.png', '2022-09-17 02:07:33', '2022-09-17 05:30:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kelas`
 --
 
@@ -587,7 +613,8 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `kelas_id`, `nim`, `scan_ktm`, `ksm`, `transkip_nilai`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 3, NULL, NULL, 1, '6701194088', 'ktm-mahasiswa/ktm-nadila.jpeg', 'ksm-mahasiswa/VsJ3B2Tr0kUB6Jx0dEe3pmlUwtZbMNBFKDCZ9KGz.pdf', 'transkip-nilai-mahasiswa/riBXyZMa2Yzo71b554ndLOhU8hHnvtcftVluVxQR.pdf', '2022-02-23 06:50:50', '2022-08-28 09:43:10', NULL),
 (2, 7, NULL, NULL, 4, '6701184040', 'ktm-mahasiswa/sNeDOQ1uOufW6l0ntlW5Ipahz65yXXDmWgJd8vLI.jpg', NULL, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
-(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', NULL, NULL, '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL);
+(3, 8, NULL, NULL, 9, '1202218458', 'ktm-mahasiswa/djjuc32c7os9ktTC6vBQqxR3ZsR6dLmd1YYYHYGL.jpg', NULL, NULL, '2022-04-15 00:52:52', '2022-04-15 00:52:52', NULL),
+(4, 10, NULL, NULL, 2, '1234', 'ktm-mahasiswa/15S4PereHIt2zX2MgfSiTtfdBPvh71OTFaUqkYkQ.jpg', NULL, NULL, '2022-09-05 18:07:43', '2022-09-05 18:07:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -613,7 +640,10 @@ INSERT INTO `materi` (`id`, `acara_id`, `materi`, `created_at`, `updated_at`) VA
 (3, 2, 'Algoritma dasar', '2022-05-11 03:22:21', '2022-05-11 03:22:21'),
 (4, 2, 'Algoritma Lanjut', '2022-05-11 03:22:28', '2022-05-11 03:22:28'),
 (5, 4, 'Tes EPrT', '2022-05-11 03:45:04', '2022-05-11 03:45:04'),
-(6, 3, 'Pengertian Azure', '2022-05-11 03:45:46', '2022-05-11 03:45:46');
+(6, 3, 'Pengertian Azure', '2022-05-11 03:45:46', '2022-05-11 03:45:46'),
+(7, 4, 'alkimia', '2022-09-06 00:21:47', '2022-09-06 00:21:47'),
+(8, 4, 'alkemi', '2022-09-06 00:22:30', '2022-09-06 00:22:30'),
+(9, 4, 'tes 2 kali', '2022-09-06 00:24:22', '2022-09-06 00:24:22');
 
 -- --------------------------------------------------------
 
@@ -697,13 +727,13 @@ INSERT INTO `nilai` (`id`, `peserta_id`, `nilai`, `sertifikat`, `is_take`, `crea
 
 CREATE TABLE `notifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `kategori_notifikasi_id` bigint(20) UNSIGNED DEFAULT NULL,
   `sub_id` bigint(20) UNSIGNED DEFAULT NULL,
   `subjek` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pesan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT 0,
-  `creator_id` bigint(20) UNSIGNED NOT NULL,
+  `creator_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -714,7 +744,10 @@ CREATE TABLE `notifikasi` (
 --
 
 INSERT INTO `notifikasi` (`id`, `user_id`, `kategori_notifikasi_id`, `sub_id`, `subjek`, `pesan`, `is_read`, `creator_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 6, 10, 'Berita Baru', 'Doni Mendaki Gunung', 1, 1, '2022-08-28 04:26:51', '2022-08-28 08:05:35', NULL);
+(1, 3, 6, 10, 'Berita Baru', 'Doni Mendaki Gunung', 1, 1, '2022-08-28 04:26:51', '2022-08-28 08:05:35', NULL),
+(2, NULL, 2, 5, 'Peserta Baru', 'Acara Sertifikasi: Tes EPrT', 0, 3, '2022-09-05 22:57:03', '2022-09-05 23:48:19', NULL),
+(3, NULL, 3, 4, 'Pembayaran Masuk', 'Pembayaran sebesar Rp.250.000,00 masuk', 0, 3, '2022-09-05 23:11:01', '2022-09-05 23:47:46', NULL),
+(4, NULL, 2, 6, 'Peserta Baru', 'Acara Sertifikasi: Tes EPrT', 0, 8, '2022-09-11 17:12:44', '2022-09-11 17:12:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -759,7 +792,8 @@ CREATE TABLE `pembayaran` (
 INSERT INTO `pembayaran` (`id`, `peserta_id`, `rekening_tujuan_id`, `rekening_pengirim`, `bank_pengirim`, `nama_pengirim`, `waktu_transfer`, `nominal_transfer`, `bukti`, `catatan`, `keterangan`, `is_valid`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, '0634526114', 'BNI', 'Muhammad Haitsam', '2022-04-20 17:37:00', 150000.00, 'bukti-transfer/r2gMLuVRH5LHdMTIJDQ4FPc8QYxDyHvHukVmMx1Z.jpg', 'Oke', 'Makasih ya', 1, '2022-04-20 10:39:56', '2022-04-21 04:44:32', NULL),
 (2, 2, 1, '1234', 'BNI', 'Christine Yenny', '2022-05-02 16:03:00', 250000.00, 'bukti-transfer/im6yzGA5gQk89gLfpkhKO2J1KnDpNM2L7bWpFM7e.jpg', 'Makasih', 'Valid', 1, '2022-05-02 09:03:41', '2022-05-02 09:08:48', NULL),
-(3, 3, 2, '1234', 'BNI', 'Rayhan', '2022-05-02 16:12:00', 250000.00, 'bukti-transfer/2L6f6JDEy6G1d389wW0yJCYGu2FBmBSG6kpzx1H6.jpg', NULL, NULL, 1, '2022-05-02 09:12:52', '2022-05-02 09:13:35', NULL);
+(3, 3, 2, '1234', 'BNI', 'Rayhan', '2022-05-02 16:12:00', 250000.00, 'bukti-transfer/2L6f6JDEy6G1d389wW0yJCYGu2FBmBSG6kpzx1H6.jpg', NULL, NULL, 1, '2022-05-02 09:12:52', '2022-05-02 09:13:35', NULL),
+(4, 5, 2, '12341232121', 'BNI', 'Asep', '2022-09-06 06:10:00', 250000.00, 'bukti-transfer/i8bYpiJFDBzesNfya1XhBMRyh2E974WMiMrISHQ2.jpg', 'bayar', '', 0, '2022-09-05 23:11:01', '2022-09-05 23:11:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -807,7 +841,9 @@ INSERT INTO `peserta` (`id`, `mahasiswa_id`, `acara_id`, `tagihan`, `sisa_tagiha
 (1, 1, 2, 150000.00, 0.00, 3, 4, NULL, '2022-04-20 02:57:01', '2022-08-28 09:49:56', NULL),
 (2, 2, 3, 250000.00, 0.00, 3, 10, NULL, '2022-05-02 09:02:58', '2022-05-16 12:49:55', NULL),
 (3, 1, 3, 250000.00, 0.00, 3, 10, NULL, '2022-05-02 09:12:15', '2022-05-02 09:57:27', NULL),
-(4, 1, 5, 0.00, 0.00, 3, NULL, '2022-09-01 17:44:42', '2022-09-01 17:04:24', '2022-09-01 17:44:42', NULL);
+(4, 1, 5, 0.00, 0.00, 3, NULL, '2022-09-01 17:44:42', '2022-09-01 17:04:24', '2022-09-01 17:44:42', NULL),
+(5, 1, 4, 250000.00, 250000.00, 1, NULL, NULL, '2022-09-05 22:57:03', '2022-09-05 22:57:03', NULL),
+(6, 3, 4, 250000.00, 250000.00, 1, NULL, NULL, '2022-09-11 17:12:44', '2022-09-11 17:12:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -1123,7 +1159,8 @@ INSERT INTO `users` (`id`, `nama`, `email`, `jenis_kelamin`, `tempat_lahir`, `ta
 (6, 'Calon', 'dutabiawak@tass.telkomuniversity.ac.id', 'Perempuan', 'Jakarta', '2001-08-29', '081285508410', 'Bandung', 'Islam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, rerum quae, natus, animi et ad quo quos sunt omnis consequuntur voluptate obcaecati at fuga eos doloremque nobis dicta saepe iure.', 'foto-profil/default.jpeg', NULL, '$2y$10$sRWETc/4piP6GgCbOWPHPulwfFxnlSRKNftiAtYyTTIf.pzvB6cXq', 3, 1, NULL, '2022-02-23 06:50:50', '2022-02-23 06:50:50', NULL),
 (7, 'Christine Yenny', 'christine@student.telkomuniversity.ac.id', 'Perempuan', 'Kalimantan', '2022-03-02', '082117503120', 'Kalimantan', 'Islam', 'Hebat', 'foto-profil/t0rJoRXfYM2K9QbiuVT3dC668lwnjvwPw81NAGqx.jpg', NULL, '$2y$10$FHhE00gzwdNcH.mlWdtzNerTx0.XcLY.EqMIjQNENT8LY8c5f2Kny', 2, 1, NULL, '2022-03-11 20:09:51', '2022-03-11 20:09:51', NULL),
 (8, 'Dudung', 'dudung@student.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '2022-04-15', '82117503125', 'Bandung', 'Islam', 'Oke', 'foto-profil/X5bWssRfoWQIEXHfa1pQiTyhfEw1PMcYMcly0jwM.jpg', NULL, '$2y$10$3hBRJeOQBaepKOSgVK5J3.OJbKD9ZPmi2u/1zJ/A//o3s0DrV9uHq', 2, 1, NULL, '2022-04-15 00:52:51', '2022-04-15 00:52:51', NULL),
-(9, 'Muhammad Barja Sanjaya', 'mbarja@tass.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL);
+(9, 'Muhammad Barja Sanjaya', 'mbarja@tass.telkomuniversity.ac.id', 'Laki-laki', 'Bandung', '1978-05-19', '081313141120', 'Jl. Bandung', 'Islam', '<div>Dosennya baik banget</div>', 'foto-profil/IkuIiCIxxdjp6lV8Nv1zA8PKCdxfrLOUAw8ooNcy.png', NULL, '$2y$10$I44GuIUTFYHMV8lkbd7jiOJMYD8HLEslmre.mwYVzTo2We4CB8yp2', 3, 1, NULL, '2022-04-21 08:51:12', '2022-04-21 08:51:12', NULL),
+(10, 'asd asd', 'asdasd@student.telkomuniversity.ac.id', 'Perempuan', 'asd', '2022-09-07', '1234', 'asda', 'Hindu', NULL, 'foto-profil/ESekwXrvBMNMcDEhB3XOv0xQd4BzE8mHM3qQo8eP.png', NULL, '$2y$10$nyqKmQI2VEd89JQSZX8jIe3J79ap8Kg9WB4Oi.r9y7oL63n8XtsCu', 2, 1, NULL, '2022-09-05 18:07:43', '2022-09-05 18:07:43', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1231,6 +1268,12 @@ ALTER TABLE `kategori_acara`
 -- Indexes for table `kategori_notifikasi`
 --
 ALTER TABLE `kategori_notifikasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `keahlian`
+--
+ALTER TABLE `keahlian`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1444,7 +1487,7 @@ ALTER TABLE `berita_acara`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `dosen`
@@ -1495,6 +1538,12 @@ ALTER TABLE `kategori_notifikasi`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `keahlian`
+--
+ALTER TABLE `keahlian`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
@@ -1522,13 +1571,13 @@ ALTER TABLE `like_berita`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1546,13 +1595,13 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1564,7 +1613,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `presensi`
@@ -1636,7 +1685,7 @@ ALTER TABLE `status_peserta`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
