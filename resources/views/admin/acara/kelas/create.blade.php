@@ -22,6 +22,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Kelas: "{{ $acara->nama }}" - Tambah Kelas</h4>
+                    <h5 class="header-title mt-0 mb-1">Sisa Kuota: {{ $sisa_kuota }} Peserta</h5>
                     <form action="/dashboard/acara/kelas-acara" method="post">
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $acara->id }}">

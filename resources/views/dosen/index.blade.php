@@ -115,6 +115,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nama Acara</th>
+                                <th scope="col">Periode</th>
+                                <th scope="col">Penyelenggara</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Lokasi</th>
@@ -133,6 +135,8 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $acara->nama }}</td>
+                                        <td>{{ $acara->periode }}</td>
+                                        <td>{{ $acara->nama_penyelenggara }}</td>
                                         <td>{{ $acara->kategoriAcara->kategori }}</td>
                                         <td>{{ Str::limit(strip_tags($acara->deskripsi), 200, '...') }}</td>
                                         <td>{{ $acara->lokasi }}</td>

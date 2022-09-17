@@ -13,6 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Data Kelas "{{ $acara->nama }}"</h4>
+                    <h5 class="header-title mt-0 mb-1">Kuota Maksimum: {{ $acara->kuota }} Peserta</h5>
                     {{-- <div class="table-responsive col-lg-12"> --}}
                         <a href="/dashboard/acara/kelas-acara/create?acara_id={{ $acara->id }}" class="btn btn-primary mb-3">Tambah Kelas</a>
                         <div class="table-responsive col-lg-12">

@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminAcaraController;
 use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminDosenController;
+use App\Http\Controllers\AdminKeahlianController;
 use App\Http\Controllers\AdminKelasAcaraController;
 use App\Http\Controllers\AdminNotifikasiController;
 use App\Http\Controllers\AdminSertifikatController;
@@ -121,6 +122,7 @@ Route::middleware('auth')->group(function () {
                     Route::get('/validasi', 'validasi')->name('admin.acara.validasi');
                 });
             });
+
             Route::resource('/acara/kelas-acara', AdminKelasAcaraController::class);
             Route::controller(AdminBeritaController::class)->group(function () {
                 Route::prefix('berita')->group(function () {
@@ -139,6 +141,9 @@ Route::middleware('auth')->group(function () {
             });
             Route::controller(AdminDosenController::class)->group(function () {
                 Route::put('/userDosen', 'updateProfil')->name('admin.update-profil'); //URL SALAH
+            });
+
+            Route::controller(AdminKeahlianController::class)->group(function () {
             });
             Route::controller(AdminPesertaController::class)->group(function () {
                 Route::prefix('peserta')->group(function () {
@@ -161,6 +166,7 @@ Route::middleware('auth')->group(function () {
                 });
             });
             Route::resource('/beritas', AdminBeritaController::class);
+            Route::resource('/dosen/keahlian', AdminKeahlianController::class);
             Route::resource('/dosen', AdminDosenController::class);
         });
     });

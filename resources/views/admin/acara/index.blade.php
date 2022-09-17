@@ -14,12 +14,14 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nama Acara</th>
+                    <th scope="col">Penyelenggara</th>
                     <th scope="col">Kategori Acara</th>
                     {{-- <th scope="col">Lokasi</th>
                     <th scope="col">Biaya</th>
                     <th scope="col">Kuota</th> --}}
                     <th scope="col">Kode Koordinator</th>
                     <th scope="col">Status Acara</th>
+                    <th scope="col">Kuota</th>
                     <th scope="col">Validasi</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -37,12 +39,14 @@
                     <tr class="{{ $warna }}">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $acara->nama }}</td>
+                        <td>{{ $acara->nama_penyelenggara }}</td>
                         <td>{{ $acara->kategoriAcara->kategori }}</td>
                         {{-- <td>{{ $acara->lokasi }}</td>
                         <td>{{ $acara->biaya }}</td>
                         <td>{{ $acara->kuota }}</td> --}}
                         <td>{{ $acara->Koordinator->kode_dosen }}</td>
                         <td>{{ $acara->statusAcara->status }}</td>
+                        <td>{{ $acara->kuota }}</td>
                         <td>
                             @if ($acara->is_valid == 1)
                                 <span class="badge bg-success">Valid</span>

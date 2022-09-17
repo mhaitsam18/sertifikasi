@@ -36,6 +36,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama Pelatihan / Sertifikasi</th>
+                                    <th scope="col">Periode</th>
+                                    <th scope="col">Penyelenggara</th>
                                     <th scope="col">Koordinator</th>
                                     <th scope="col">Lokasi</th>
                                     <th scope="col">Biaya</th>
@@ -51,6 +53,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $acara->nama }}</td>
+                                        <td>{{ $acara->periode }}</td>
+                                        <td>{{ $acara->nama_penyelenggara }}</td>
                                         <td>{{ $acara->koordinator->user->nama }}</td>
                                         <td>{{ $acara->lokasi }}</td>
                                         <td>Rp. {{ number_format($acara->biaya,2,',','.') }}</td>

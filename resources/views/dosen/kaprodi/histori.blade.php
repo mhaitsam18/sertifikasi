@@ -39,6 +39,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama Pelatihan / Sertifikasi</th>
+                                    <th scope="col">Periode</th>
+                                    <th scope="col">Penyelenggara</th>
                                     <th scope="col">Waktu Pendaftaran</th>
                                     <th scope="col">Waktu Pelaksanaan</th>
                                     <th scope="col">Koordinator</th>
@@ -58,6 +60,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $acara->nama }}</td>
+                                        <td>{{ $acara->periode }}</td>
+                                        <td>{{ $acara->nama_penyelenggara }}</td>
                                         <td>{{ Carbon::parse($acara->pendaftaran_buka)->translatedFormat('d F Y') }} s/d {{ Carbon::parse($acara->pendaftaran_tutup)->translatedFormat('d F Y') }}</td>
                                         <td>{{ Carbon::parse($acara->pelaksanaan_buka)->translatedFormat('d F Y') }} s/d {{ Carbon::parse($acara->pelaksanaan_tutup)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $acara->koordinator->user->nama }}</td>

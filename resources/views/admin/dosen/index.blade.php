@@ -31,7 +31,8 @@
                         <td>{{ $dosen->nip }}</td>
                         <td>
                             <a href="/dashboard/dosen/{{ $dosen->id }}" class="badge bg-info" title="Detail"><span data-feather="eye"></span></a>
-                            <a href="/dashboard/dosen/{{ $dosen->id }}/edit" class="badge bg-warning" title="edit"><span data-feather="edit"></span></a>
+                            <a href="/dashboard/dosen/{{ $dosen->id }}/edit" class="badge bg-warning" title="Edit"><span data-feather="edit"></span></a>
+                            <a href="/dashboard/dosen/keahlian?dosen_id={{ $dosen->id }}" class="badge bg-success" title="Keahlian"><span data-feather="file"></span></a>
                             @if ($dosen->deleted_at)
                                 <form action="/dashboard/dosen/restore/" method="post" class="d-inline">
                                     {{-- @method('restore') --}}

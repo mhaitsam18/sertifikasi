@@ -25,6 +25,7 @@ use Illuminate\Support\Carbon;
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-1">Kelas: "{{ $acara->nama }}" - Ubah Data Kelas</h4>
+                    <h5 class="header-title mt-0 mb-1">Sisa Kuota: {{ $sisa_kuota + $kelas->kuota }} Peserta</h5>
                     <form action="/dashboard/acara/kelas-acara/{{ $kelas->id }}" method="post">
                         @method('put')
                         @csrf

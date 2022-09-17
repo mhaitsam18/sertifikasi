@@ -6,6 +6,7 @@ use App\Models\Acara;
 use App\Models\Dosen;
 use App\Models\KelasAcara;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminKelasAcaraController extends Controller
 {
@@ -30,12 +31,17 @@ class AdminKelasAcaraController extends Controller
      */
     public function create(Request $request)
     {
+        $kuota = KelasAcara::select(DB::raw('SUM(kuota) as kuota_total'))->where('acara_id', $request->acara_id)->first()->kuota_total;
+        $acara = Acara::where('id', $request->acara_id)->first();
+
+        $sisa_kuota = $acara->kuota - $kuota;
         return view('admin.acara.kelas.create', [
             'title' => "Data Instruktur",
+            'sisa_kuota' => $sisa_kuota,
             'list_instruktur' => Dosen::select('*', 'dosen.id AS instruktur_id')->join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')
                 ->where('acara_id', $request->acara_id)->with('user')
                 ->get(),
-            'acara' => Acara::where('id', $request->acara_id)->first()
+            'acara' => $acara
         ]);
     }
 
@@ -76,9 +82,14 @@ class AdminKelasAcaraController extends Controller
      */
     public function edit(KelasAcara $kelasAcara)
     {
+        $acara = Acara::where('id', $kelasAcara->acara_id)->first();
+        $kuota = KelasAcara::select(DB::raw('SUM(kuota) as kuota_total'))->where('acara_id', $kelasAcara->acara_id)->first()->kuota_total;
+
+        $sisa_kuota = $acara->kuota - $kuota;
         return view('admin.acara.kelas.edit', [
             'title' => "Data Instruktur",
-            'acara' => Acara::where('id', $kelasAcara->acara_id)->first(),
+            'sisa_kuota' => $sisa_kuota,
+            'acara' => $acara,
             'kelas' => $kelasAcara,
             'list_instruktur' => Dosen::select('*', 'dosen.id AS instruktur_id')->join('instruktur_acara', 'dosen.id', '=', 'instruktur_acara.dosen_id')
                 ->where('acara_id', $kelasAcara->acara_id)->with('user')

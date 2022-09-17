@@ -24,6 +24,10 @@ class Dosen extends Model
         return $this->belongsTo(Prodi::class);
     }
 
+    public function keahlian()
+    {
+        return $this->hasMany(Keahlian::class);
+    }
     public function kaprodi()
     {
         return $this->hasMany(Prodi::class, 'kaprodi_id');
