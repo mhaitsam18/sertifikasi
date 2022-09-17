@@ -101,12 +101,12 @@
                             <span> Histori Sertifikasi & Pelatihan </span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="/kaprodi/master">
                             <i data-feather="clipboard"></i>
                             <span> Data Master Sertifikasi & Pelatihan </span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endcan
                 {{-- <li>
                     <a href="javascript: void(0);">

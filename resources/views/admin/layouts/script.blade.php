@@ -15,8 +15,45 @@
 
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
+<!-- Vendor js -->
+{{-- <script src="/js/vendor.min.js"></script>
+
+<!-- datatable js -->
+<script src="/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="/libs/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="/libs/datatables/responsive.bootstrap4.min.js"></script>
+
+<script src="/libs/datatables/dataTables.buttons.min.js"></script>
+<script src="/libs/datatables/buttons.bootstrap4.min.js"></script>
+<script src="/libs/datatables/buttons.html5.min.js"></script>
+<script src="/libs/datatables/buttons.flash.min.js"></script>
+<script src="/libs/datatables/buttons.print.min.js"></script>
+
+<script src="/libs/datatables/dataTables.keyTable.min.js"></script>
+<script src="/libs/datatables/dataTables.select.min.js"></script>
+
+<!-- Datatables init -->
+<script src="/js/pages/datatables.init.js"></script>
+
+<!-- optional plugins -->
+<script src="/libs/moment/moment.min.js"></script>
+<script src="/libs/apexcharts/apexcharts.min.js"></script>
+<script src="/libs/flatpickr/flatpickr.min.js"></script>
+
+<!-- page js -->
+<script src="/js/pages/dashboard.init.js"></script> --}}
 <script>
-$(document).ready( function () {
-        $('#myTable').DataTable();
+
+    $(document).ready(function() {
+    var table = $('#myTable').DataTable( {
+        responsive: true
     } );
+ 
+    new $.fn.dataTable.FixedHeader( table );
+} );
 </script>

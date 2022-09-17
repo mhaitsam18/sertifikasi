@@ -33,6 +33,7 @@ return new class extends Migration
             $table->dateTime('pendaftaran_tutup');
             $table->dateTime('pelaksanaan_buka');
             $table->dateTime('pelaksanaan_tutup');
+            $table->string('link_pendaftaran')->nullable();
             $table->string('lokasi');
             $table->float('biaya', 16, 2);
             $table->integer('kuota');

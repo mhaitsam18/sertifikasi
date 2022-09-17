@@ -9,18 +9,18 @@
     </div>
     @endif
     <div class="table-responsive col-lg-12">
-        <table class="table table-striped table-sm">
+        <table class="table dt-responsive table-sm nowrap" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nama Acara</th>
+                    <th scope="col"style="width: 100px;">Nama Acara</th>
                     <th scope="col">Penyelenggara</th>
-                    <th scope="col">Kategori Acara</th>
+                    <th scope="col">Kategori</th>
                     {{-- <th scope="col">Lokasi</th>
                     <th scope="col">Biaya</th>
                     <th scope="col">Kuota</th> --}}
-                    <th scope="col">Kode Koordinator</th>
-                    <th scope="col">Status Acara</th>
+                    <th scope="col">Koordinator</th>
+                    <th scope="col" style="width: 300px;">Status Acara</th>
                     <th scope="col">Kuota</th>
                     <th scope="col">Validasi</th>
                     <th scope="col">Action</th>
@@ -37,7 +37,7 @@
                         <?php $warna = "table-danger"; ?>
                     @endif
                     <tr class="{{ $warna }}">
-                        <td>{{ $loop->iteration }}</td>
+                        <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $acara->nama }}</td>
                         <td>{{ $acara->nama_penyelenggara }}</td>
                         <td>{{ $acara->kategoriAcara->kategori }}</td>
@@ -45,7 +45,21 @@
                         <td>{{ $acara->biaya }}</td>
                         <td>{{ $acara->kuota }}</td> --}}
                         <td>{{ $acara->Koordinator->kode_dosen }}</td>
-                        <td>{{ $acara->statusAcara->status }}</td>
+                        <td>
+                            <form action="">
+                                <div class="form-group mt-1">
+                                    <select name="status_id" id="status_id" class="form-select status_id" data-id="{{ $acara->id }}">
+                                        @foreach ($list_status as $status)
+                                            @if ($status->id == $acara->status_acara_id)
+                                                <option value="{{ $status->id }}" selected>{{ $status->status }} </option>
+                                            @else
+                                                <option value="{{ $status->id }}">{{ $status->status }} {{ ($status->id == 2) ? "(Publish Acara)" : "" }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </form>
+                        </td>
                         <td>{{ $acara->kuota }}</td>
                         <td>
                             @if ($acara->is_valid == 1)
@@ -66,58 +80,37 @@
                                     <a href="/dashboard/peserta?acara_id={{ $acara->id }}" class="btn btn-info btn-sm text-decoration-none text-light">List Peserta</a>
                                     <a href="/dashboard/acara/kelas-acara?acara_id={{ $acara->id }}" class="btn btn-dark btn-sm">List Kelas</a>
                                 @endif
-                                <form action="">
-                                    <div class="form-group mt-1">
-                                        <select name="status_id" id="status_id" class="form-select status_id" data-id="{{ $acara->id }}">
-                                            @foreach ($list_status as $status)
-                                                @if ($status->id == $acara->status_acara_id)
-                                                    <option value="{{ $status->id }}" selected>{{ $status->status }} </option>
-                                                @else
-                                                    <option value="{{ $status->id }}">{{ $status->status }} {{ ($status->id == 2) ? "(Publish Acara)" : "" }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </form>
+                                
                             @endif
-                        </td>
-                        <td>
-                            
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    @section('script')
+        <script type="text/javascript">
+            $('.status_id').on('change', function() {
+                const acara_id = $(this).data('id');
+                const status_acara_id = $(this).val();
 
-    <script src="/jquery/jquery.min.js"></script>
-    <script src="/jquery-easing/jquery.easing.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $('.status_id').on('change', function() {
-            const acara_id = $(this).data('id');
-            const status_acara_id = $(this).val();
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "/dashboard/acara/ubahStatus",
-                type: 'post',
-                data: {
-                    acara_id: acara_id,
-                    status_acara_id: status_acara_id
-                },
-                success: function() {
-                    document.location.href = "/dashboard/acara";
-                }
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/dashboard/acara/ubahStatus",
+                    type: 'post',
+                    data: {
+                        acara_id: acara_id,
+                        status_acara_id: status_acara_id
+                    },
+                    success: function() {
+                        document.location.href = "/dashboard/acara";
+                    }
+                });
+                
             });
             
-        });
-        
-    </script>
+        </script>    
+    @endsection
 @endsection
