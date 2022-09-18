@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2022 at 12:21 PM
+-- Generation Time: Sep 18, 2022 at 06:10 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -207,7 +207,7 @@ CREATE TABLE `dosen` (
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `prodi_id` bigint(20) UNSIGNED DEFAULT NULL,
   `kode_dosen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_dan_gelar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_dan_gelar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nidn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_kaprodi` tinyint(1) NOT NULL DEFAULT 0,
