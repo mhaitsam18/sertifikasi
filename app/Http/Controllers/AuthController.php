@@ -37,6 +37,12 @@ class AuthController extends Controller
             'berita' => Berita::latest()->with('penulis')->first(),
         ]);
     }
+
+    public function beralih(Request $request)
+    {
+        $request->session()->put('role_dosen', $request->role_dosen);
+        return back()->with('switch', "Beralih ke Akun " . $request->role_dosen);
+    }
     public function login()
     {
         return view('auth.loginv2', ['title' => 'Login']);
@@ -132,6 +138,7 @@ class AuthController extends Controller
                     break;
                 case 3:
                     $dosen = Dosen::where('user_id', auth()->user()->id)->first();
+                    $request->session()->put('dosen', $dosen);
                     $request->session()->put('dosen_id', $dosen->id);
                     $request->session()->put('role_dosen', $request->role);
                     return redirect()->intended('/dosen');

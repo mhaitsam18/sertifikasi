@@ -19,6 +19,59 @@
                     <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
                     <span>My Account</span>
                 </a>
+                @if (session()->get('role_dosen') == "kaprodi")
+                    @if (session()->get('dosen')->is_koordinator)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Koordinator</span>
+                        </a>
+                    @endif
+                    <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                        <span>Beralih ke Akun Instruktur</span>
+                    </a>
+                @elseif (session()->get('role_dosen') == "koordinator")
+                    <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                        <span>Beralih ke Akun Instruktur</span>
+                    </a>
+                    @if (session()->get('dosen')->is_kaprodi)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Kaprodi</span>
+                        </a>
+                    @endif
+                @elseif (session()->get('role_dosen') == "instruktur")
+                    @if (session()->get('dosen')->is_koordinator)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Koordinator</span>
+                        </a>
+                    @endif
+                    @if (session()->get('dosen')->is_kaprodi)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Kaprodi</span>
+                        </a>
+                    @endif
+                @else
+                    @if (session()->get('dosen')->is_koordinator)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Koordinator</span>
+                        </a>
+                    @endif
+                    @if (session()->get('dosen')->is_kaprodi)
+                        <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                            <span>Beralih ke Akun Kaprodi</span>
+                        </a>
+                    @endif
+                    <a class="dropdown-item notify-item" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        <i data-feather="external-link" class="icon-dual icon-xs mr-2"></i>
+                        <span>Beralih ke Akun Instruktur</span>
+                    </a>
+                @endif
 
                 {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>

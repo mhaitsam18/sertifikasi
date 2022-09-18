@@ -47,6 +47,24 @@ use Illuminate\Support\Carbon;
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="periode">Periode</label>
+                            <input type="text" class="form-control @error('periode') is-invalid @enderror" name="periode" id="periode" required placeholder="Tahun - Bulan" value="{{ old('periode', $acara->periode) }}">
+                            @error('periode')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_penyelenggara">Penyelenggara</label>
+                            <input type="text" class="form-control @error('nama_penyelenggara') is-invalid @enderror" name="nama_penyelenggara" id="nama_penyelenggara" required autofocus value="{{ old('nama_penyelenggara', $acara->nama_penyelenggara) }}">
+                            @error('nama_penyelenggara')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="kategori_acara_id">Kategori Acara</label>
                             <select class="form-control @error('kategori_acara_id') is-invalid @enderror" name="kategori_acara_id" id="kategori_acara_id" required value="{{ old('kategori_acara_id') }}">
                                 <option value="" selected disabled>Pilih Kategori Acara</option>

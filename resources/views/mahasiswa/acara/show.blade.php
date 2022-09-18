@@ -191,8 +191,8 @@ use Illuminate\Support\Carbon;
                             <div class="media p-3">
                                 <i data-feather="user" class="align-self-center icon-dual icon-lg mr-4"></i>
                                 <div class="media-body">
-                                    <h4 class="mt-0 mb-0">{{ $acara->koordinator->kode_dosen }}</h4>
-                                    <span class="text-muted">Koordinator</span>
+                                    <h4 class="mt-0 mb-0">{{ $acara->nama_penyelenggara }}</h4>
+                                    <span class="text-muted">Penyelenggara</span>
                                 </div>
                             </div>
                         </div>
@@ -216,11 +216,11 @@ use Illuminate\Support\Carbon;
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="mt-0 header-title">Deskripsi Acara</h6>
+                    <h4 class="mt-0 header-title">Deskripsi Acara</h4>
 
                     <div class="text-muted mt-3">
+                        <h5>Koordinator: {{ $acara->koordinator->kode_dosen }}</h5>
                         {!! $acara->deskripsi !!}
-                        
                         @if ($list_fasilitas->count())
                             <p>Berikut merupakan Fasilitas-fasilitas yang Akan didapat:</p>
                             <h6 class="font-weight-bold">Data Fasilitas</h6>

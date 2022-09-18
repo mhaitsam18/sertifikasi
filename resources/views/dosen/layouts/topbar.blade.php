@@ -22,6 +22,77 @@
         </ul>
 
         <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+            @if (session()->get('role_dosen') == "kaprodi")
+                @if (session()->get('dosen')->is_koordinator)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            Beralih ke Akun Koordinator
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+                <li class="d-none d-lg-block">
+                    <a class="nav-link mr-0" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        Beralih ke Akun Instruktur
+                        <i data-feather="external-link"></i>
+                    </a>
+                </li>
+            @elseif (session()->get('role_dosen') == "koordinator")
+                <li class="d-none d-lg-block">
+                    <a class="nav-link mr-0" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        Beralih ke Akun Instruktur
+                        <i data-feather="external-link"></i>
+                    </a>
+                </li>
+                @if (session()->get('dosen')->is_kaprodi)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            Beralih ke Akun Kaprodi
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+            @elseif (session()->get('role_dosen') == "instruktur")
+                @if (session()->get('dosen')->is_koordinator)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            Beralih ke Akun Koordinator
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+                @if (session()->get('dosen')->is_kaprodi)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            Beralih ke Akun Kaprodi
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+            @else
+                @if (session()->get('dosen')->is_koordinator)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=koordinator" role="button">
+                            Beralih ke Akun Koordinator
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+                @if (session()->get('dosen')->is_kaprodi)
+                    <li class="d-none d-lg-block">
+                        <a class="nav-link mr-0" href="/auth/beralih?role_dosen=kaprodi" role="button">
+                            Beralih ke Akun Kaprodi
+                            <i data-feather="external-link"></i>
+                        </a>
+                    </li>
+                @endif
+                <li class="d-none d-lg-block">
+                    <a class="nav-link mr-0" href="/auth/beralih?role_dosen=instruktur" role="button">
+                        Beralih ke Akun Instruktur
+                        <i data-feather="external-link"></i>
+                    </a>
+                </li>
+            @endif
             {{-- <li class="d-none d-sm-block">
                 <div class="app-search">
                     <form>
@@ -113,16 +184,13 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom active">
                             <div class="notify-icon bg-success"><i class="uil uil-comment-message"></i> </div>
-                            <p class="notify-details">Jaclyn Brunswick commented on Dashboard<small class="text-muted">1
-                                    min
-                                    ago</small></p>
+                            <p class="notify-details">Jaclyn Brunswick commented on Dashboard<small class="text-muted">1 min ago</small></p>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
                             <div class="notify-icon bg-danger"><i class="uil uil-comment-message"></i></div>
-                            <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days
-                                    ago</small></p>
+                            <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days ago</small></p>
                         </a>
 
                         <!-- item-->

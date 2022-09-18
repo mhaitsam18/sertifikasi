@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/chat/get-chat', [ChatController::class, 'getChat'])->name("auth.chat.get");
     Route::post('/chat/kirim-chat', [ChatController::class, 'kirimChat'])->name("auth.chat.kirim");
     Route::post('/logout', [AuthController::class, 'logout'])->name("auth.logout");
+    Route::get('/auth/beralih', [AuthController::class, 'beralih'])->name("switch");
     Route::controller(HomeController::class)->group(function () {
         Route::get('/put-img', 'putImg')->name("home.put-img");
         Route::get('/home', 'index')->name('home.index');

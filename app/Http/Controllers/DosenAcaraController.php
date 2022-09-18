@@ -54,6 +54,8 @@ class DosenAcaraController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required|max:255',
+            'periode' => 'max:255',
+            'nama_penyelenggara' => 'required|max:255',
             'deskripsi' => 'required',
             'kategori_acara_id' => 'required',
             'lokasi' => 'required',
@@ -123,6 +125,8 @@ class DosenAcaraController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required|max:255',
+            'periode' => 'max:255',
+            'nama_penyelenggara' => 'required|max:255',
             'deskripsi' => 'required',
             'kategori_acara_id' => 'required',
             'lokasi' => 'required',

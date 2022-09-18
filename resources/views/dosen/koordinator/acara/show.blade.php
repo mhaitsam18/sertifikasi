@@ -128,10 +128,12 @@ use Illuminate\Support\Carbon;
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="mt-0 header-title">Deskripsi Acara</h6>
+                    <h4 class="mt-0 header-title">Deskripsi Acara</h4>
 
                     <div class="text-muted mt-3">
+                        <h5>Penyelenggara: {{ $acara->nama_penyelenggara }}</h5>
                         {!! $acara->deskripsi !!}
+                    
                         @if ($list_fasilitas->count())
                             <p>Berikut merupakan Fasilitas-fasilitas yang Akan didapat:</p>
                             <h6 class="font-weight-bold">Data Fasilitas</h6>
