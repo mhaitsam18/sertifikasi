@@ -16,6 +16,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Kode Dosen</th>
                     <th scope="col">Nama Dosen</th>
+                    <th scope="col">Nama dan Gelar</th>
                     <th scope="col">NIDN</th>
                     <th scope="col">NIP</th>
                     <th scope="col">Action</th>
@@ -27,6 +28,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $dosen->kode_dosen }}</td>
                         <td>{{ $dosen->user->nama }}</td>
+                        <td>{{ $dosen->nama_dan_gelar }}</td>
                         <td>{{ $dosen->nidn }}</td>
                         <td>{{ $dosen->nip }}</td>
                         <td>

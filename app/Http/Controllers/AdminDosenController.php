@@ -46,6 +46,7 @@ class AdminDosenController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required|max:255',
+            'nama_dan_gelar' => 'max:255',
             'email' => 'required|email:dns|unique:users',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
@@ -151,6 +152,7 @@ class AdminDosenController extends Controller
     {
         $rules = [
             'nama' => 'required|max:255',
+            'nama_dan_gelar' => 'max:255',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
