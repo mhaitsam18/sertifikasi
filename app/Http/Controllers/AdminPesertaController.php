@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Notifikasi;
 use App\Models\Pembayaran;
 use App\Models\Peserta;
 use App\Models\StatusPeserta;
@@ -93,9 +94,29 @@ class AdminPesertaController extends Controller
                 'berkas_valid_at' => date('Y-m-d H:i:s'),
                 'status_peserta_id' => 3
             ]);
+            Notifikasi::create([
+                'user_id' => $peserta->mahasiswa->user_id,
+                'kategori_notifikasi_id' => 4,
+                'sub_id' => $peserta->acara_id,
+                'subjek' => "Pendaftaran Anda diterima",
+                'pesan' => $peserta->acara->nama . ": Pendaftaran diterima",
+                'is_read' => 0,
+                'creator_id' => auth()->user()->id,
+            ]);
+            //Notifikasi
         } elseif ($request->validasi == 0) {
             Peserta::find($peserta->id)->update([
                 'status_peserta_id' => 2
+            ]);
+
+            Notifikasi::create([
+                'user_id' => $peserta->mahasiswa->user_id,
+                'kategori_notifikasi_id' => 4,
+                'sub_id' => $peserta->acara_id,
+                'subjek' => "Pendaftaran Anda ditolak",
+                'pesan' => $peserta->acara->nama . ": Pendaftaran ditolak",
+                'is_read' => 0,
+                'creator_id' => auth()->user()->id,
             ]);
         }
         return back()->with('success', 'Berkas berhasil divalidasi!');

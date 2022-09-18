@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\KomentarBerita;
 use App\Models\LikeBerita;
+use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
@@ -66,7 +67,16 @@ class AdminBeritaController extends Controller
         if ($request->publish_at) {
             $validateData['publish_at'] = now();
         }
-        Berita::create($validateData);
+        $berita = Berita::create($validateData);
+        Notifikasi::create([
+            'user_id' => null,
+            'kategori_notifikasi_id' => 6,
+            'sub_id' => $berita->id,
+            'subjek' => "Berita Baru",
+            'pesan' => $request->judul,
+            'is_read' => 0,
+            'creator_id' => auth()->user()->id,
+        ]);
         return redirect('/dashboard/berita')->with('success', 'Berita baru telah ditambahkan!');
     }
 

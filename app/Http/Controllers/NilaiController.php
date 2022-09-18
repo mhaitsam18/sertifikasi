@@ -6,6 +6,7 @@ use App\Models\Acara;
 use App\Models\Nilai;
 use App\Models\Peserta;
 use App\Models\Berita;
+use App\Models\Notifikasi;
 use App\Models\StatusPeserta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -50,10 +51,20 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        Nilai::create([
+        $nilai = Nilai::create([
             'peserta_id' => $request->peserta_id,
             'nilai' => $request->nilai,
             // 'sertifikat' => $request->sertifikat,
+        ]);
+        //notifikasi
+        Notifikasi::create([
+            'user_id' => $nilai->peserta->mahasiswa->user_id,
+            'kategori_notifikasi_id' => 5,
+            'sub_id' => $nilai->id,
+            'subjek' => "Sertifikat Anda sudah jadi",
+            'pesan' => $nilai->peserta->acara->nama,
+            'is_read' => 0,
+            'creator_id' => auth()->user()->id,
         ]);
         return back()->with('success', 'Nilai telah ditambahkan!');
     }
