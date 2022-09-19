@@ -66,6 +66,17 @@ class MahasiswaHomeController extends Controller
                 ->whereNotNull('sertifikat')
                 ->join('peserta', 'sertifikat.peserta_id', '=', 'peserta.id')
                 ->get(),
+            'list_jadwal' => JadwalAcara::select('materi', 'waktu_dimulai', 'tanggal', 'acara.nama as nama_acara')
+                ->join('kelas_acara', 'jadwal_acara.kelas_acara_id', '=', 'kelas_acara.id')
+                ->join('acara', 'kelas_acara.acara_id', '=', 'acara.id')
+                ->join('peserta', 'peserta.acara_id', '=', 'acara.id')
+                ->where('peserta.mahasiswa_id', session()->get('mahasiswa_id'))
+                ->where('jadwal_acara.tanggal', '>', date('Y-m-d'))
+
+                ->orderBy('tanggal', 'asc')
+                ->orderBy('waktu_dimulai', 'asc')
+                ->distinct()
+                ->get(),
             'jadwal_hari_ini' => DB::table('jadwal_acara')
                 ->select('jadwal_acara.*', 'acara.*')
                 ->join('kelas_acara', 'jadwal_acara.kelas_acara_id', '=', 'kelas_acara.id')
@@ -78,6 +89,16 @@ class MahasiswaHomeController extends Controller
                     'tanggal' => date('Y-m-d'),
                 ])
                 ->get(),
+            'list_acara' => Acara::select('acara.*')
+                ->where([
+                    'mahasiswa_id' => session()->get('mahasiswa_id'),
+                ])
+                ->join('peserta', 'acara.id', '=', 'peserta.acara_id')
+                ->whereNotIn('status_acara_id', [7])->get(),
+            'list_histori' => Peserta::select('peserta.*')
+                ->join('acara', 'acara.id', '=', 'peserta.acara_id')
+                ->where('mahasiswa_id', session()->get('mahasiswa_id'))
+                ->with('acara', 'nilai')->get(),
             'data_pesan' => User::where('id', '!=', auth()->user()->id)->get(),
             'tanggal_lahir' => Carbon::parse(auth()->user()->tanggal_lahir)->translatedFormat('d F Y')
         ]);

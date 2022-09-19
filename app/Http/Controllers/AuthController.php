@@ -134,6 +134,7 @@ class AuthController extends Controller
                 case 2:
                     $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->first();
                     $request->session()->put('mahasiswa_id', $mahasiswa->id);
+                    $request->session()->put('mahasiswa', $mahasiswa);
                     return redirect()->intended('/mahasiswa');
                     break;
                 case 3:
