@@ -11,6 +11,11 @@ use Illuminate\Support\Carbon;
         {{ session('success') }}
     </div>
     @endif
+    @if (session()->has('danger'))
+    <div class="alert alert-danger col-lg-12" role="alert">
+        {{ session('danger') }}
+    </div>
+    @endif
     @if ($errors->any())
         <div class="alert alert-danger col-lg-12" role="alert">
             <ul>
