@@ -99,9 +99,12 @@ use Illuminate\Support\Carbon;
                                         <form action="/koordinator/acara/jadwal-acara/{{ $jadwal->jadwal_id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are Your Sure?')">Hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" 
+                                            onclick="return confirm('Are Your Sure?')">Hapus</button>
                                         </form>
+                                        @if($jadwal->beritaAcara)
                                         <a href="/koordinator/acara/jadwal-acara/bap/{{ $jadwal->beritaAcara->id }}" class="btn btn-info btn-sm">Lihat BAP</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

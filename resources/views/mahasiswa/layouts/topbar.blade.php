@@ -65,7 +65,8 @@
 
             @php
                 $unread_notifikasi = Notifikasi::where('is_read', 0)
-                ->where('user_id', auth()->user()->id)->get();
+                ->where('user_id', auth()->user()->id)
+            ->orWhere('user_id', null)->get();
             @endphp
             <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left" title="@if ($unread_notifikasi->count() > 0){{ $unread_notifikasi->count() }} Notifikasi Baru belum dibaca @else Notifikasi @endif">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -91,7 +92,7 @@
                     <div class="slimscroll noti-scroll" id="show-notifikasi">
 
                         @php
-                            $data_notifikasi = Notifikasi::where('user_id', auth()->user()->id)->get();
+                            $data_notifikasi = Notifikasi::where('user_id', auth()->user()->id)->orWhere('user_id', null)->get();
                         @endphp
                         @foreach ($data_notifikasi as $notifikasi)
                             <!-- item-->
