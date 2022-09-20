@@ -4,6 +4,7 @@
 <?php 
     use Illuminate\Support\Facades\Storage;
     use App\Models\Chat;
+    use Illuminate\Support\Carbon;
 ?>
 <div class="row page-title">
     <div class="col-md-12">
@@ -141,9 +142,53 @@
                 </ul>
 
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-activity" role="tabpanel"
-                        aria-labelledby="pills-activity-tab">
-                        <h5 class="mt-3">Hari Ini</h5>
+                    <div class="tab-pane fade show active" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+                        @php 
+                            $tanggal = ''; 
+                            $run = false; 
+                        @endphp
+                        @if ($list_jadwal->count()>0)
+                            @foreach($list_jadwal as $jadwal)
+                                @if($jadwal->tanggal != $tanggal)
+                                    @php 
+                                        $tanggal = $jadwal->tanggal; 
+                                    @endphp
+                                    @if ($run == true)
+                                            </div>
+                                        </ul>
+                                    @endif
+                                    @php
+                                        $run = true;
+                                    @endphp
+                                    @if($jadwal->tanggal == date('Y-m-d'))
+                                        <h5 class="mt-3">Hari Ini</h5>
+                                    @else
+                                        <h5 class="mt-3">{{ Carbon::parse($jadwal->tanggal)->translatedFormat('l, j F Y') }}</h5>
+                                    @endif
+                                    <div class="left-timeline mt-3 mb-3 pl-4">
+                                        <ul class="list-unstyled events mb-0">
+                                @endif
+                                <li class="event-list">
+                                    <div class="pb-4">
+                                        <div class="media">
+                                            <div class="event-date text-center mr-4">
+                                                <div class="bg-soft-primary p-1 rounded text-primary font-size-14">
+                                                    {{ $jadwal->waktu_dimulai }}
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="font-size-15 mt-0 mb-1">{{ $jadwal->nama_acara }}</h6>
+                                                <p class="text-muted font-size-14">{{ $jadwal->materi }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                            {!! "</div></ul>" !!}
+                        @else
+                            <h5 class="mt-3">Jadwal Tidak tersedia</h5>
+                        @endif
+                        {{-- <h5 class="mt-3">Hari Ini</h5>
                         <div class="left-timeline mt-3 mb-3 pl-4">
                             <ul class="list-unstyled events mb-0">
                                 <li class="event-list">
@@ -312,7 +357,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <!-- messages -->
@@ -391,776 +436,116 @@
                     <div class="tab-pane fade" id="pills-projects" role="tabpanel"
                         aria-labelledby="pills-projects-tab">
 
-                        <h5 class="mt-3">Projects</h5>
+                        <h5 class="mt-3">Acara berlangsung</h5>
 
                         <div class="row mt-3">
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-success float-right">Completed</div>
-                                        <p class="text-success text-uppercase font-size-12 mb-2">Web
-                                            Design</p>
-                                        <h5><a href="#" class="text-dark">Landing page Design</a>
-                                        </h5>
-                                        <p class="text-muted mb-4">If several languages coalesce,
-                                            the grammar of the resulting language is more regular.
-                                        </p>
+                            @foreach ($list_acara as $acara)
+                                <div class="col-xl-4 col-lg-6">
+                                    <div class="card border">
+                                        <div class="card-body">
+                                            <div class="badge badge-{{ ($acara->kategori_acara_id == 1) ? "primary" : "success" }} float-right">{{ $acara->kategoriAcara->kategori }}</div>
+                                            <p class="text-success text-uppercase font-size-12 mb-2">{{ $acara->nama_penyelenggara }}</p>
+                                            <h5><a href="#" class="text-dark">{{ $acara->nama }}</a></h5>
+                                            <p class="text-muted mb-4">{{ Str::limit(strip_tags($acara->deskripsi), 100, '...') }}</p>
 
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-2.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-3.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-                                        <div>
                                             <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 15
-                                                            Dec
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 56
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            224
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="100% completed">
-                                                    <div class="progress-bar bg-success"
-                                                        role="progressbar" style="width: 100%;"
-                                                        aria-valuenow="100" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
+                                                @foreach ($acara->peserta as $peserta)
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{ asset('storage/'.$peserta->mahasiswa->user->foto) }}" alt="" class="avatar-sm m-1 rounded-circle">
+                                                    </a>    
+                                                @endforeach
+                                                {{-- <a href="javascript: void(0);">
+                                                    <img src="/images/users/avatar-3.jpg" alt="" class="avatar-sm m-1 rounded-circle">
+                                                </a> --}}
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-warning float-right">Pending</div>
-                                        <p class="text-warning text-uppercase font-size-12 mb-2">
-                                            Android</p>
-                                        <h5><a href="#" class="text-dark">App Design and Develop</a>
-                                        </h5>
-                                        <p class="text-muted mb-4">To achieve this, it would be
-                                            necessary to have uniform grammar and more common words.
-                                        </p>
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-4.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-5.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <div
-                                                    class="avatar-sm font-weight-bold d-inline-block m-1">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-warning text-warning">
-                                                        2+
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-                                        <div>
+                                        <div class="card-body border-top">
                                             <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 28
-                                                            Nov
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 62
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            196
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="72% completed">
-                                                    <div class="progress-bar bg-warning"
-                                                        role="progressbar" style="width: 72%;"
-                                                        aria-valuenow="72" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                <div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item pr-2">
+                                                            <a href="/mahasiswa/acara/{{ $acara->id }}" class="text-muted d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Acara dimulai">
+                                                                <i class="uil uil-calender mr-1"></i> {{ Carbon::parse($acara->pelaksanaan_buka)->translatedFormat('d M') }}
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item pr-2">
+                                                            <a href="#" class="text-muted d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Kuota">
+                                                                <i class="uil uil-bars mr-1"></i> {{ $acara->kuota }}
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#" class="text-muted d-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Komentar">
+                                                                <i class="uil uil-comments-alt mr-1"></i>
+                                                                {{ $acara->rating->count() }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="pt-2">
+                                                    <div class="progress" style="height: 5px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="100% completed">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end card -->
                                 </div>
-                                <!-- end card -->
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-success float-right">Completed</div>
-                                        <p class="text-success text-uppercase font-size-12 mb-2">Web
-                                            Design</p>
-                                        <h5><a href="#" class="text-dark">New Admin Design</a></h5>
-                                        <p class="text-muted mb-4">To an English person, it will
-                                            seem like simplified english, as a skeptical Cambridge.
-                                        </p>
-
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <div
-                                                    class="avatar-sm font-weight-bold d-inline-block m-1">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                        H
-                                                    </span>
-                                                </div>
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-7.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-                                        <div>
-                                            <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 19
-                                                            Nov
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 69
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            201
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="100% completed">
-                                                    <div class="progress-bar bg-success"
-                                                        role="progressbar" style="width: 100%;"
-                                                        aria-valuenow="100" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-warning float-right">Pending</div>
-                                        <p class="text-warning text-uppercase font-size-12 mb-2">
-                                            Android</p>
-                                        <h5><a href="#" class="text-dark">Custom Software
-                                                Development</a></h5>
-                                        <p class="text-muted mb-4">Their separate existence is a
-                                            myth. For science, music, sport, etc uses the vocabulary
-                                        </p>
-
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-6.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <div
-                                                    class="avatar-sm font-weight-bold d-inline-block m-1">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-danger text-danger">
-                                                        K
-                                                    </span>
-                                                </div>
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-7.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-
-                                        <div>
-                                            <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 02
-                                                            Nov
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 72
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            184
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="60% completed">
-                                                    <div class="progress-bar bg-warning"
-                                                        role="progressbar" style="width: 60%;"
-                                                        aria-valuenow="60" aria-valuemin="0"
-                                                        aria-valuemax="60"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-success float-right">Completed</div>
-                                        <p class="text-success text-uppercase font-size-12 mb-2">Web
-                                            Design</p>
-                                        <h5><a href="#" class="text-dark">Brand logo design</a></h5>
-                                        <p class="text-muted mb-4">Everyone realizes why a new
-                                            common language refuse to pay expensive translators.</p>
-
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <div
-                                                    class="avatar-sm font-weight-bold d-inline-block m-1">
-                                                    <span
-                                                        class="avatar-title rounded-circle bg-soft-success text-success">
-                                                        D
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-
-                                        <div>
-                                            <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 13
-                                                            Oct
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 64
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            173
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="100% completed">
-                                                    <div class="progress-bar bg-success"
-                                                        role="progressbar" style="width: 100%;"
-                                                        aria-valuenow="100" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card border">
-                                    <div class="card-body">
-                                        <div class="badge badge-success float-right">Completed</div>
-                                        <p class="text-success text-uppercase font-size-12 mb-2">Web
-                                            Design</p>
-                                        <h5><a href="#" class="text-dark">Website Redesign</a></h5>
-                                        <p class="text-muted mb-4">The languages only differ in
-                                            their grammar pronunciation and their most common words.
-                                        </p>
-
-                                        <div>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-9.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                            <a href="javascript: void(0);">
-                                                <img src="/images/users/avatar-10.jpg" alt=""
-                                                    class="avatar-sm m-1 rounded-circle">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top">
-                                        <div>
-                                            <div>
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Due date">
-                                                            <i class="uil uil-calender mr-1"></i> 11
-                                                            Oct
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Tasks">
-                                                            <i class="uil uil-bars mr-1"></i> 71
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="text-muted d-inline-block"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top" title=""
-                                                            data-original-title="Comments">
-                                                            <i
-                                                                class="uil uil-comments-alt mr-1"></i>
-                                                            163
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pt-2">
-                                                <div class="progress" style="height: 5px;"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="" data-original-title="100% completed">
-                                                    <div class="progress-bar bg-success"
-                                                        role="progressbar" style="width: 100%;"
-                                                        aria-valuenow="100" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
+                            @endforeach
                         </div>
                         <!-- end row -->
                     </div>
 
                     <div class="tab-pane fade" id="pills-tasks" role="tabpanel"
                         aria-labelledby="pills-tasks-tab">
-                        <h5 class="mt-3">Tasks</h5>
+                        <h5 class="mt-3">Histori</h5>
 
                         <div class="card mb-0 shadow-none">
                             <div class="card-body">
-                                <!-- task -->
-                                <div class="row justify-content-sm-between border-bottom">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task1">
-                                            <label class="custom-control-label" for="task1">
-                                                Draft the new contract document for
-                                                sales team
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-9.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to Arya S" />
-                                            </div>
-                                            <div class="mt-3 mt-sm-0">
-                                                <ul class="list-inline font-13 text-sm-right">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        Today 10am
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        3/7
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        21
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-danger p-1">High</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
-
-                                <!-- task -->
-                                <div class="row justify-content-sm-between mt-2 border-bottom pt-2">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task2">
-                                            <label class="custom-control-label" for="task2">
-                                                iOS App home page
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-2.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to James B" />
-                                            </div>
-                                            <div class="mt-3 mt-sm-0">
-                                                <ul class="list-inline font-13 text-sm-right">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        Today 4pm
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        2/7
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        48
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-danger p-1">High</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-sm-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
-
-                                <!-- task -->
-                                <div
-                                    class="row justify-content-sm-between mt-2 border-bottom pt-2 pb-3">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task3">
-                                            <label class="custom-control-label" for="task3">
-                                                Write a release note
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-4.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to Kevin C" />
-                                            </div>
-                                            <div>
-                                                <ul class="list-inline font-13 text-sm-right mb-0">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        Today 6pm
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        18/21
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        73
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-info p-1">Medium</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-sm-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
-
-                                <!-- task -->
-                                <div class="row justify-content-sm-between border-bottom mt-2 pt-2">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task4">
-                                            <label class="custom-control-label" for="task4">
-                                                Invite user to a project
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-2.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to James B" />
-                                            </div>
-                                            <div class="mt-3 mt-sm-0">
-                                                <ul class="list-inline font-13 text-sm-right">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        Tomorrow
-                                                        7am
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        1/12
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        36
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-danger p-1">High</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-sm-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
-
-                                <!-- task -->
-                                <div class="row justify-content-sm-between mt-2 pt-2 border-bottom">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task5">
-                                            <label class="custom-control-label" for="task5">
-                                                Enable analytics tracking
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-2.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to James B" />
-                                            </div>
-                                            <div class="mt-3 mt-sm-0">
-                                                <ul class="list-inline font-13 text-sm-right">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        27 Aug
-                                                        10am
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        13/72
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        211
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-success p-1">Low</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-sm-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
-
-                                <!-- task -->
-                                <div class="row justify-content-sm-between mt-2 pt-2">
-                                    <div class="col-lg-6 mb-2 mb-lg-0">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="task6">
-                                            <label class="custom-control-label" for="task6">
-                                                Code HTML email template
-                                            </label>
-                                        </div> <!-- end checkbox -->
-                                    </div> <!-- end col -->
-                                    <div class="col-lg-6">
-                                        <div class="d-sm-flex justify-content-between">
-                                            <div>
-                                                <img src="/images/users/avatar-7.jpg"
-                                                    alt="image" class="avatar-xs rounded-circle"
-                                                    data-toggle="tooltip" data-placement="bottom"
-                                                    title="Assigned to Edward S" />
-                                            </div>
-                                            <div class="mt-3 mt-sm-0">
-                                                <ul class="list-inline font-13 text-sm-right mb-0">
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-schedule font-16 mr-1'></i>
-                                                        No Due
-                                                        Date
-                                                    </li>
-                                                    <li class="list-inline-item pr-1">
-                                                        <i
-                                                            class='uil uil-align-alt font-16 mr-1'></i>
-                                                        0/7
-                                                    </li>
-                                                    <li class="list-inline-item pr-2">
-                                                        <i
-                                                            class='uil uil-comment-message font-16 mr-1'></i>
-                                                        0
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <span
-                                                            class="badge badge-soft-info p-1">Medium</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> <!-- end .d-sm-flex-->
-                                    </div> <!-- end col -->
-                                </div>
-                                <!-- end task -->
+                                @foreach ($list_histori as $histori)
+                                    <!-- task -->
+                                    <div class="row justify-content-sm-between border-bottom">
+                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="task{{ $loop->iteration }}">
+                                                <label class="custom-control-label" for="task1">
+                                                    {{ $histori->acara->nama }}
+                                                </label>
+                                            </div> <!-- end checkbox -->
+                                        </div> <!-- end col -->
+                                        <div class="col-lg-6">
+                                            <div class="d-sm-flex justify-content-between">
+                                                <div>
+                                                    <img src="{{ asset('storage/'.$histori->acara->koordinator->user->foto) }}" alt="image" class="avatar-xs rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ $histori->acara->koordinator->user->nama }}" />
+                                                </div>
+                                                <div class="mt-3 mt-sm-0">
+                                                    <ul class="list-inline font-13 text-sm-right">
+                                                        <li class="list-inline-item pr-1">
+                                                            <i class='uil uil-schedule font-16 mr-1'></i>
+                                                            {{ Carbon::parse($histori->acara->pelaksanaan_tutup)->translatedFormat('d F Y') }}
+                                                        </li>
+                                                        @if ($histori->nilai)
+                                                            <li class="list-inline-item pr-1">
+                                                                <i class='uil uil-align-alt font-16 mr-1'></i>
+                                                                    
+                                                                {{ $histori->nilai->nilai }}
+                                                            </li>
+                                                        @endif
+                                                        <li class="list-inline-item pr-2">
+                                                            <i class='uil uil-comment-message font-16 mr-1'></i>
+                                                            {{ $histori->acara->rating->count() }}
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <span class="badge badge-soft-{{ ($acara->kategori_acara_id == 1) ? "primary" : "success" }} p-1">{{ $acara->kategoriAcara->kategori }}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> <!-- end .d-flex-->
+                                        </div> <!-- end col -->
+                                    </div>
+                                    <!-- end task -->
+                                @endforeach
                             </div> <!-- end card-body-->
                         </div> <!-- end card -->
                     </div>
