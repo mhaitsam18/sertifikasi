@@ -86,10 +86,12 @@ use Illuminate\Support\Carbon;
                                 <tr>
                                     <th scope="row" colspan="3"></th>
                                     <th>
-                                        <div class="custom-control custom-checkbox mb-2">
-                                            <input type="checkbox" class="custom-control-input peserta" name="select-all" id="select-all" onclick="toggle(this)">
-                                            <label class="custom-control-label" for="select-all">Hadir Semua</label>
-                                        </div>
+                                        @if ($list_peserta->count())
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" class="custom-control-input peserta" name="select-all" id="select-all" onclick="toggle(this)">
+                                                <label class="custom-control-label" for="select-all">Hadir Semua</label>
+                                            </div>
+                                        @endif
                                     </th>
                                     <th></th>
                                 </tr>

@@ -55,7 +55,7 @@ use Illuminate\Support\Carbon;
                                                 <p class="text-muted">{{ $jadwal->keterangan }}</p>
                                                 
                                                 <ul class="text-muted">
-                                                    <li class="py-1">Instruktur / Pengajar : {{ $jadwal->instruktur->user->nama }}</li>
+                                                    <li class="py-1">Instruktur / Pengajar : @if (isset($jadwal->instruktur->user)) {{ $jadwal->instruktur->user->nama }} @endif</li>
                                                     <li class="py-1">Ruangan : {{ $jadwal->ruangan }}</li>
                                                     <li class="py-1">Link : {{ $jadwal->link }}</li>
                                                     <li class="py-1">Materi : {{ $jadwal->materi }}</li>
