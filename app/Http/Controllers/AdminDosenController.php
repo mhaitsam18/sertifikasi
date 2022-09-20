@@ -123,7 +123,7 @@ class AdminDosenController extends Controller
      */
     public function update(Request $request, Dosen $dosen)
     {
-
+        $rules = [];
         if ($request->kode_dosen != $dosen->kode_dosen) {
             $rules['kode_dosen'] = 'required|unique:dosen|max:3|min:3';
         }
