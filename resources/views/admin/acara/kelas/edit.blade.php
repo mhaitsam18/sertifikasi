@@ -30,6 +30,7 @@ use Illuminate\Support\Carbon;
                         @method('put')
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $kelas->acara_id }}">
+                        <input type="hidden" name="sisa_kuota" value="{{ $sisa_kuota + $kelas->kuota }}">
                         <div class="form-group">
                             <label for="nama">Nama Kelas</label>
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama', $kelas->nama) }}">

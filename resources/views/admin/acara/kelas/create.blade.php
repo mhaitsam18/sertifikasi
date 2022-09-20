@@ -26,6 +26,7 @@
                     <form action="/dashboard/acara/kelas-acara" method="post">
                         @csrf
                         <input type="hidden" name="acara_id" value="{{ $acara->id }}">
+                        <input type="hidden" name="sisa_kuota" value="{{ $sisa_kuota }}">
                         <div class="form-group">
                             <label for="nama">Nama Kelas</label>
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">

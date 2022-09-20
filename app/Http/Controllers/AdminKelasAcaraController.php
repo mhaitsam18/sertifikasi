@@ -53,6 +53,9 @@ class AdminKelasAcaraController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->kuota > $request->sisa_kuota) {
+            return back()->with('success', 'Kuota tidak mencukupi!');
+        }
         $validateData = $request->validate([
             'acara_id' => 'required',
             'instruktur_id' => 'required',
@@ -106,6 +109,9 @@ class AdminKelasAcaraController extends Controller
      */
     public function update(Request $request, KelasAcara $kelasAcara)
     {
+        if ($request->kuota > $request->sisa_kuota) {
+            return back()->with('success', 'Kuota tidak mencukupi!');
+        }
         $validateData = $request->validate([
             'nama' => 'required|max:255',
             'kuota' => 'required',
