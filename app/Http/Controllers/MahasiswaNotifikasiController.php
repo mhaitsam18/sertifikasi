@@ -14,16 +14,20 @@ class MahasiswaNotifikasiController extends Controller
     {
 
         if ($request->kategori_notifikasi_id) {
-            $notifikasi_today = Notifikasi::where("user_id", auth()->user()->id)
-                ->where('kategori_notifikasi_id', $request->kategori_notifikasi_id)
+            $notifikasi_today = Notifikasi::where(function ($query) {
+                $query->where('user_id', auth()->user()->id)
+                    ->orWhere('user_id', null);
+            })->where('kategori_notifikasi_id', $request->kategori_notifikasi_id)
                 ->where(function ($query) use ($request) {
                     $query->where("subjek", "like", "%" . $request->search . "%")
                         ->orWhere("pesan", "like", "%" . $request->search . "%");
                 })
                 ->whereDate('created_at', Carbon::today())
                 ->latest()->get();
-            $notifikasi_other = Notifikasi::where("user_id", auth()->user()->id)
-                ->where('kategori_notifikasi_id', $request->kategori_notifikasi_id)
+            $notifikasi_other = Notifikasi::where(function ($query) {
+                $query->where('user_id', auth()->user()->id)
+                    ->orWhere('user_id', null);
+            })->where('kategori_notifikasi_id', $request->kategori_notifikasi_id)
                 ->where(function ($query) use ($request) {
                     $query->where("subjek", "like", "%" . $request->search . "%")
                         ->orWhere("pesan", "like", "%" . $request->search . "%");
@@ -31,19 +35,25 @@ class MahasiswaNotifikasiController extends Controller
                 ->whereDate('created_at', '!=', Carbon::today())
                 ->latest()->get();
         } else {
-            $notifikasi_today = Notifikasi::where("user_id", auth()->user()->id)
-                ->where(function ($query) use ($request) {
-                    $query->where("subjek", "like", "%" . $request->search . "%")
-                        ->orWhere("pesan", "like", "%" . $request->search . "%");
-                })
+            $notifikasi_today = Notifikasi::where(function ($query) {
+                $query->where('user_id', auth()->user()->id)
+                    ->orWhere('user_id', null);
+            })->where(function ($query) use ($request) {
+                $query->where("subjek", "like", "%" . $request->search . "%")
+                    ->orWhere("pesan", "like", "%" . $request->search . "%");
+            })
                 ->whereDate('created_at', Carbon::today())
+                ->whereIn('kategori_notifikasi_id', [4, 5, 6])
                 ->latest()->get();
-            $notifikasi_other = Notifikasi::where("user_id", auth()->user()->id)
-                ->where(function ($query) use ($request) {
-                    $query->where("subjek", "like", "%" . $request->search . "%")
-                        ->orWhere("pesan", "like", "%" . $request->search . "%");
-                })
+            $notifikasi_other = Notifikasi::where(function ($query) {
+                $query->where('user_id', auth()->user()->id)
+                    ->orWhere('user_id', null);
+            })->where(function ($query) use ($request) {
+                $query->where("subjek", "like", "%" . $request->search . "%")
+                    ->orWhere("pesan", "like", "%" . $request->search . "%");
+            })
                 ->whereDate('created_at', '!=', Carbon::today())
+                ->whereIn('kategori_notifikasi_id', [4, 5, 6])
                 ->latest()->get();
         }
         return view("mahasiswa.notifikasi.index", [
