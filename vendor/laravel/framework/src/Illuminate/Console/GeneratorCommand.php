@@ -60,6 +60,7 @@ abstract class GeneratorCommand extends Command
         'eval',
         'exit',
         'extends',
+        'false',
         'final',
         'finally',
         'fn',
@@ -93,6 +94,7 @@ abstract class GeneratorCommand extends Command
         'switch',
         'throw',
         'trait',
+        'true',
         'try',
         'unset',
         'use',
@@ -182,7 +184,7 @@ abstract class GeneratorCommand extends Command
             }
         }
 
-        $this->components->info($info.' created successfully.');
+        $this->components->info(sprintf('%s [%s] created successfully.', $info, $path));
     }
 
     /**

@@ -2,6 +2,34 @@
 
 All notable changes of the PHPUnit 9.5 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## [9.5.28] - 2023-01-14
+
+### Fixed
+
+* [#5120](https://github.com/sebastianbergmann/phpunit/issues/5120): Test Runner incorrectly treats `--testsuite` and `--list-tests` as not combinable options
+
+## [9.5.27] - 2022-12-09
+
+### Fixed
+
+* [#5113](https://github.com/sebastianbergmann/phpunit/pull/5113): PHP error instead of PHPUnit error when trying to create test double for `readonly` class
+
+## [9.5.26] - 2022-10-28
+
+### Fixed
+
+* [#5076](https://github.com/sebastianbergmann/phpunit/issues/5076): Test Runner does not warn about conflicting options
+
+## [9.5.25] - 2022-09-25
+
+### Added
+
+* [#5042](https://github.com/sebastianbergmann/phpunit/issues/5042): Support Disjunctive Normal Form types
+
+### Fixed
+
+* [#4966](https://github.com/sebastianbergmann/phpunit/issues/4966): `TestCase::assertSame()` (and related exact comparisons) must compare `float` exactly
+
 ## [9.5.24] - 2022-08-30
 
 ### Added
@@ -190,6 +218,10 @@ All notable changes of the PHPUnit 9.5 release series are documented in this fil
 
 * [#4535](https://github.com/sebastianbergmann/phpunit/issues/4535): `getMockFromWsdl()` does not handle methods that do not have parameters correctly
 
+[9.5.28]: https://github.com/sebastianbergmann/phpunit/compare/9.5.27...9.5.28
+[9.5.27]: https://github.com/sebastianbergmann/phpunit/compare/9.5.26...9.5.27
+[9.5.26]: https://github.com/sebastianbergmann/phpunit/compare/9.5.25...9.5.26
+[9.5.25]: https://github.com/sebastianbergmann/phpunit/compare/9.5.24...9.5.25
 [9.5.24]: https://github.com/sebastianbergmann/phpunit/compare/9.5.23...9.5.24
 [9.5.23]: https://github.com/sebastianbergmann/phpunit/compare/9.5.22...9.5.23
 [9.5.22]: https://github.com/sebastianbergmann/phpunit/compare/9.5.21...9.5.22
